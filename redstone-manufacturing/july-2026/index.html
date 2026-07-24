@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redstone Manufacturing — July 2026 Delivery Report</title>
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --ground:#EEF0F2; --surface:#FFFFFF; --surface-2:#F6F7F9;
+  --ink:#14171B; --ink-2:#3B434B; --steel:#646E78; --line:#D8DCE1;
+  --ember:#BB3A1C; --molten:#E0771A; --good:#2C7A57; --good-bg:rgba(44,122,87,.10);
+  --shadow:0 1px 2px rgba(20,23,27,.05),0 8px 24px rgba(20,23,27,.06);
+  --font-display:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-body:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --font-mono:ui-monospace,"SF Mono","Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root{
+  --ground:#121418; --surface:#1A1D22; --surface-2:#20242A;
+  --ink:#ECEEF1; --ink-2:#B6BDC5; --steel:#8B949D; --line:#2E343B;
+  --ember:#DE5730; --molten:#F0913E; --good:#43A279; --good-bg:rgba(67,162,121,.12);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+}}
+:root[data-theme="light"]{--ground:#EEF0F2;--surface:#FFFFFF;--surface-2:#F6F7F9;--ink:#14171B;--ink-2:#3B434B;--steel:#646E78;--line:#D8DCE1;--ember:#BB3A1C;--molten:#E0771A;--good:#2C7A57;--good-bg:rgba(44,122,87,.10);--shadow:0 1px 2px rgba(20,23,27,.05),0 8px 24px rgba(20,23,27,.06);}
+:root[data-theme="dark"]{--ground:#121418;--surface:#1A1D22;--surface-2:#20242A;--ink:#ECEEF1;--ink-2:#B6BDC5;--steel:#8B949D;--line:#2E343B;--ember:#DE5730;--molten:#F0913E;--good:#43A279;--good-bg:rgba(67,162,121,.12);--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+.label{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);}
+h1,h2,h3{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;text-wrap:balance;line-height:1.06;margin:0;}
+p{margin:0 0 1em;max-width:70ch;}
+a{color:var(--ember);text-decoration:none;}
+strong{font-weight:700;} em{font-style:italic;}
+.rule{height:1px;background:var(--line);border:0;margin:34px 0 0;}
+
+header{border-bottom:2px solid var(--ink);}
+.mast{padding:48px 0 26px;}
+.mast .ey{display:flex;align-items:center;gap:10px;margin-bottom:22px;}
+.mast .ey .dot{width:9px;height:9px;background:var(--ember);border-radius:50%;flex:none;}
+.mast h1{font-size:clamp(32px,6vw,56px);}
+.mast .sub{font-family:var(--font-body);font-style:italic;color:var(--ink-2);font-size:clamp(17px,2.4vw,21px);margin-top:16px;max-width:64ch;}
+.mast .sub em{font-style:italic;color:var(--ember);}
+.titleblock{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);}
+.titleblock .cell{padding:12px 16px 14px;border-right:1px solid var(--line);}
+.titleblock .cell:last-child{border-right:0;}
+.titleblock .k{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);display:block;margin-bottom:4px;}
+.titleblock .v{font-family:var(--font-display);font-weight:700;font-size:14px;letter-spacing:-.01em;}
+@media(max-width:620px){.titleblock{grid-template-columns:repeat(2,1fr);} .titleblock .cell:nth-child(2){border-right:0;}}
+
+section{padding:44px 0;border-bottom:1px solid var(--line);}
+section.first{border-bottom:0;padding:40px 0 8px;}
+.sechead{display:flex;align-items:baseline;gap:14px;margin-bottom:14px;}
+.sechead .num{font-family:var(--font-mono);font-size:13px;color:var(--ember);font-weight:600;padding-top:3px;}
+.sechead h2{font-size:clamp(21px,3.4vw,29px);}
+.secmeta{display:flex;align-items:center;gap:12px;margin:0 0 16px 0;}
+.pill{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ember);background:var(--good-bg);background:rgba(187,58,28,.09);border-radius:3px;padding:4px 10px;}
+.range{font-family:var(--font-mono);font-size:12px;color:var(--steel);}
+.lead{color:var(--ink-2);max-width:68ch;}
+
+.verdict{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ember);border-radius:4px;padding:32px 34px 28px;box-shadow:var(--shadow);}
+.verdict .q{font-family:var(--font-mono);font-size:13px;letter-spacing:.04em;color:var(--steel);margin-bottom:12px;}
+.verdict .a{font-family:var(--font-display);font-weight:800;font-size:clamp(24px,4.2vw,38px);letter-spacing:-.02em;line-height:1.05;margin-bottom:18px;}
+.verdict .a em{font-style:normal;color:var(--ember);}
+.verdict p{font-size:16.5px;color:var(--ink-2);margin-bottom:0;}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px;}
+@media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr);}}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:18px 16px;box-shadow:var(--shadow);}
+.tile .t-k{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:12px;min-height:2.2em;}
+.tile .t-v{font-family:var(--font-display);font-weight:800;font-size:30px;letter-spacing:-.02em;line-height:1;}
+.tile .t-s{font-family:var(--font-mono);font-size:11px;color:var(--steel);margin-top:7px;}
+.tile.pass .t-v{color:var(--good);}
+.tile.hot{border-color:var(--molten);box-shadow:0 0 0 1px var(--molten) inset;}
+.tile.hot .t-v{color:var(--molten);}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:12px 22px;box-shadow:var(--shadow);}
+.checklist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 34px;}
+@media(max-width:680px){.checklist{grid-template-columns:1fr;}}
+.checklist li{display:grid;grid-template-columns:16px 1fr auto;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);}
+.checklist .tk{width:11px;height:11px;border-radius:2px;border:1.5px solid var(--good);position:relative;top:3px;}
+.checklist .tk::after{content:"";position:absolute;left:2px;top:-1px;width:4px;height:7px;border:solid var(--good);border-width:0 1.5px 1.5px 0;transform:rotate(42deg);}
+.checklist .tt{font-family:var(--font-body);font-size:14.5px;line-height:1.4;color:var(--ink);}
+.checklist .td{font-family:var(--font-mono);font-size:11px;color:var(--steel);white-space:nowrap;}
+
+.reps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media(max-width:720px){.reps{grid-template-columns:1fr;}}
+.rep{display:flex;flex-direction:column;gap:7px;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--ember);border-radius:4px;padding:20px 20px;box-shadow:var(--shadow);}
+.rep .rk{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ember);}
+.rep .rt{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--ink);letter-spacing:-.01em;}
+.rep .ru{font-family:var(--font-mono);font-size:11.5px;color:var(--steel);word-break:break-all;}
+
+footer{padding:26px 0 60px;}
+.fmeta{margin-bottom:8px;} .fbody{font-size:14px;color:var(--ink-2);max-width:72ch;}
+.fsign{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;color:var(--steel);margin-top:14px;}
+</style>
+
+</head>
+<body>
+<header><div class="wrap">
+  <div class="mast">
+    <div class="ey"><span class="dot"></span><span class="label">Outrider Digital · Monthly Delivery Report</span></div>
+    <h1>Redstone Manufacturing<br>What we shipped in July</h1>
+    <p class="sub">The new website went live and got indexed, the full service &amp; content library was built out, and the technical-SEO groundwork was laid — <em>186 tasks completed</em> across ten workstreams this month.</p>
+  </div>
+  <div class="titleblock">
+    <div class="cell"><span class="k">Prepared for</span><span class="v">Eric Millinger</span></div>
+    <div class="cell"><span class="k">Client</span><span class="v">Redstone Manufacturing</span></div>
+    <div class="cell"><span class="k">Period</span><span class="v">July 2026</span></div>
+    <div class="cell"><span class="k">Status</span><span class="v">Site launched &amp; indexed</span></div>
+  </div>
+</div></header>
+<div class="wrap"><section class="first">
+  <div class="verdict">
+    <div class="q">The month in one line</div>
+    <div class="a">The build is <em>done and live.</em> July was the ship-it month.</div>
+    <p>The 85-page site was rebuilt, connected to the live domain and flipped from no-index to indexed. On top of the launch we shipped the full service and geo page set, published the educational content library, cleared a brand-compliance sweep and the client punch list, and hardened tracking, metadata and page-speed.</p>
+  </div>
+  <div class="stats">
+    <div class="tile"><div class="t-k">Tasks completed</div><div class="t-v">186</div><div class="t-s">across 10 workstreams</div></div>
+    <div class="tile"><div class="t-k">Site pages live</div><div class="t-v">85</div><div class="t-s">rebuilt &amp; indexed</div></div>
+    <div class="tile pass"><div class="t-k">Content pieces</div><div class="t-v">107</div><div class="t-s">service + blog pages</div></div>
+    <div class="tile hot"><div class="t-k">Reports delivered</div><div class="t-v">3</div><div class="t-s">keywords · work · SEO status</div></div>
+  </div>
+</section></div>
+<div class="wrap">
+<section>
+  <div class="sechead"><span class="num">01</span><h2>Website rebuild &amp; launch</h2></div>
+  <div class="secmeta"><span class="pill">12 completed</span><span class="range">Jul 1 – Jul 15</span></div>
+  <p class="lead">The full 85-page site was rebuilt from the definitive sitemap, pushed to the live domain, and switched from no-index to indexed — the build is essentially done and public.</p>
+  <div class="card"><ul class="checklist"><li><span class="tk"></span><span class="tt">Connect redstone-web to the live domain in Vercel</span><span class="td">Jul 1</span></li><li><span class="tk"></span><span class="tt">Footer Changes - Remove the gridlines from he footer and anywhere else on the site</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Home Page</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">India Geo Page Build</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Industry Page update</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Navigation Changes</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Redstone website rebuild (85-page SITEMAP.md scope)</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Remove box with materials from service pages</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Service Page changes</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Add team to Eric&#x27;s Vercel account + GitHub</span><span class="td">Jul 15</span></li><li><span class="tk"></span><span class="tt">Flip site from no-index to index at launch</span><span class="td">Jul 15</span></li><li><span class="tk"></span><span class="tt">Sitemap handling — manual vs auto, include/exclude pages</span><span class="td">Jul 15</span></li></ul></div>
+</section>
+<section>
+  <div class="sechead"><span class="num">02</span><h2>Service &amp; process pages built</h2></div>
+  <div class="secmeta"><span class="pill">65 completed</span><span class="range">Jun 24 – Jul 16</span></div>
+  <p class="lead">Every core manufacturing service and process page was written, reviewed and shipped — including the US, Mexico, India and China geo variants that carry the commercial keywords.</p>
+  <div class="card"><ul class="checklist"><li><span class="tk"></span><span class="tt">(High Pressure) Aluminum Die Casting Services</span><span class="td">Jun 24</span></li><li><span class="tk"></span><span class="tt">(High Pressure) Zinc Die Casting Services</span><span class="td">Jun 24</span></li><li><span class="tk"></span><span class="tt">Cold Chamber Die Casting</span><span class="td">Jun 24</span></li><li><span class="tk"></span><span class="tt">Die Casting Services</span><span class="td">Jun 24</span></li><li><span class="tk"></span><span class="tt">Low Pressure Aluminium Die Casting</span><span class="td">Jun 24</span></li><li><span class="tk"></span><span class="tt">Low Pressure Die Casting</span><span class="td">Jun 24</span></li><li><span class="tk"></span><span class="tt">3 axis CNC Machining</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">4 axis CNC Machining</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">About Redstone Manufacturing</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Aluminum CNC Machining</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Automotive Manufacturing</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">CNC Lathe</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">CNC Machining India</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">CNC Machining Mexico</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">CNC Machining Seattle (US Facility)</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">CNC Machining Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">CNC Steel Machining</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Contact Redstone</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Defense Manufacturing</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Die Casting China</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Die Casting India</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Die Casting Mexico</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Die casting Hero image change</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">High-Pressure Die Casting Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Industrial Machinery</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Investment Casting China</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Investment Casting India</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Investment Casting Mexico</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Investment Casting Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Laser Cutting Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Lost wax casting</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Low Pressure Zinc Die Casting</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">MIG Welding Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Medical CNC Machining</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Medical Device Manufacturing</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Metal Enclosures / Machine Chassis (Assembly)</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Metal Injection Molding China</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Metal Injection Molding India</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Metal Injection Molding Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Metal Stamping Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Plastic Injection Molding China</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Plastic Injection Molding Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Precision CNC Machining</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Privacy Policy</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Progressive Die Stamping</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Sand Casting China</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Sand Casting India</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Sand Casting Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Sheet Metal Bending / Press Brake</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Sheet Metal China</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Sheet Metal Fabrication Mexico</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Sheet Metal Fabrication Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Stainless Steel Fabrication</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Stainless Steel Investment Casting</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Steel sand casting</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">TIG Welding Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Tube Bending Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Turnmill Machining</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Welding Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Wire Forming Services</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Aluminium investment casting</span><span class="td">Jul 16</span></li><li><span class="tk"></span><span class="tt">Carbon Steel Investment Casting</span><span class="td">Jul 16</span></li><li><span class="tk"></span><span class="tt">Contact blocks: single US phone number, remove Mon–Fri hours, fix PNG white-on-white bug</span><span class="td">Jul 16</span></li><li><span class="tk"></span><span class="tt">Hot Chamber Die Casting</span><span class="td">Jul 16</span></li><li><span class="tk"></span><span class="tt">Industrial Equipment</span><span class="td">Jul 16</span></li></ul></div>
+</section>
+<section>
+  <div class="sechead"><span class="num">03</span><h2>Blog &amp; educational content published</h2></div>
+  <div class="secmeta"><span class="pill">42 completed</span><span class="range">Jul 2 – Jul 8</span></div>
+  <p class="lead">Long-form buyer-education articles, process comparisons and materials-spec guides went live to build topical authority around the commercial pages.</p>
+  <div class="card"><ul class="checklist"><li><span class="tk"></span><span class="tt">CNC Machining Tolerances, Explained for Buyers</span><span class="td">Jul 2</span></li><li><span class="tk"></span><span class="tt">Casting vs Machining: Which Process Should Make Your Part?</span><span class="td">Jul 2</span></li><li><span class="tk"></span><span class="tt">Designing for Metal Injection Molding: A Part Design Guide</span><span class="td">Jul 2</span></li><li><span class="tk"></span><span class="tt">Ductile Iron vs Carbon Steel: Strength, Cost, and Castability</span><span class="td">Jul 2</span></li><li><span class="tk"></span><span class="tt">Forged vs Cast: Choosing the Right Process for Strength and Cost</span><span class="td">Jul 2</span></li><li><span class="tk"></span><span class="tt">Grey vs Ductile Iron: Properties, Uses, and How to Specify</span><span class="td">Jul 2</span></li><li><span class="tk"></span><span class="tt">Managing Overseas Production From One U.S. Point of Contact</span><span class="td">Jul 2</span></li><li><span class="tk"></span><span class="tt">Metal Injection Molding Explained: Process, Materials, and Fit</span><span class="td">Jul 2</span></li><li><span class="tk"></span><span class="tt">1020 Steel Equivalent Materials &amp; Metal Specifications</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">1045 Steel Equivalent Materials &amp; Metal Specifications</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">17-4 Stainless Steel vs 304: A Side-by-Side Comparison</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">2024 Aluminum vs 6061 Aluminum: Properties, Uses, and How to Choose</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">3003 Aluminum vs 6061 Aluminum</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">41Cr4 Equivalent Materials &amp; Metal Specifications</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">7075 Aluminum vs 6061: Strength, Weldability, and Application Differences</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">A36 vs AR500 Steel</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Aluminum 6061 vs 6063: Which Alloy Is Right for Your Application?</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Aluminum vs Stainless Steel</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Aluminum vs Titanium</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Can You Bend 6061 Aluminum?</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Choosing Between Die Casting and Sand Casting for Production Volumes</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Cold Chamber vs. Hot Chamber Die Casting</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Cost of Casting Aluminum vs. Bronze</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">How Many Jobs Are Available in Metal Fabrication?</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">How to Find a Manufacturer in Mexico</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Investment Casting vs. Die Casting</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Iron vs Steel</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Is 6061 Aluminum Weldable?</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Metal Injection Molding vs. Die Casting</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Outsourcing Manufacturing: Pros and Cons</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Properties of 7075 Aluminum</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">SS330 Equivalent Materials &amp; Metal Specifications</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">SS400 Equivalent Materials &amp; Metal Specifications</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">SS490 Equivalent Materials &amp; Metal Specifications</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">SS540 Equivalent Materials &amp; Metal Specifications</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Stamped Steel vs. Cast Steel</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">What Is Aerospace Aluminum?</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">What Is Aluminum Anodizing?</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">What a Complete Supplier Quality Package Includes</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">What is Die Stamp Casting?</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Zamak 3 Equivalent Materials &amp; Metal Specifications</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Zamak 5 Equivalent Materials &amp; Metal Specifications</span><span class="td">Jul 8</span></li></ul></div>
+</section>
+<section>
+  <div class="sechead"><span class="num">04</span><h2>Site revision sweep — brand &amp; compliance</h2></div>
+  <div class="secmeta"><span class="pill">30 completed</span><span class="range">Jul 7 – Jul 10</span></div>
+  <p class="lead">A full pass aligning the site to Redstone&#x27;s brand rules: unapproved certification/badge boxes removed, fonts and headers standardised, banned imagery swapped, and factual copy corrected.</p>
+  <div class="card"><ul class="checklist"><li><span class="tk"></span><span class="tt">About: add Zack + Joe to team bios</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">About: reconsider &quot;American Quality, Overseas Production&quot; hero H1</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">About: redesign hero bullets</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">About: rewrite carried-over company bio</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">About: standardize team photos</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Contact: form above the fold (CRUCIAL)</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Die Casting: change &quot;Overseas Production&quot; header</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Die Casting: delete &quot;American Quality&quot; subtitle box</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Die Casting: hide &quot;Explore Our Die Casting Capabilities&quot;</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Die Casting: reconcile map (6 shown vs 3 listed)</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Die Casting: remove ISO 9001 / PPAP boxes from &quot;Industries We Cast For&quot;</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Die Casting: swap non-die-cast part photos</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Footer: fix broken LinkedIn + YouTube links</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Footprint: remove &quot;Lead time: 4-8 weeks&quot; box</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Footprint: rename section</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Get a Quote: remove red &quot;review within 24 hours&quot; box</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Get a Quote: standardize to one font</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Global: remove banned callout/badge boxes site-wide</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Global: replace banned body font with Montserrat</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Industries: reconcile menu count (5 vs 6)</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Industries: remove black &quot;certified to ISO 9001&quot; banner</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Mexico: remove &quot;Why Redstone&quot; banned box</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Mexico: remove wrong &quot;Laredo TX certified facilities&quot; line</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Sand Casting: fix &quot;certified&quot; font + double-space after &quot;IATF 16949&quot;</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">Services menu: remove ISO 9001 / IATF 16949 chips</span><span class="td">Jul 7</span></li><li><span class="tk"></span><span class="tt">CNC Machining page — June 2026 review changes</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Imagery: CNC section shows CMM, not CNC — replace</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Imagery: molten metal photos banned everywhere</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Sand Casting: replace low-res/blurry photo</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">Capability Index heading: “Explore Redstone capabilities” on non-service pages</span><span class="td">Jul 10</span></li></ul></div>
+</section>
+<section>
+  <div class="sechead"><span class="num">05</span><h2>Client punch list</h2></div>
+  <div class="secmeta"><span class="pill">10 completed</span><span class="range">Jul 21</span></div>
+  <p class="lead">The final round of client-requested fixes captured on July 21, cleared ahead of launch sign-off.</p>
+  <div class="card"><ul class="checklist"><li><span class="tk"></span><span class="tt">Punch list 10: Content check against Jack&#x27;s Neuronwriter SEO docs</span><span class="td">Jul 21</span></li><li><span class="tk"></span><span class="tt">Punch list 1: Services dropdown — Request a Quote CTA missing button styling</span><span class="td">Jul 21</span></li><li><span class="tk"></span><span class="tt">Punch list 2: Remove “American Quality” from service &amp; location hero titles</span><span class="td">Jul 21</span></li><li><span class="tk"></span><span class="tt">Punch list 3: Home page hero rewrite</span><span class="td">Jul 21</span></li><li><span class="tk"></span><span class="tt">Punch list 4: Home copy edit — “Redstone operates manufacturing facilities…” → “Manufacturing facilities…”</span><span class="td">Jul 21</span></li><li><span class="tk"></span><span class="tt">Punch list 5: Remove ISO 9001 sticker from home page</span><span class="td">Jul 21</span></li><li><span class="tk"></span><span class="tt">Punch list 6: About Us — photo formats, Erik Gallegos placement, Quality Manager titles</span><span class="td">Jul 21</span></li><li><span class="tk"></span><span class="tt">Punch list 7: “Industries we cast for” header repeated sitewide</span><span class="td">Jul 21</span></li><li><span class="tk"></span><span class="tt">Punch list 8: Production Process section — process-specific steps</span><span class="td">Jul 21</span></li><li><span class="tk"></span><span class="tt">Punch list 9: Machine Assembly page → Product Assembly</span><span class="td">Jul 21</span></li></ul></div>
+</section>
+<section>
+  <div class="sechead"><span class="num">06</span><h2>SEO &amp; technical optimization</h2></div>
+  <div class="secmeta"><span class="pill">13 completed</span><span class="range">Jul 8 – Jul 24</span></div>
+  <p class="lead">On-page and technical SEO hardening: metadata, structured data, social tags, accessibility, responsive behaviour and page-speed — the groundwork that lets the commercial pages rank.</p>
+  <div class="card"><ul class="checklist"><li><span class="tk"></span><span class="tt">Service pages: missing &quot;What we produce&quot; images on 19 geo/family pages</span><span class="td">Jul 8</span></li><li><span class="tk"></span><span class="tt">J-son Schema for new and optimized content</span><span class="td">Jul 14</span></li><li><span class="tk"></span><span class="tt">[Jack/Outrider] Implement schema markup on all new site pages</span><span class="td">Jul 14</span></li><li><span class="tk"></span><span class="tt">Cache-control + compression headers for static assets (Vercel)</span><span class="td">Jul 20</span></li><li><span class="tk"></span><span class="tt">Defer third-party marketing scripts (HubSpot, GTM/GA4, Cookiebot, PostHog)</span><span class="td">Jul 20</span></li><li><span class="tk"></span><span class="tt">Slim mobile hero media (video renditions + poster compression)</span><span class="td">Jul 20</span></li><li><span class="tk"></span><span class="tt">Tablet/mobile responsive sweep (RESPONSIVE-SPEC.md, Phases 1–6)</span><span class="td">Jul 20</span></li><li><span class="tk"></span><span class="tt">Add JSON-LD to 45 pages missing it (incl. homepage)</span><span class="td">Jul 24</span></li><li><span class="tk"></span><span class="tt">Add Open Graph + Twitter Card tags site-wide</span><span class="td">Jul 24</span></li><li><span class="tk"></span><span class="tt">Add canonical URLs to all pages (base layout)</span><span class="td">Jul 24</span></li><li><span class="tk"></span><span class="tt">Fix contrast + list-markup a11y fails (alt-text finding withdrawn)</span><span class="td">Jul 24</span></li><li><span class="tk"></span><span class="tt">Shorten 53 over-length page titles (+2 under-length)</span><span class="td">Jul 24</span></li><li><span class="tk"></span><span class="tt">Trim 102 over-length meta descriptions (up to 410 chars)</span><span class="td">Jul 24</span></li></ul></div>
+</section>
+<section>
+  <div class="sechead"><span class="num">07</span><h2>Tracking &amp; analytics</h2></div>
+  <div class="secmeta"><span class="pill">5 completed</span><span class="range">Jul 2 – Jul 15</span></div>
+  <p class="lead">Analytics and lead attribution wired across the new site so every enquiry and conversion is measured end to end.</p>
+  <div class="card"><ul class="checklist"><li><span class="tk"></span><span class="tt">Confirm Google Analytics + Search Console access</span><span class="td">Jul 2</span></li><li><span class="tk"></span><span class="tt">Create tracking checklist — current live vs new design</span><span class="td">Jul 2</span></li><li><span class="tk"></span><span class="tt">Implement tracking on new pages — HubSpot, GTM, PostHog</span><span class="td">Jul 14</span></li><li><span class="tk"></span><span class="tt">Map new pages onto existing live URL structure</span><span class="td">Jul 14</span></li><li><span class="tk"></span><span class="tt">Hubspot Form Setup as per new website Forms</span><span class="td">Jul 15</span></li></ul></div>
+</section>
+<section>
+  <div class="sechead"><span class="num">08</span><h2>Email deliverability</h2></div>
+  <div class="secmeta"><span class="pill">4 completed</span><span class="range">Jul 2 – Jul 6</span></div>
+  <p class="lead">Migrated the Redstone sales inbox to Mailgun SMTP and re-verified notification deliverability so no enquiry is silently lost.</p>
+  <div class="card"><ul class="checklist"><li><span class="tk"></span><span class="tt">Re-test notification deliverability after Mailgun setup</span><span class="td">Jul 2</span></li><li><span class="tk"></span><span class="tt">Send SMTP switch details to Leo via Slack</span><span class="td">Jul 2</span></li><li><span class="tk"></span><span class="tt">Set up Mailgun SMTP on the Redstone sales email</span><span class="td">Jul 2</span></li><li><span class="tk"></span><span class="tt">Inform Eric of SMTP migration + justification</span><span class="td">Jul 6</span></li></ul></div>
+</section>
+<section>
+  <div class="sechead"><span class="num">09</span><h2>Sales enablement</h2></div>
+  <div class="secmeta"><span class="pill">2 completed</span><span class="range">Jul 20</span></div>
+  <p class="lead">Prospecting assets to push new business into the Seattle facility.</p>
+  <div class="card"><ul class="checklist"><li><span class="tk"></span><span class="tt">Create cold call list for Eric</span><span class="td">Jul 20</span></li><li><span class="tk"></span><span class="tt">Redstone USA - Target Account Tracker</span><span class="td">Jul 20</span></li></ul></div>
+</section>
+<section>
+  <div class="sechead"><span class="num">10</span><h2>Quality assurance</h2></div>
+  <div class="secmeta"><span class="pill">3 completed</span><span class="range">Jul 14 – Jul 17</span></div>
+  <p class="lead">Structured review passes across desktop and mobile before launch.</p>
+  <div class="card"><ul class="checklist"><li><span class="tk"></span><span class="tt">Fix collapsible/hidden sections so they hide on load</span><span class="td">Jul 14</span></li><li><span class="tk"></span><span class="tt">Q&amp;A</span><span class="td">Jul 14</span></li><li><span class="tk"></span><span class="tt">Q&amp;A for mobile version</span><span class="td">Jul 17</span></li></ul></div>
+</section>
+<section>
+  <div class="sechead"><span class="num">11</span><h2>Reports delivered this month</h2></div>
+  <p class="lead">Three standalone reports were produced and handed over alongside the delivery work.</p>
+  <div class="reps">
+    <a class="rep" href="https://growtharchon.github.io/client-reports/redstone-manufacturing/" target="_blank" rel="noopener">
+      <span class="rk">Keyword Research</span><span class="rt">Keywords &amp; Opportunity Report</span>
+      <span class="ru">growtharchon.github.io/client-reports/redstone-manufacturing</span></a>
+    <a class="rep" href="https://redstone-work-report-k8w3f.vercel.app/" target="_blank" rel="noopener">
+      <span class="rk">Delivery</span><span class="rt">Work / Progress Report</span>
+      <span class="ru">redstone-work-report-k8w3f.vercel.app</span></a>
+    <a class="rep" href="https://redstone-sprint-report.vercel.app/" target="_blank" rel="noopener">
+      <span class="rk">SEO Status</span><span class="rt">Sprint / SEO Status Report</span>
+      <span class="ru">redstone-sprint-report.vercel.app</span></a>
+  </div>
+</section>
+<hr class="rule">
+<footer>
+  <p class="fmeta"><span class="label">Methodology &amp; sources</span></p>
+  <p class="fbody">Compiled from the Redstone project tracker (Plane · project RED). "Completed" reflects items moved to Done during July 2026. Counts and dates are pulled directly from the tracker; the three reports above are the standalone deliverables produced this month.</p>
+  <p class="fsign">Outrider Digital · Confidential Status Report · Generated 24 July 2026</p>
+</footer>
+</div>
+</body>
+</html>
