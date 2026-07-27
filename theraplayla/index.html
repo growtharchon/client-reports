@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Content Plan | TheraPlayLA</title>
+<style>
+  :root {
+    --amber: #EB9705;
+    --amber-light: #FFC96B;
+    --blue: #7DAFEF;
+    --blue-dark: #236CE1;
+    --coral: #FFC3AD;
+    --yellow: #FFFB94;
+    --text: #2D2D2D;
+    --text2: #555;
+    --text3: #888;
+    --bg: #FAFAF8;
+    --surface: #fff;
+    --border: #E8E4DE;
+    --green: #2E8B57;
+    --red: #D1495B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Nunito Sans', 'Segoe UI', system-ui, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 40px 80px; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--amber) 0%, #D4880A 100%);
+    color: #fff;
+    padding: 48px 40px 40px;
+    margin-bottom: 40px;
+  }
+  .header h1 {
+    font-family: 'Tenor Sans', serif;
+    font-size: 2.2em;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .header .subtitle { font-size: 1.1em; opacity: 0.9; margin-bottom: 24px; }
+  .meta-row {
+    display: flex; gap: 32px; flex-wrap: wrap;
+    font-size: 0.88em; opacity: 0.85;
+  }
+  .meta-row span { display: flex; align-items: center; gap: 6px; }
+
+  /* TOC */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+  }
+  .toc h2 { font-size: 1.1em; margin-bottom: 16px; color: var(--amber); text-transform: uppercase; letter-spacing: 1px; font-size: 0.85em; }
+  .toc-grid { columns: 2; column-gap: 40px; }
+  .toc a {
+    display: block;
+    padding: 6px 0;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95em;
+    transition: color .15s;
+  }
+  .toc a:hover { color: var(--amber); }
+  .toc a .num { color: var(--text3); margin-right: 8px; font-size: 0.85em; }
+
+  /* Sections */
+  section { margin-bottom: 48px; border-top: 2px solid var(--border); padding-top: 32px; }
+  section h2 {
+    font-family: 'Tenor Sans', serif;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  section h2 .sec-num {
+    color: var(--amber);
+    font-size: 0.6em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 4px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+  }
+  section h3 { font-size: 1.1em; margin: 24px 0 12px; color: var(--text); }
+  section p { margin-bottom: 12px; color: var(--text2); }
+
+  /* Stat grid */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat .num {
+    font-size: 2.1em;
+    font-weight: 700;
+    color: var(--amber);
+    line-height: 1.2;
+  }
+  .stat .label {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text3);
+    margin-top: 4px;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88em;
+    margin-top: 16px;
+    background: var(--surface);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  th {
+    background: #F5F3EF;
+    text-align: left;
+    padding: 10px 12px;
+    font-weight: 700;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text3);
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #FDFCF9; }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.78em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .tag-amber { background: var(--amber-light); color: #7A4E00; }
+  .tag-blue { background: #DBE9FA; color: #1A4B8C; }
+  .tag-coral { background: var(--coral); color: #8B3A2A; }
+  .tag-green { background: #D4EDDA; color: #1B5E30; }
+  .tag-yellow { background: var(--yellow); color: #6B6300; }
+  .tag-red { background: #F8D7DA; color: #842029; }
+  .tag-gray { background: #E9E9E9; color: #555; }
+
+  /* KD color coding */
+  .kd-easy { color: var(--green); font-weight: 700; }
+  .kd-med { color: var(--amber); font-weight: 700; }
+  .kd-hard { color: var(--red); font-weight: 700; }
+
+  /* Cards & Callouts */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .callout {
+    border-left: 4px solid var(--blue-dark);
+    background: #F0F5FC;
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 0.95em;
+  }
+  .callout-amber {
+    border-left-color: var(--amber);
+    background: #FFF8EB;
+  }
+  .callout-green {
+    border-left-color: var(--green);
+    background: #F0FAF0;
+  }
+  .callout strong { display: block; margin-bottom: 4px; }
+
+  /* Category header band */
+  .cat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .cat-stats {
+    display: flex; gap: 16px;
+    font-size: 0.82em;
+    color: var(--text3);
+  }
+  .cat-stats span { font-weight: 700; color: var(--text2); }
+
+  /* Lists */
+  ul { margin: 8px 0 8px 20px; }
+  li { margin-bottom: 4px; }
+
+  /* Blog list */
+  .blog-list { list-style: none; margin-left: 0; }
+  .blog-list li {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92em;
+  }
+  .blog-list li:last-child { border-bottom: none; }
+  .blog-list .blog-num { color: var(--text3); margin-right: 8px; font-size: 0.85em; }
+  .blog-list a { color: var(--blue-dark); text-decoration: none; }
+  .blog-list a:hover { text-decoration: underline; }
+
+  /* Near Me section */
+  .nearme-card {
+    background: linear-gradient(135deg, #F0F5FC 0%, #FAFBFF 100%);
+    border: 1px solid #D0DDEF;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+  }
+  .nearme-card h4 { color: var(--blue-dark); margin-bottom: 4px; }
+  .nearme-card .kw { color: var(--text2); font-size: 0.9em; }
+
+  /* 90-day timeline */
+  .timeline-month {
+    margin-bottom: 32px;
+  }
+  .timeline-month h3 {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 1em;
+    margin-bottom: 16px;
+  }
+  .month1-header { background: #D4EDDA; color: #1B5E30; }
+  .month2-header { background: #DBE9FA; color: #1A4B8C; }
+  .month3-header { background: var(--amber-light); color: #7A4E00; }
+  .week-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .week-label {
+    font-weight: 700;
+    font-size: 0.85em;
+    color: var(--text3);
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+  .week-items {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .week-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.92em;
+  }
+  .week-item .wi-kw { font-weight: 600; }
+  .week-item .wi-vol { color: var(--amber); font-weight: 700; font-size: 0.85em; }
+  .week-item .wi-kd { font-size: 0.8em; }
+  .priority-score {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.72em;
+    font-weight: 700;
+    background: #F5F3EF;
+    color: var(--text3);
+  }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .container { padding: 0 16px 40px; }
+    .header { padding: 32px 16px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .toc-grid { columns: 1; }
+    table { font-size: 0.8em; }
+    td, th { padding: 6px 8px; }
+    .week-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="max-width:1280px;margin:0 auto;">
+    <h1>SEO Content Plan</h1>
+    <div class="subtitle">TheraPlayLA &mdash; www.theraplayla.com</div>
+    <div class="meta-row">
+      <span>July 27, 2026</span>
+      <span>&bull;</span>
+      <span><strong>152</strong> blog keywords</span>
+      <span>&bull;</span>
+      <span><strong>5</strong> Near Me pages</span>
+      <span>&bull;</span>
+      <span><strong>13</strong> new LA pages</span>
+      <span>&bull;</span>
+      <span><strong>9</strong> content categories</span>
+      <span>&bull;</span>
+      <span>Sources: SEMrush, keyword clustering</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- TOC -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <div class="toc-grid">
+    <a href="#summary"><span class="num">01</span> Executive Summary</a>
+    <a href="#timeline"><span class="num">02</span> 90-Day Content Calendar</a>
+    <a href="#speech"><span class="num">03</span> Speech &amp; Language</a>
+    <a href="#sensory"><span class="num">04</span> Sensory Processing &amp; SPD</a>
+    <a href="#reflexes"><span class="num">05</span> Reflexes &amp; Reflex Integration</a>
+    <a href="#ot"><span class="num">06</span> Occupational Therapy Specialties</a>
+    <a href="#feeding"><span class="num">07</span> Feeding &amp; Oral Motor</a>
+    <a href="#behavior"><span class="num">08</span> Child Behavior &amp; ADHD</a>
+    <a href="#infant"><span class="num">09</span> Infant &amp; Baby Development</a>
+    <a href="#pt"><span class="num">10</span> Physical Therapy &amp; Movement</a>
+    <a href="#parenting"><span class="num">11</span> Parenting &amp; Daily Life</a>
+    <a href="#serviceopt"><span class="num">12</span> Service Page Optimization</a>
+    <a href="#nearme"><span class="num">13</span> Near Me Service Pages</a>
+    <a href="#lakeywords"><span class="num">14</span> LA Service Pages</a>
+    <a href="#existing"><span class="num">15</span> Existing Blog Posts</a>
+  </div>
+</div>
+
+<!-- 01 EXECUTIVE SUMMARY -->
+<section id="summary">
+  <h2><span class="sec-num">Section 01</span>Executive Summary</h2>
+
+  <div class="grid-4" style="margin:24px 0;">
+    <div class="stat">
+      <div class="num">152</div>
+      <div class="label">Blog Keywords</div>
+    </div>
+    <div class="stat">
+      <div class="num">~99K</div>
+      <div class="label">Monthly Search Vol</div>
+    </div>
+    <div class="stat">
+      <div class="num">5</div>
+      <div class="label">Near Me Pages</div>
+    </div>
+    <div class="stat">
+      <div class="num">27</div>
+      <div class="label">Existing Blog Posts</div>
+    </div>
+  </div>
+
+  <div class="grid-3" style="margin-bottom:24px;">
+    <div class="stat">
+      <div class="num">90</div>
+      <div class="label">Day Plan</div>
+    </div>
+    <div class="stat">
+      <div class="num">9</div>
+      <div class="label">Content Categories</div>
+    </div>
+    <div class="stat">
+      <div class="num">18</div>
+      <div class="label">Service Pages to Optimize</div>
+    </div>
+  </div>
+
+  <h3>Key Findings</h3>
+  <ul>
+    <li><strong>Speech &amp; lisps dominate volume</strong> &mdash; "speech therapy lisps" (18.1K) and "what is a lisp" (6.6K) are the highest-volume blog opportunities, both at manageable KD (25&ndash;27).</li>
+    <li><strong>SPD &amp; Sensory is the largest category</strong> &mdash; 40 keywords totaling ~29K monthly volume. "spd occupational therapy" alone accounts for 12.1K at KD 21.</li>
+    <li><strong>Physical therapy for cerebral palsy is a sleeper</strong> &mdash; 14.8K volume at KD 26. Low CPC suggests informational intent with high traffic potential.</li>
+    <li><strong>Reflex content already strong</strong> &mdash; 7 existing blog posts on reflexes. 18 additional reflex keywords remain untapped, led by "when does startle reflex go away" (3.6K).</li>
+    <li><strong>Near Me pages are quick wins</strong> &mdash; Top 5 LA service keywords total 980 monthly volume with very low competition.</li>
+  </ul>
+
+  <h3>Recommendations</h3>
+  <div class="callout callout-amber">
+    <strong>Priority 1: High-volume, low-KD blog posts</strong>
+    Target the top keywords by volume-to-difficulty ratio first: "spd occupational therapy" (12.1K, KD 21), "speech therapy lisps" (18.1K, KD 25), "vestibular input" (1.9K, KD 11), "crossing the midline" (880, KD 14).
+  </div>
+  <div class="callout callout-green">
+    <strong>Priority 2: Near Me service pages</strong>
+    Create 5 location-optimized service pages targeting Los Angeles + "near me" variants. These are bottom-of-funnel, high-conversion pages.
+  </div>
+  <div class="callout">
+    <strong>Priority 3: Build out content clusters</strong>
+    Expand existing reflex and sensory content into full topic clusters by adding the remaining keywords as supporting articles.
+  </div>
+</section>
+
+<!-- 02 90-DAY CONTENT CALENDAR -->
+<section id="timeline">
+  <h2><span class="sec-num">Section 02</span>90-Day Content Calendar</h2>
+  <p style="margin-bottom:20px;">24 blog posts, 5 Near Me pages, 13 new LA service pages, and 18 service page optimizations scheduled across 12 weeks. 9 additional LA keywords are covered by optimizing existing service pages. Blog keywords are ranked by a priority score that favors <strong>high volume &amp; low keyword difficulty</strong>. Score = Volume &times; (100 &minus; KD) / 100.</p>
+
+  <!-- MONTH 1 -->
+  <div class="timeline-month">
+    <h3 class="month1-header">Month 1: Foundation &mdash; Near Me Pages + Pillar Posts</h3>
+
+    <div class="week-row">
+      <div class="week-label">Week 1</div>
+      <div class="week-items">
+        <div class="week-item"><span class="tag tag-coral">Near Me</span> <span class="wi-kw">Speech Therapy Near Me</span></div>
+        <div class="week-item"><span class="tag tag-coral">Near Me</span> <span class="wi-kw">Child Therapist Near Me</span></div>
+        <div class="week-item"><span class="tag tag-coral">Near Me</span> <span class="wi-kw">Occupational Therapy Near Me</span></div>
+        <div class="week-item"><span class="tag tag-coral">Near Me</span> <span class="wi-kw">ADHD Therapist Near Me</span></div>
+        <div class="week-item"><span class="tag tag-coral">Near Me</span> <span class="wi-kw">Autism Therapy Near Me</span></div>
+        <div class="week-item"><span class="tag tag-red">LA Page</span> <span class="wi-kw">child therapist los angeles</span> <span class="wi-vol">210 vol</span></div>
+        <div class="week-item"><span class="tag tag-red">LA Page</span> <span class="wi-kw">adhd therapist los angeles</span> <span class="wi-vol">170 vol</span></div>
+        <div class="week-item"><span class="tag tag-red">LA Page</span> <span class="wi-kw">autism therapy los angeles</span> <span class="wi-vol">170 vol</span></div>
+      </div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-label">Week 2</div>
+      <div class="week-items">
+        <div class="week-item"><span class="tag tag-amber">Pillar</span> <span class="wi-kw">speech therapy lisps</span> <span class="wi-vol">18,100 vol</span> <span class="wi-kd kd-med">KD 25</span> <span class="priority-score">Score: 13,575</span></div>
+        <div class="week-item"><span class="tag tag-amber">Pillar</span> <span class="wi-kw">physical therapy treatment cerebral palsy</span> <span class="wi-vol">14,800 vol</span> <span class="wi-kd kd-med">KD 26</span> <span class="priority-score">Score: 10,952</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/pediatric-speech-therapy</span> <span class="wi-vol">18,450 combined vol</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/pediatric-occupational-therapy</span> <span class="wi-vol">12,340 combined vol</span></div>
+        <div class="week-item"><span class="tag tag-red">LA Page</span> <span class="wi-kw">behavioral therapy los angeles</span> <span class="wi-vol">70 vol</span></div>
+        <div class="week-item"><span class="tag tag-red">LA Page</span> <span class="wi-kw">holistic therapist los angeles</span> <span class="wi-vol">50 vol</span></div>
+        <div class="week-item"><span class="tag tag-red">LA Page</span> <span class="wi-kw">pediatric physical therapy los angeles</span> <span class="wi-vol">40 vol</span></div>
+      </div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-label">Week 3</div>
+      <div class="week-items">
+        <div class="week-item"><span class="tag tag-amber">Pillar</span> <span class="wi-kw">spd occupational therapy</span> <span class="wi-vol">12,100 vol</span> <span class="wi-kd kd-med">KD 21</span> <span class="priority-score">Score: 9,559</span></div>
+        <div class="week-item"><span class="tag tag-amber">Pillar</span> <span class="wi-kw">what is a lisp</span> <span class="wi-vol">6,600 vol</span> <span class="wi-kd kd-med">KD 27</span> <span class="priority-score">Score: 4,818</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/sensory-integration</span> <span class="wi-vol">5,940 combined vol</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/twice-exceptional-2e-support</span> <span class="wi-vol">2,730 combined vol</span></div>
+        <div class="week-item"><span class="tag tag-red">LA Page</span> <span class="wi-kw">cerebral palsy therapy los angeles</span> <span class="wi-vol">30 vol</span></div>
+        <div class="week-item"><span class="tag tag-red">LA Page</span> <span class="wi-kw">early intervention therapy los angeles</span> <span class="wi-vol">30 vol</span></div>
+        <div class="week-item"><span class="tag tag-red">LA Page</span> <span class="wi-kw">social skills therapy los angeles</span> <span class="wi-vol">30 vol</span></div>
+      </div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-label">Week 4</div>
+      <div class="week-items">
+        <div class="week-item"><span class="tag tag-amber">Pillar</span> <span class="wi-kw">what is spd</span> <span class="wi-vol">5,400 vol</span> <span class="wi-kd kd-med">KD 24</span> <span class="priority-score">Score: 4,104</span></div>
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">when does startle reflex go away</span> <span class="wi-vol">3,600 vol</span> <span class="wi-kd kd-med">KD 24</span> <span class="priority-score">Score: 2,736</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/primitive-reflex-integration</span> <span class="wi-vol">1,400 combined vol</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/bilateral-coordination</span> <span class="wi-vol">920 combined vol</span></div>
+        <div class="week-item"><span class="tag tag-red">LA Page</span> <span class="wi-kw">vestibular therapy los angeles</span> <span class="wi-vol">30 vol</span></div>
+        <div class="week-item"><span class="tag tag-red">LA Page</span> <span class="wi-kw">vision therapy los angeles</span> <span class="wi-vol">30 vol</span></div>
+        <div class="week-item"><span class="tag tag-red">LA Page</span> <span class="wi-kw">neurodiversity therapy los angeles</span> <span class="wi-vol">20 vol</span></div>
+        <div class="week-item"><span class="tag tag-red">LA Page</span> <span class="wi-kw">play therapy los angeles</span> <span class="wi-vol">20 vol</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MONTH 2 -->
+  <div class="timeline-month">
+    <h3 class="month2-header">Month 2: Growth &mdash; High-Volume Clusters</h3>
+
+    <div class="week-row">
+      <div class="week-label">Week 5</div>
+      <div class="week-items">
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">vestibular input</span> <span class="wi-vol">1,900 vol</span> <span class="wi-kd kd-easy">KD 11</span> <span class="priority-score">Score: 1,691</span></div>
+        <div class="week-item"><span class="tag tag-amber">Pillar</span> <span class="wi-kw">occupational therapy interventions for dysgraphia</span> <span class="wi-vol">1,900 vol</span> <span class="wi-kd kd-med">KD 23</span> <span class="priority-score">Score: 1,463</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/dynamic-movement-intervention</span> <span class="wi-vol">820 combined vol</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/adaptive-seating</span> <span class="wi-vol">600 combined vol</span></div>
+      </div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-label">Week 6</div>
+      <div class="week-items">
+        <div class="week-item"><span class="tag tag-amber">Pillar</span> <span class="wi-kw">occupational therapy and attention deficit disorder</span> <span class="wi-vol">1,900 vol</span> <span class="wi-kd kd-med">KD 23</span> <span class="priority-score">Score: 1,463</span></div>
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">sensory diet</span> <span class="wi-vol">1,900 vol</span> <span class="wi-kd kd-med">KD 36</span> <span class="priority-score">Score: 1,216</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/orofacial-myofunctional-therapy</span> <span class="wi-vol">590 combined vol</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/nutrition-consulting</span> <span class="wi-vol">570 combined vol</span></div>
+      </div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-label">Week 7</div>
+      <div class="week-items">
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">what causes a lisp</span> <span class="wi-vol">1,600 vol</span> <span class="wi-kd kd-med">KD 27</span> <span class="priority-score">Score: 1,168</span></div>
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">adhd time blindness</span> <span class="wi-vol">1,900 vol</span> <span class="wi-kd kd-med">KD 46</span> <span class="priority-score">Score: 1,026</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/pediatric-feeding-and-swallowing</span> <span class="wi-vol">440 combined vol</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/infant-development</span> <span class="wi-vol">340 combined vol</span></div>
+      </div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-label">Week 8</div>
+      <div class="week-items">
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">crossing the midline</span> <span class="wi-vol">880 vol</span> <span class="wi-kd kd-easy">KD 14</span> <span class="priority-score">Score: 757</span></div>
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">nicu stress cues</span> <span class="wi-vol">880 vol</span> <span class="wi-kd kd-easy">KD 18</span> <span class="priority-score">Score: 722</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/hand-eye-coordination</span> <span class="wi-vol">270 combined vol</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/classroom-optimization</span> <span class="wi-vol">240 combined vol</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MONTH 3 -->
+  <div class="timeline-month">
+    <h3 class="month3-header">Month 3: Expansion &mdash; Supporting Content</h3>
+
+    <div class="week-row">
+      <div class="week-label">Week 9</div>
+      <div class="week-items">
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">sensory seeking toddler</span> <span class="wi-vol">720 vol</span> <span class="wi-kd kd-med">KD 21</span> <span class="priority-score">Score: 569</span></div>
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">opposite of adhd</span> <span class="wi-vol">720 vol</span> <span class="wi-kd kd-med">KD 25</span> <span class="priority-score">Score: 540</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/outdoor-sensory-play</span> <span class="wi-vol">190 combined vol</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/teletherapy</span></div>
+      </div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-label">Week 10</div>
+      <div class="week-items">
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">eating disorder occupational therapy</span> <span class="wi-vol">590 vol</span> <span class="wi-kd kd-easy">KD 17</span> <span class="priority-score">Score: 490</span></div>
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">sensory disorientation</span> <span class="wi-vol">1,300 vol</span> <span class="wi-kd kd-hard">KD 64</span> <span class="priority-score">Score: 468</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/in-school-therapy-services</span></div>
+        <div class="week-item"><span class="tag tag-green">Optimize</span> <span class="wi-kw">/regional-center-services</span></div>
+      </div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-label">Week 11</div>
+      <div class="week-items">
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">dbt interventions</span> <span class="wi-vol">720 vol</span> <span class="wi-kd kd-med">KD 39</span> <span class="priority-score">Score: 439</span></div>
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">what is disgraphia</span> <span class="wi-vol">720 vol</span> <span class="wi-kd kd-med">KD 40</span> <span class="priority-score">Score: 432</span></div>
+      </div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-label">Week 12</div>
+      <div class="week-items">
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">retained reflexes</span> <span class="wi-vol">590 vol</span> <span class="wi-kd kd-med">KD 29</span> <span class="priority-score">Score: 419</span></div>
+        <div class="week-item"><span class="tag tag-blue">Blog</span> <span class="wi-kw">rooting in newborns</span> <span class="wi-vol">590 vol</span> <span class="wi-kd kd-med">KD 32</span> <span class="priority-score">Score: 401</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-green">
+    <strong>After 90 days: 60 deliverables completed</strong>
+    5 Near Me pages + 13 new LA service pages + 24 blog posts + 18 service page optimizations (including 9 LA keywords optimized on existing pages). Remaining 128 blog keywords continue as backlog in the category tables below.
+  </div>
+</section>
+
+<!-- 03 SPEECH & LANGUAGE (sorted by priority: high vol, low KD) -->
+<section id="speech">
+  <h2><span class="sec-num">Section 03</span>Speech &amp; Language</h2>
+  <div class="cat-header">
+    <p>Lisp-related keywords, speech therapy, and language development resources.</p>
+    <div class="cat-stats">Keywords: <span>11</span> &nbsp;|&nbsp; Total Vol: <span>~27,450</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Main Keyword</th><th>Volume</th><th>KD</th><th>CPC</th><th>Content Type</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>speech therapy lisps</td><td><strong>18,100</strong></td><td class="kd-med">25</td><td>$6.24</td><td><span class="tag tag-amber">Pillar</span></td></tr>
+      <tr><td>2</td><td>what is a lisp</td><td><strong>6,600</strong></td><td class="kd-med">27</td><td>$0.00</td><td><span class="tag tag-amber">Pillar</span></td></tr>
+      <tr><td>3</td><td>what causes a lisp</td><td><strong>1,600</strong></td><td class="kd-med">27</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>4</td><td>speech ot therapy</td><td>320</td><td class="kd-med">23</td><td>$6.83</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>5</td><td>lisping words</td><td>320</td><td class="kd-med">26</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>6</td><td>palatal lisp</td><td>170</td><td class="kd-easy">10</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>7</td><td>hanen it takes two to talk program</td><td>90</td><td class="kd-easy">17</td><td>$0.55</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>8</td><td>lisp therapy</td><td>90</td><td class="kd-easy">15</td><td>$5.44</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>9</td><td>are lisps hereditary</td><td>90</td><td class="kd-easy">8</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>10</td><td>lisp vs speech impediment</td><td>40</td><td class="kd-easy">10</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>11</td><td>aac resources for parents</td><td>30</td><td class="kd-easy">0</td><td>$4.45</td><td><span class="tag tag-blue">Blog</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 04 SENSORY PROCESSING & SPD (sorted by priority) -->
+<section id="sensory">
+  <h2><span class="sec-num">Section 04</span>Sensory Processing &amp; SPD</h2>
+  <div class="cat-header">
+    <p>Sensory processing disorder, sensory diets, sensory strategies, tools, and integration techniques.</p>
+    <div class="cat-stats">Keywords: <span>40</span> &nbsp;|&nbsp; Total Vol: <span>~29,560</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Main Keyword</th><th>Volume</th><th>KD</th><th>CPC</th><th>Content Type</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>12</td><td>spd occupational therapy</td><td><strong>12,100</strong></td><td class="kd-med">21</td><td>$5.79</td><td><span class="tag tag-amber">Pillar</span></td></tr>
+      <tr><td>13</td><td>what is spd</td><td><strong>5,400</strong></td><td class="kd-med">24</td><td>$0.42</td><td><span class="tag tag-amber">Pillar</span></td></tr>
+      <tr><td>14</td><td>vestibular input</td><td><strong>1,900</strong></td><td class="kd-easy">11</td><td>$0.36</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>15</td><td>sensory diet</td><td><strong>1,900</strong></td><td class="kd-med">36</td><td>$0.52</td><td><span class="tag tag-amber">Pillar</span></td></tr>
+      <tr><td>16</td><td>crossing the midline</td><td>880</td><td class="kd-easy">14</td><td>$2.02</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>17</td><td>sensory seeking toddler</td><td>720</td><td class="kd-med">21</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>18</td><td>sensory regulation</td><td>480</td><td class="kd-med">28</td><td>$1.06</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>19</td><td>diy sensory bins</td><td>480</td><td class="kd-easy">19</td><td>$0.33</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>20</td><td>sensory backpack</td><td>390</td><td class="kd-easy">6</td><td>$0.31</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>21</td><td>sensory issues with food</td><td>260</td><td class="kd-med">26</td><td>$0.78</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>22</td><td>what is the sensory system</td><td>260</td><td class="kd-med">23</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>23</td><td>clothes for sensory processing disorder</td><td>210</td><td class="kd-easy">7</td><td>$0.96</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>24</td><td>sensory aversion</td><td>210</td><td class="kd-easy">14</td><td>$0.44</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>25</td><td>what causes sensory processing disorder</td><td>210</td><td class="kd-hard">55</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>26</td><td>spd checklist</td><td>170</td><td class="kd-easy">15</td><td>$3.76</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>27</td><td>food sensory issues</td><td>170</td><td class="kd-med">30</td><td>$0.78</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>28</td><td>sensory integration disorder books</td><td>140</td><td class="kd-easy">2</td><td>$0.77</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>29</td><td>ot brushing</td><td>140</td><td class="kd-easy">13</td><td>$0.41</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>30</td><td>food for sensory processing disorder</td><td>140</td><td class="kd-med">22</td><td>$1.25</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>31</td><td>sensory checklist</td><td>140</td><td class="kd-easy">17</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>32</td><td>sensory integration processing disorder checklist</td><td>140</td><td class="kd-easy">16</td><td>$3.76</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>33</td><td>sensory diet activities</td><td>110</td><td class="kd-easy">16</td><td>$1.36</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>34</td><td>sensory regulation strategies</td><td>110</td><td class="kd-easy">18</td><td>$0.62</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>35</td><td>sensory brushing technique</td><td>90</td><td class="kd-easy">8</td><td>$1.07</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>36</td><td>opposite of sensory</td><td>90</td><td class="kd-easy">10</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>37</td><td>how to set up a sensory room</td><td>90</td><td class="kd-easy">16</td><td>$0.64</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>38</td><td>sensory seeker signs</td><td>70</td><td class="kd-med">21</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>39</td><td>behavior vs sensory</td><td>70</td><td class="kd-easy">9</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>40</td><td>hidden senses</td><td>70</td><td class="kd-easy">1</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>41</td><td>brush sensory</td><td>70</td><td class="kd-easy">6</td><td>$0.31</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>42</td><td>vestibular sensory integration disorder</td><td>70</td><td class="kd-easy">16</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>43</td><td>how is spd treated</td><td>70</td><td class="kd-med">28</td><td>$0.66</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>44</td><td>sensory disorientation</td><td><strong>1,300</strong></td><td class="kd-hard">64</td><td>$0.70</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>45</td><td>sensory tools for emotional regulation</td><td>50</td><td class="kd-easy">0</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>46</td><td>does sensory processing disorder go away</td><td>50</td><td class="kd-med">30</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>47</td><td>hypo sensitive</td><td>50</td><td class="kd-med">27</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>48</td><td>gifts for sensory seekers</td><td>40</td><td class="kd-easy">4</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>49</td><td>bumping into things</td><td>40</td><td class="kd-easy">2</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>50</td><td>midline exercises for kids</td><td>40</td><td class="kd-easy">14</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>51</td><td>causes of sensory processing disorder</td><td>40</td><td class="kd-hard">60</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 05 REFLEXES & REFLEX INTEGRATION (sorted by priority) -->
+<section id="reflexes">
+  <h2><span class="sec-num">Section 05</span>Reflexes &amp; Reflex Integration</h2>
+  <div class="cat-header">
+    <p>Startle reflexes, retained reflexes, reflex integration exercises, and related topics.</p>
+    <div class="cat-stats">Keywords: <span>18</span> &nbsp;|&nbsp; Total Vol: <span>~8,570</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Main Keyword</th><th>Volume</th><th>KD</th><th>CPC</th><th>Content Type</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>52</td><td>when does startle reflex go away</td><td><strong>3,600</strong></td><td class="kd-med">24</td><td>$0.10</td><td><span class="tag tag-amber">Pillar</span></td></tr>
+      <tr><td>53</td><td>infant startle reflex</td><td><strong>1,600</strong></td><td class="kd-hard">57</td><td>$0.04</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>54</td><td>retained reflexes</td><td>590</td><td class="kd-med">29</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>55</td><td>atnr reflex integration exercises</td><td>390</td><td class="kd-easy">3</td><td>$1.92</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>56</td><td>primitive reflex integration exercises</td><td>390</td><td class="kd-easy">14</td><td>$1.43</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>57</td><td>startle reflex in infants</td><td>390</td><td class="kd-med">48</td><td>$0.04</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>58</td><td>childhood reflexes</td><td>320</td><td class="kd-med">36</td><td>$0.88</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>59</td><td>rhythmic movement</td><td>320</td><td class="kd-med">22</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>60</td><td>fear paralysis reflex</td><td>210</td><td class="kd-easy">0</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>61</td><td>movement integration</td><td>110</td><td class="kd-easy">9</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>62</td><td>infantile spasms vs startle reflex</td><td>110</td><td class="kd-med">20</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>63</td><td>spinal galant reflex test</td><td>110</td><td class="kd-easy">1</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>64</td><td>stnr reflex integration</td><td>110</td><td class="kd-easy">2</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>65</td><td>newborn reflexes rooting</td><td>110</td><td class="kd-med">46</td><td>$0.01</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>66</td><td>exaggerated startle reflex</td><td>70</td><td class="kd-med">35</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>67</td><td>moro reflex exercise</td><td>50</td><td class="kd-easy">1</td><td>$2.26</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>68</td><td>moro test</td><td>50</td><td class="kd-hard">56</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>69</td><td>what is stnr reflex</td><td>40</td><td class="kd-easy">11</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 06 OCCUPATIONAL THERAPY SPECIALTIES (sorted by priority) -->
+<section id="ot">
+  <h2><span class="sec-num">Section 06</span>Occupational Therapy Specialties</h2>
+  <div class="cat-header">
+    <p>OT for ADHD, dysgraphia, eating disorders, Down syndrome, fine motor skills, and therapeutic tools.</p>
+    <div class="cat-stats">Keywords: <span>22</span> &nbsp;|&nbsp; Total Vol: <span>~7,380</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Main Keyword</th><th>Volume</th><th>KD</th><th>CPC</th><th>Content Type</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>70</td><td>occupational therapy interventions for dysgraphia</td><td><strong>1,900</strong></td><td class="kd-med">23</td><td>$1.99</td><td><span class="tag tag-amber">Pillar</span></td></tr>
+      <tr><td>71</td><td>occupational therapy and attention deficit disorder</td><td><strong>1,900</strong></td><td class="kd-med">23</td><td>$2.69</td><td><span class="tag tag-amber">Pillar</span></td></tr>
+      <tr><td>72</td><td>what is disgraphia</td><td>720</td><td class="kd-med">40</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>73</td><td>eating disorder occupational therapy</td><td>590</td><td class="kd-easy">17</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>74</td><td>joint compression</td><td>210</td><td class="kd-easy">3</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>75</td><td>occupational therapy for handwriting</td><td>210</td><td class="kd-easy">18</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>76</td><td>joint approximation</td><td>210</td><td class="kd-easy">13</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>77</td><td>spatial dysgraphia</td><td>170</td><td class="kd-easy">18</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>78</td><td>occupational therapy drawing</td><td>140</td><td class="kd-easy">4</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>79</td><td>occupational therapy art</td><td>140</td><td class="kd-easy">12</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>80</td><td>dir model</td><td>140</td><td class="kd-med">24</td><td>$4.91</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>81</td><td>occupational therapy for down syndrome</td><td>110</td><td class="kd-easy">9</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>82</td><td>how to develop fine motor skills</td><td>110</td><td class="kd-med">35</td><td>$0.92</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>83</td><td>animal assisted occupational therapy</td><td>90</td><td class="kd-easy">13</td><td>$2.39</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>84</td><td>what is a fine motor skill</td><td>90</td><td class="kd-med">45</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>85</td><td>downs syndrome occupational therapy</td><td>90</td><td class="kd-easy">10</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>86</td><td>vr in occupational therapy</td><td>70</td><td class="kd-easy">12</td><td>$2.15</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>87</td><td>gross motor skills ot</td><td>70</td><td class="kd-med">30</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>88</td><td>how can occupational therapy help ms</td><td>70</td><td class="kd-easy">15</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>89</td><td>emotional regulation occupational therapy</td><td>50</td><td class="kd-easy">11</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>90</td><td>how to make therapy putty</td><td>40</td><td class="kd-easy">8</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>91</td><td>ot exercises for adhd</td><td>30</td><td class="kd-easy">11</td><td>$1.72</td><td><span class="tag tag-blue">Blog</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 07 FEEDING & ORAL MOTOR (sorted by priority) -->
+<section id="feeding">
+  <h2><span class="sec-num">Section 07</span>Feeding &amp; Oral Motor</h2>
+  <div class="cat-header">
+    <p>Oral sensory seeking, feeding milestones, picky eating, oral fixation, and food readiness.</p>
+    <div class="cat-stats">Keywords: <span>13</span> &nbsp;|&nbsp; Total Vol: <span>~1,520</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Main Keyword</th><th>Volume</th><th>KD</th><th>CPC</th><th>Content Type</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>92</td><td>oral sensory seeking</td><td>390</td><td class="kd-easy">10</td><td>$0.84</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>93</td><td>signs baby is ready for solids</td><td>260</td><td class="kd-med">21</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>94</td><td>oral fixation therapy</td><td>170</td><td class="kd-easy">13</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>95</td><td>feeding developmental milestones</td><td>110</td><td class="kd-easy">16</td><td>$2.50</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>96</td><td>how to fix oral fixation</td><td>90</td><td class="kd-easy">16</td><td>$2.87</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>97</td><td>oral gratification</td><td>90</td><td class="kd-med">29</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>98</td><td>oral sensory seeking autism</td><td>70</td><td class="kd-easy">8</td><td>$1.60</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>99</td><td>anxious eaters</td><td>70</td><td class="kd-easy">3</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>100</td><td>signs baby is ready for purees</td><td>70</td><td class="kd-med">43</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>101</td><td>feeding interventions occupational therapy</td><td>70</td><td class="kd-med">24</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>102</td><td>autism food aversion therapy</td><td>50</td><td class="kd-med">29</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>103</td><td>5 year old putting things in mouth all the time</td><td>40</td><td class="kd-easy">12</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>104</td><td>oral hyposensitivity</td><td>40</td><td class="kd-easy">8</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 08 CHILD BEHAVIOR & ADHD (sorted by priority) -->
+<section id="behavior">
+  <h2><span class="sec-num">Section 08</span>Child Behavior &amp; ADHD</h2>
+  <div class="cat-header">
+    <p>ADHD, ODD, cognitive disengagement, DBT, focus, autism interventions, and behavioral strategies.</p>
+    <div class="cat-stats">Keywords: <span>16</span> &nbsp;|&nbsp; Total Vol: <span>~5,990</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Main Keyword</th><th>Volume</th><th>KD</th><th>CPC</th><th>Content Type</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>105</td><td>adhd time blindness</td><td><strong>1,900</strong></td><td class="kd-med">46</td><td>$0.60</td><td><span class="tag tag-amber">Pillar</span></td></tr>
+      <tr><td>106</td><td>opposite of adhd</td><td>720</td><td class="kd-med">25</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>107</td><td>dbt interventions</td><td>720</td><td class="kd-med">39</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>108</td><td>how to improve kids focus</td><td>170</td><td class="kd-easy">18</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>109</td><td>aces therapy</td><td>170</td><td class="kd-hard">61</td><td>$5.69</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>110</td><td>oppositional defiant disorder in 4 year olds</td><td>140</td><td class="kd-med">22</td><td>$0.43</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>111</td><td>video modeling autism</td><td>110</td><td class="kd-med">23</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>112</td><td>what is floortime</td><td>110</td><td class="kd-med">33</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>113</td><td>attention deficit disorder case study</td><td>110</td><td class="kd-easy">4</td><td>$2.20</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>114</td><td>cognitive disengagement syndrome treatment</td><td>110</td><td class="kd-med">27</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>115</td><td>is odd hereditary</td><td>110</td><td class="kd-med">34</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>116</td><td>helping kindergarteners focus</td><td>70</td><td class="kd-easy">15</td><td>$1.03</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>117</td><td>what is cognitive disengagement syndrome</td><td>50</td><td class="kd-easy">16</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>118</td><td>teenage brain pruning</td><td>50</td><td class="kd-med">45</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>119</td><td>if a child struggles with changes in routine</td><td>40</td><td class="kd-easy">0</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>120</td><td>aversion to activity</td><td>40</td><td class="kd-easy">14</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 09 INFANT & BABY DEVELOPMENT (sorted by priority) -->
+<section id="infant">
+  <h2><span class="sec-num">Section 09</span>Infant &amp; Baby Development</h2>
+  <div class="cat-header">
+    <p>Newborn communication, NICU cues, rooting, grasping, sitting, standing milestones.</p>
+    <div class="cat-stats">Keywords: <span>13</span> &nbsp;|&nbsp; Total Vol: <span>~3,400</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Main Keyword</th><th>Volume</th><th>KD</th><th>CPC</th><th>Content Type</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>121</td><td>nicu stress cues</td><td>880</td><td class="kd-easy">18</td><td>$0.00</td><td><span class="tag tag-amber">Pillar</span></td></tr>
+      <tr><td>122</td><td>rooting in newborns</td><td>590</td><td class="kd-med">32</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>123</td><td>when do infants start grabbing things</td><td>480</td><td class="kd-easy">16</td><td>$0.33</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>124</td><td>newborn grasping reflex</td><td>480</td><td class="kd-med">46</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>125</td><td>what is rooting baby</td><td>210</td><td class="kd-med">30</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>126</td><td>sit unsupported milestone</td><td>140</td><td class="kd-med">22</td><td>$0.06</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>127</td><td>when do babies start to stand</td><td>110</td><td class="kd-easy">14</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>128</td><td>how do newborns communicate</td><td>110</td><td class="kd-med">27</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>129</td><td>what does rooting look like</td><td>110</td><td class="kd-med">37</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>130</td><td>infant communication</td><td>90</td><td class="kd-med">46</td><td>$2.28</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>131</td><td>when do babies sit without support</td><td>90</td><td class="kd-med">49</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>132</td><td>infant stress signs</td><td>70</td><td class="kd-easy">16</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>133</td><td>infant grasp development</td><td>40</td><td class="kd-med">21</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 10 PHYSICAL THERAPY & MOVEMENT (sorted by priority) -->
+<section id="pt">
+  <h2><span class="sec-num">Section 10</span>Physical Therapy &amp; Movement</h2>
+  <div class="cat-header">
+    <p>Cerebral palsy treatment, balance, proprioception, toe walking, and pediatric PT exercises.</p>
+    <div class="cat-stats">Keywords: <span>13</span> &nbsp;|&nbsp; Total Vol: <span>~17,340</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Main Keyword</th><th>Volume</th><th>KD</th><th>CPC</th><th>Content Type</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>134</td><td>physical therapy treatment cerebral palsy</td><td><strong>14,800</strong></td><td class="kd-med">26</td><td>$0.00</td><td><span class="tag tag-amber">Pillar</span></td></tr>
+      <tr><td>135</td><td>proprioceptive exercises</td><td>480</td><td class="kd-med">36</td><td>$0.51</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>136</td><td>balance therapy for kids</td><td>390</td><td class="kd-med">25</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>137</td><td>what is paradoxical breathing</td><td>390</td><td class="kd-med">22</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>138</td><td>cerebral palsy therapy</td><td>260</td><td class="kd-med">44</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>139</td><td>how to stop walking on toes</td><td>210</td><td class="kd-med">22</td><td>$0.12</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>140</td><td>neuroplasticity principles</td><td>210</td><td class="kd-med">36</td><td>$1.70</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>141</td><td>activities for kids with cerebral palsy</td><td>90</td><td class="kd-easy">9</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>142</td><td>sensory activities for cerebral palsy</td><td>90</td><td class="kd-easy">11</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>143</td><td>pediatric physical therapy exercises</td><td>70</td><td class="kd-easy">10</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>144</td><td>how many toes do you need to walk</td><td>90</td><td class="kd-med">27</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>145</td><td>balance activities for children</td><td>50</td><td class="kd-easy">19</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>146</td><td>summer exercise for kids</td><td>50</td><td class="kd-easy">2</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 11 PARENTING & DAILY LIFE (sorted by priority, duplicate removed) -->
+<section id="parenting">
+  <h2><span class="sec-num">Section 11</span>Parenting &amp; Daily Life</h2>
+  <div class="cat-header">
+    <p>Bedtime schedules, stroller age, cursive writing benefits, and practical parenting guidance.</p>
+    <div class="cat-stats">Keywords: <span>6</span> &nbsp;|&nbsp; Total Vol: <span>~1,140</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Main Keyword</th><th>Volume</th><th>KD</th><th>CPC</th><th>Content Type</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>147</td><td>bedtime for 6 year old</td><td>390</td><td class="kd-easy">17</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>148</td><td>benefits of cursive writing</td><td>320</td><td class="kd-med">46</td><td>$2.30</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>149</td><td>stroller age</td><td>170</td><td class="kd-easy">18</td><td>$0.44</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>150</td><td>what time should kindergarteners go to bed</td><td>140</td><td class="kd-easy">12</td><td>$0.54</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>151</td><td>what age do you stop using a stroller</td><td>70</td><td class="kd-easy">13</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+      <tr><td>152</td><td>what time should children go to bed</td><td>50</td><td class="kd-med">32</td><td>$0.00</td><td><span class="tag tag-blue">Blog</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 12 SERVICE PAGE OPTIMIZATION -->
+<section id="serviceopt">
+  <h2><span class="sec-num">Section 12</span>Service Page Optimization</h2>
+  <p style="margin-bottom:20px;">18 existing service pages on TheraPlayLA that should be optimized with targeted keywords, improved on-page SEO, and content expansion.</p>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Service Page</th><th>URL</th><th>Primary Keywords to Optimize For</th><th>Combined Vol</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>Pediatric Occupational Therapy</strong></td>
+        <td>/pediatric-occupational-therapy</td>
+        <td>spd occupational therapy (12,100), <em>occupational therapy los angeles</em> (170), <em>pediatric occupational therapy los angeles</em> (70), <em>integrative pediatric occupational therapist los angeles</em> (30)</td>
+        <td><strong>12,370</strong></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>Sensory Integration</strong></td>
+        <td>/sensory-integration</td>
+        <td>what is spd (5,400), what is the sensory system (260), sensory aversion (210), behavior vs sensory (70)</td>
+        <td><strong>5,940</strong></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>Pediatric Speech Therapy</strong></td>
+        <td>/pediatric-speech-therapy</td>
+        <td>speech therapy lisps (18,100), <em>speech therapy los angeles</em> (260), <em>pediatric speech therapy los angeles</em> (90), <em>apraxia speech therapy los angeles</em> (20), <em>stuttering therapy los angeles</em> (20)</td>
+        <td><strong>18,490</strong></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>Pediatric Feeding &amp; Swallowing</strong></td>
+        <td>/pediatric-feeding-and-swallowing</td>
+        <td>feeding interventions occupational therapy (70), feeding developmental milestones (110), signs baby is ready for solids (260)</td>
+        <td><strong>440</strong></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>Orofacial Myofunctional Therapy</strong></td>
+        <td>/orofacial-myofunctional-therapy</td>
+        <td>oral sensory seeking (390), oral fixation therapy (170), <em>myofunctional therapy los angeles</em> (30)</td>
+        <td><strong>590</strong></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>Primitive Reflex Integration</strong></td>
+        <td>/primitive-reflex-integration</td>
+        <td>primitive reflex integration exercises (390), atnr reflex integration exercises (390), retained reflexes (590), <em>reflex integration therapy los angeles</em> (30)</td>
+        <td><strong>1,400</strong></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>Bilateral Coordination</strong></td>
+        <td>/bilateral-coordination</td>
+        <td>crossing the midline (880), midline exercises for kids (40)</td>
+        <td><strong>920</strong></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>Infant Development</strong></td>
+        <td>/infant-development</td>
+        <td>infant communication (90), how do newborns communicate (110), when do babies start to stand (110), early intervention therapy los angeles (30)</td>
+        <td><strong>340</strong></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><strong>Dynamic Movement Intervention</strong></td>
+        <td>/dynamic-movement-intervention</td>
+        <td>rhythmic movement (320), movement integration (110), balance therapy for kids (390)</td>
+        <td><strong>820</strong></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><strong>Hand-Eye Coordination</strong></td>
+        <td>/hand-eye-coordination</td>
+        <td>how to develop fine motor skills (110), gross motor skills ot (70), what is a fine motor skill (90)</td>
+        <td><strong>270</strong></td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td><strong>Nutrition Consulting</strong></td>
+        <td>/nutrition-consulting</td>
+        <td>food for sensory processing disorder (140), food sensory issues (170), sensory issues with food (260)</td>
+        <td><strong>570</strong></td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td><strong>Classroom Optimization</strong></td>
+        <td>/classroom-optimization</td>
+        <td>helping kindergarteners focus (70), how to improve kids focus (170)</td>
+        <td><strong>240</strong></td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td><strong>Twice-Exceptional (2e) Support</strong></td>
+        <td>/twice-exceptional-2e-support</td>
+        <td>adhd time blindness (1,900), opposite of adhd (720), cognitive disengagement syndrome treatment (110)</td>
+        <td><strong>2,730</strong></td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td><strong>Adaptive Seating</strong></td>
+        <td>/adaptive-seating</td>
+        <td>sensory backpack (390), clothes for sensory processing disorder (210)</td>
+        <td><strong>600</strong></td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td><strong>Outdoor Sensory Play</strong></td>
+        <td>/outdoor-sensory-play</td>
+        <td>sensory activities for cerebral palsy (90), summer exercise for kids (50), balance activities for children (50)</td>
+        <td><strong>190</strong></td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td><strong>Teletherapy</strong></td>
+        <td>/teletherapy</td>
+        <td>General service page &mdash; optimize title, meta, and content for telehealth/virtual OT &amp; speech therapy keywords</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td><strong>In-School Therapy Services</strong></td>
+        <td>/in-school-therapy-services</td>
+        <td>General service page &mdash; optimize for school-based OT and speech therapy keywords</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td><strong>Regional Center Services</strong></td>
+        <td>/regional-center-services</td>
+        <td>General service page &mdash; optimize for regional center occupational therapy and early intervention keywords</td>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-amber">
+    <strong>Optimization priorities</strong>
+    Focus first on pages with highest combined keyword volume: Pediatric Speech Therapy (18.4K), Pediatric Occupational Therapy (12.3K), Sensory Integration (5.9K), and Twice-Exceptional Support (2.7K). These pages have the most SEO upside.
+  </div>
+</section>
+
+<!-- 13 NEAR ME SERVICE PAGES -->
+<section id="nearme">
+  <h2><span class="sec-num">Section 13</span>Near Me Service Pages</h2>
+  <p style="margin-bottom:20px;">5 generic "near me" service pages targeting non-branded local searches. These are separate from the Los Angeles-specific pages listed in Section 13 and capture users searching without a specific city name.</p>
+
+  <div class="nearme-card">
+    <h4>1. Speech Therapy Near Me</h4>
+    <div class="kw">
+      <span class="tag tag-coral">Near Me Page</span>
+      &nbsp; Target keyword: <strong>speech therapy near me</strong>
+    </div>
+  </div>
+
+  <div class="nearme-card">
+    <h4>2. Child Therapist Near Me</h4>
+    <div class="kw">
+      <span class="tag tag-coral">Near Me Page</span>
+      &nbsp; Target keyword: <strong>child therapist near me</strong>
+    </div>
+  </div>
+
+  <div class="nearme-card">
+    <h4>3. Occupational Therapy Near Me</h4>
+    <div class="kw">
+      <span class="tag tag-coral">Near Me Page</span>
+      &nbsp; Target keyword: <strong>occupational therapy near me</strong>
+    </div>
+  </div>
+
+  <div class="nearme-card">
+    <h4>4. ADHD Therapist Near Me</h4>
+    <div class="kw">
+      <span class="tag tag-coral">Near Me Page</span>
+      &nbsp; Target keyword: <strong>adhd therapist near me</strong>
+    </div>
+  </div>
+
+  <div class="nearme-card">
+    <h4>5. Autism Therapy Near Me</h4>
+    <div class="kw">
+      <span class="tag tag-coral">Near Me Page</span>
+      &nbsp; Target keyword: <strong>autism therapy near me</strong>
+    </div>
+  </div>
+</section>
+
+<!-- 13 LA SERVICE KEYWORDS -->
+<section id="lakeywords">
+  <h2><span class="sec-num">Section 14</span>Los Angeles Service Pages</h2>
+  <p>22 Los Angeles keywords split into two groups: <strong>9 already covered</strong> by existing service pages (optimize those pages) and <strong>13 that need new pages</strong>. Sorted by volume, highest first.</p>
+
+  <h3>New LA Pages to Create (13)</h3>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Keyword</th><th>Volume</th><th>KD</th><th>CPC</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>child therapist los angeles</td><td>210</td><td class="kd-easy">12</td><td>$0.00</td><td><span class="tag tag-red">New Page</span></td></tr>
+      <tr><td>2</td><td>adhd therapist los angeles</td><td>170</td><td class="kd-easy">5</td><td>$7.16</td><td><span class="tag tag-red">New Page</span></td></tr>
+      <tr><td>3</td><td>autism therapy los angeles</td><td>170</td><td class="kd-med">26</td><td>$0.00</td><td><span class="tag tag-red">New Page</span></td></tr>
+      <tr><td>4</td><td>behavioral therapy los angeles</td><td>70</td><td class="kd-easy">18</td><td>$0.00</td><td><span class="tag tag-red">New Page</span></td></tr>
+      <tr><td>5</td><td>holistic therapist los angeles</td><td>50</td><td class="kd-med">22</td><td>$0.00</td><td><span class="tag tag-red">New Page</span></td></tr>
+      <tr><td>6</td><td>pediatric physical therapy los angeles</td><td>40</td><td class="kd-easy">17</td><td>$0.00</td><td><span class="tag tag-red">New Page</span></td></tr>
+      <tr><td>7</td><td>cerebral palsy therapy los angeles</td><td>30</td><td class="kd-easy">-</td><td>$0.00</td><td><span class="tag tag-red">New Page</span></td></tr>
+      <tr><td>8</td><td>early intervention therapy los angeles</td><td>30</td><td class="kd-easy">-</td><td>$0.00</td><td><span class="tag tag-red">New Page</span></td></tr>
+      <tr><td>9</td><td>social skills therapy los angeles</td><td>30</td><td class="kd-easy">-</td><td>$0.00</td><td><span class="tag tag-red">New Page</span></td></tr>
+      <tr><td>10</td><td>vestibular therapy los angeles</td><td>30</td><td class="kd-easy">-</td><td>$0.00</td><td><span class="tag tag-red">New Page</span></td></tr>
+      <tr><td>11</td><td>vision therapy los angeles</td><td>30</td><td class="kd-easy">-</td><td>$0.00</td><td><span class="tag tag-red">New Page</span></td></tr>
+      <tr><td>12</td><td>neurodiversity therapy los angeles</td><td>20</td><td class="kd-easy">-</td><td>$0.00</td><td><span class="tag tag-red">New Page</span></td></tr>
+      <tr><td>13</td><td>play therapy los angeles</td><td>20</td><td class="kd-easy">-</td><td>$0.00</td><td><span class="tag tag-red">New Page</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Covered by Existing Service Pages (9) &mdash; Optimize Only</h3>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Keyword</th><th>Volume</th><th>Existing Page</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>speech therapy los angeles</td><td>260</td><td>/pediatric-speech-therapy</td><td><span class="tag tag-green">Optimize</span></td></tr>
+      <tr><td>2</td><td>occupational therapy los angeles</td><td>170</td><td>/pediatric-occupational-therapy</td><td><span class="tag tag-green">Optimize</span></td></tr>
+      <tr><td>3</td><td>pediatric speech therapy los angeles</td><td>90</td><td>/pediatric-speech-therapy</td><td><span class="tag tag-green">Optimize</span></td></tr>
+      <tr><td>4</td><td>pediatric occupational therapy los angeles</td><td>70</td><td>/pediatric-occupational-therapy</td><td><span class="tag tag-green">Optimize</span></td></tr>
+      <tr><td>5</td><td>integrative pediatric occupational therapist los angeles</td><td>30</td><td>/pediatric-occupational-therapy</td><td><span class="tag tag-green">Optimize</span></td></tr>
+      <tr><td>6</td><td>myofunctional therapy los angeles</td><td>30</td><td>/orofacial-myofunctional-therapy</td><td><span class="tag tag-green">Optimize</span></td></tr>
+      <tr><td>7</td><td>reflex integration therapy los angeles</td><td>30</td><td>/primitive-reflex-integration</td><td><span class="tag tag-green">Optimize</span></td></tr>
+      <tr><td>8</td><td>apraxia speech therapy los angeles</td><td>20</td><td>/pediatric-speech-therapy</td><td><span class="tag tag-green">Optimize</span></td></tr>
+      <tr><td>9</td><td>stuttering therapy los angeles</td><td>20</td><td>/pediatric-speech-therapy</td><td><span class="tag tag-green">Optimize</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-amber" style="margin-top:16px;">
+    <strong>Note: Light therapy keywords excluded</strong>
+    "red light therapy los angeles" (320 vol), "led light therapy los angeles" (110 vol), and "light therapy los angeles" (90 vol) were excluded as they are not relevant to TheraPlayLA's pediatric therapy services.
+  </div>
+</section>
+
+<!-- 14 EXISTING BLOG POSTS -->
+<section id="existing">
+  <h2><span class="sec-num">Section 15</span>Existing Blog Posts</h2>
+  <p>27 blog posts currently live on TheraPlayLA. These inform content gap analysis and internal linking opportunities.</p>
+
+  <div class="card">
+    <ul class="blog-list">
+      <li><span class="blog-num">1.</span> <a href="https://www.theraplayla.com/theraplay-blog/everything-you-need-to-know-about-the-moro-reflex">Everything You Need to Know About the Moro Reflex</a></li>
+      <li><span class="blog-num">2.</span> <a href="https://www.theraplayla.com/theraplay-blog/everything-you-need-to-know-about-the-stnr-symmetrical-tonic-neck-reflex-xwnf3">Everything You Need to Know About the STNR (Symmetrical Tonic Neck Reflex)</a></li>
+      <li><span class="blog-num">3.</span> <a href="https://www.theraplayla.com/theraplay-blog/everything-you-need-to-know-about-the-atnr-asymmetrical-tonic-neck-reflex">Everything You Need to Know About the ATNR (Asymmetrical Tonic Neck Reflex)</a></li>
+      <li><span class="blog-num">4.</span> <a href="https://www.theraplayla.com/theraplay-blog/everything-you-need-to-know-about-the-spinal-galant-reflex">Everything You Need to Know About the Spinal Galant Reflex</a></li>
+      <li><span class="blog-num">5.</span> <a href="https://www.theraplayla.com/theraplay-blog/everything-you-need-to-know-about-the-tonic-labyrinthine-reflex-tlr">Everything You Need to Know About the Tonic Labyrinthine Reflex (TLR)</a></li>
+      <li><span class="blog-num">6.</span> <a href="https://www.theraplayla.com/theraplay-blog/everything-you-need-to-know-about-the-rooting-reflex">Everything You Need to Know About the Rooting Reflex</a></li>
+      <li><span class="blog-num">7.</span> <a href="https://www.theraplayla.com/theraplay-blog/everything-you-need-to-know-about-the-palmar-grasp-reflex">Everything You Need to Know About the Palmar Grasp Reflex</a></li>
+      <li><span class="blog-num">8.</span> <a href="https://www.theraplayla.com/theraplay-blog/everything-you-need-to-know-about-the-landau-reflex">Everything You Need to Know About the Landau Reflex</a></li>
+      <li><span class="blog-num">9.</span> <a href="https://www.theraplayla.com/theraplay-blog/sensory-processing-in-children-signs-symptoms-and-how-it-affects-behavior-sleep-and-development">Sensory Processing in Children: Signs, Symptoms, and How It Affects Behavior, Sleep, and Development</a></li>
+      <li><span class="blog-num">10.</span> <a href="https://www.theraplayla.com/theraplay-blog/the-sensory-system-that-helps-kids-feel-grounded-understanding-proprioception">The Sensory System That Helps Kids Feel Grounded: Understanding Proprioception</a></li>
+      <li><span class="blog-num">11.</span> <a href="https://www.theraplayla.com/theraplay-blog/what-parents-call-sensory-seeking-is-often-a-nervous-system-looking-for-input">What Parents Call "Sensory Seeking" Is Often a Nervous System Looking for Input</a></li>
+      <li><span class="blog-num">12.</span> <a href="https://www.theraplayla.com/theraplay-blog/why-is-my-child-chewing-on-everything-understanding-non-nutritive-chewing-and-how-therapy-can-help">Why Is My Child Chewing on Everything? Understanding Non-Nutritive Chewing</a></li>
+      <li><span class="blog-num">13.</span> <a href="https://www.theraplayla.com/theraplay-blog/understanding-selective-and-picky-eating-in-children-causes-and-therapy-solutions">Understanding Selective and Picky Eating in Children: Causes and Therapy Solutions</a></li>
+      <li><span class="blog-num">14.</span> <a href="https://www.theraplayla.com/theraplay-blog/why-coordination-is-about-more-than-movement-the-hidden-foundation-of-your-childs-brain-development">Why Coordination Is About More Than Movement</a></li>
+      <li><span class="blog-num">15.</span> <a href="https://www.theraplayla.com/theraplay-blog/is-pediatric-biohacking-actually-just-good-nervous-system-support">Is Pediatric "Biohacking" Actually Just Good Nervous System Support?</a></li>
+      <li><span class="blog-num">16.</span> <a href="https://www.theraplayla.com/theraplay-blog/enlarged-tonsils-and-adenoids-in-children">Enlarged Tonsils and Adenoids in Children</a></li>
+      <li><span class="blog-num">17.</span> <a href="https://www.theraplayla.com/theraplay-blog/snoring-in-kids-common-but-not-normal">Snoring in Kids: Common but Not Normal</a></li>
+      <li><span class="blog-num">18.</span> <a href="https://www.theraplayla.com/theraplay-blog/bedwetting-after-potty-training-causes">Bedwetting After Potty Training: Causes</a></li>
+      <li><span class="blog-num">19.</span> <a href="https://www.theraplayla.com/theraplay-blog/getting-a-handle-on-handwriting">Getting a Handle on Handwriting</a></li>
+      <li><span class="blog-num">20.</span> <a href="https://www.theraplayla.com/theraplay-blog/sensory-integration-behavior">Sensory Integration Behavior</a></li>
+      <li><span class="blog-num">21.</span> <a href="https://www.theraplayla.com/theraplay-blog/sensory-integration-motor-development">Sensory Integration Motor Development</a></li>
+      <li><span class="blog-num">22.</span> <a href="https://www.theraplayla.com/theraplay-blog/sensory-processing-and-planning">Sensory Processing and Planning</a></li>
+      <li><span class="blog-num">23.</span> <a href="https://www.theraplayla.com/theraplay-blog/sensing-a-problem-how-sensory-integration-can-improve-problem-solving">Sensing a Problem: How Sensory Integration Can Improve Problem-Solving</a></li>
+      <li><span class="blog-num">24.</span> <a href="https://www.theraplayla.com/theraplay-blog/assemble-your-childs-perfect-care-team">The Ultimate Guide to Assemble Your Child's Perfect Care Team</a></li>
+      <li><span class="blog-num">25.</span> <a href="https://www.theraplayla.com/theraplay-blog/physical-therapy-vs-occupational-therapy-for-kids">Physical Therapy vs Occupational Therapy for Kids</a></li>
+      <li><span class="blog-num">26.</span> <a href="https://www.theraplayla.com/theraplay-blog/autism-and-sleep-research-for-parents">Autism and Sleep Research for Parents</a></li>
+      <li><span class="blog-num">27.</span> Why Some Kids Never Stop Moving: Understanding the Vestibular System</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Footer -->
+<div style="margin-top:60px; padding-top:24px; border-top:1px solid var(--border); text-align:center; color:var(--text3); font-size:0.82em;">
+  <p>Generated July 27, 2026 &nbsp;|&nbsp; Data sources: SEMrush keyword research, keyword clustering analysis &nbsp;|&nbsp; TheraPlayLA.com</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>
