@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTM.io — Organic Performance Review, July 2026</title>
+<meta name="description" content="Search Console and GA4 analysis of UTM.io organic performance, with every project deliverable and its measured result.">
+<style>*,*::before,*::after{box-sizing:border-box}img,svg{max-width:100%}</style>
+</head>
+<body>
+
+<style>
+:root{
+  --ground:#F5F7F7; --surface:#FFFFFF; --sunk:#EDF1F1;
+  --ink:#101619; --ink-2:#47555C; --ink-3:#7C8B93;
+  --rule:#DDE4E5; --rule-2:#C8D3D4;
+  --s1:#0F8E76; --s2:#BE5A00; --s3:#7B45BE;
+  --s1-wash:rgba(15,142,118,.10); --s2-wash:rgba(190,90,0,.10);
+  --accent:#0F8E76;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --maxw:74rem;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ground:#101317; --surface:#171A1F; --sunk:#1D2228;
+    --ink:#E9EEF0; --ink-2:#A3B0B6; --ink-3:#6F7D85;
+    --rule:#272E34; --rule-2:#39434A;
+    --s1:#1EA78F; --s2:#CF7A1F; --s3:#9179E0;
+    --s1-wash:rgba(30,167,143,.14); --s2-wash:rgba(207,122,31,.14);
+    --accent:#1EA78F;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101317; --surface:#171A1F; --sunk:#1D2228;
+  --ink:#E9EEF0; --ink-2:#A3B0B6; --ink-3:#6F7D85;
+  --rule:#272E34; --rule-2:#39434A;
+  --s1:#1EA78F; --s2:#CF7A1F; --s3:#9179E0;
+  --s1-wash:rgba(30,167,143,.14); --s2-wash:rgba(207,122,31,.14);
+  --accent:#1EA78F;
+}
+:root[data-theme="light"]{
+  --ground:#F5F7F7; --surface:#FFFFFF; --sunk:#EDF1F1;
+  --ink:#101619; --ink-2:#47555C; --ink-3:#7C8B93;
+  --rule:#DDE4E5; --rule-2:#C8D3D4;
+  --s1:#0F8E76; --s2:#BE5A00; --s3:#7B45BE;
+  --s1-wash:rgba(15,142,118,.10); --s2-wash:rgba(190,90,0,.10);
+  --accent:#0F8E76;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 clamp(1rem,4vw,3rem) 6rem; overflow-x:clip}
+
+/* ---------- masthead ---------- */
+.mast{border-bottom:1px solid var(--rule-2); padding:2.75rem 0 1.5rem; margin-bottom:3rem}
+.mast .kicker{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--ink-3); display:flex; flex-wrap:wrap; gap:.4rem 1.5rem; margin-bottom:1.5rem;
+}
+.mast .kicker b{color:var(--accent); font-weight:500}
+h1{
+  font-family:var(--mono); font-weight:600; letter-spacing:-.02em;
+  font-size:clamp(1.75rem,4.4vw,2.9rem); line-height:1.1; margin:0 0 .9rem; text-wrap:balance;
+}
+h1 em{font-style:normal; color:var(--accent)}
+.dek{font-size:clamp(1rem,1.6vw,1.16rem); color:var(--ink-2); max-width:56ch; margin:0}
+
+/* ---------- section scaffolding ---------- */
+section{margin:0 0 4.5rem}
+.shead{display:grid; grid-template-columns:4.5rem 1fr; gap:1rem; align-items:baseline;
+  border-top:1px solid var(--rule-2); padding-top:1rem; margin-bottom:1.75rem}
+.shead .num{font-family:var(--mono); font-size:.75rem; letter-spacing:.1em; color:var(--accent)}
+h2{font-family:var(--mono); font-weight:600; font-size:clamp(1.15rem,2.3vw,1.5rem);
+  letter-spacing:-.01em; margin:0; line-height:1.25; text-wrap:balance}
+.shead .sub{grid-column:2; font-size:.95rem; color:var(--ink-2); margin:.5rem 0 0; max-width:62ch}
+.body{display:grid; grid-template-columns:4.5rem 1fr; gap:1rem}
+/* grid items default to min-width:auto, which lets the charts' and tables' min-widths
+   force the whole page wider than the viewport — pin them to 0 so they scroll internally */
+.body>*{grid-column:2; min-width:0}
+.shead>*{min-width:0}
+@media (max-width:720px){
+  .shead,.body{grid-template-columns:1fr}
+  .shead .sub,.body>*{grid-column:1}
+  .shead .num{margin-bottom:.35rem}
+}
+p{margin:0 0 1.1rem; max-width:68ch}
+p:last-child{margin-bottom:0}
+strong{font-weight:600; color:var(--ink)}
+a{color:var(--accent)}
+code,.m{font-family:var(--mono); font-size:.88em}
+.num-t{font-variant-numeric:tabular-nums}
+
+/* ---------- stat tiles ---------- */
+.tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); margin:2.5rem 0 0}
+.tile{background:var(--surface); padding:1.35rem 1.4rem 1.5rem}
+.tile .lab{font-family:var(--mono); font-size:.68rem; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--ink-3); margin-bottom:.7rem}
+.tile .fig{font-family:var(--mono); font-size:2.1rem; font-weight:600; line-height:1;
+  font-variant-numeric:tabular-nums; letter-spacing:-.02em}
+.tile .note{font-size:.83rem; color:var(--ink-2); margin-top:.6rem; line-height:1.45}
+
+/* ---------- quote ---------- */
+blockquote{margin:0 0 1.6rem; padding:1.1rem 1.4rem; background:var(--sunk);
+  border-left:2px solid var(--accent); font-size:1.02rem; color:var(--ink)}
+blockquote p{margin:0 0 .7rem}
+blockquote cite{display:block; font-style:normal; font-family:var(--mono); font-size:.72rem;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); margin-top:.8rem}
+
+/* ---------- figures / charts ---------- */
+figure{margin:2rem 0; background:var(--surface); border:1px solid var(--rule); padding:1.35rem 1.4rem 1.1rem}
+figure .ftitle{font-family:var(--mono); font-size:.8rem; font-weight:600; letter-spacing:.01em; margin-bottom:.2rem}
+figure .fsub{font-size:.82rem; color:var(--ink-2); margin-bottom:1.1rem; max-width:70ch}
+figcaption{font-size:.8rem; color:var(--ink-2); margin-top:.9rem; padding-top:.8rem;
+  border-top:1px solid var(--rule); max-width:74ch}
+.chart-scroll{overflow-x:auto; overflow-y:hidden}
+.chart-scroll svg{display:block; min-width:520px; width:100%; height:auto}
+.legend{display:flex; flex-wrap:wrap; gap:.35rem 1.4rem; margin-bottom:1rem}
+.legend span{display:inline-flex; align-items:center; gap:.45rem; font-family:var(--mono);
+  font-size:.74rem; letter-spacing:.03em; color:var(--ink-2)}
+.legend i{width:11px; height:11px; border-radius:2px; display:block; flex:none}
+.tip{position:fixed; pointer-events:none; z-index:50; background:var(--surface);
+  border:1px solid var(--rule-2); padding:.55rem .7rem; font-family:var(--mono); font-size:.73rem;
+  line-height:1.55; color:var(--ink); box-shadow:0 6px 22px rgba(0,0,0,.16); opacity:0;
+  transition:opacity .1s; font-variant-numeric:tabular-nums; white-space:nowrap}
+.tip b{font-weight:600; display:block; margin-bottom:.25rem; color:var(--ink-3);
+  letter-spacing:.08em; text-transform:uppercase; font-size:.66rem}
+.tip u{text-decoration:none; display:inline-block; width:9px; height:9px; border-radius:2px;
+  margin-right:.4rem; vertical-align:baseline}
+
+/* ---------- tables ---------- */
+.tbl-scroll{overflow-x:auto; margin:1.75rem 0; border:1px solid var(--rule); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:.86rem; min-width:640px}
+th,td{text-align:left; padding:.62rem .8rem; border-bottom:1px solid var(--rule); vertical-align:top}
+thead th{font-family:var(--mono); font-size:.66rem; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:500; background:var(--sunk); position:sticky; top:0;
+  border-bottom:1px solid var(--rule-2); white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+td.n,th.n{text-align:right; font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.u{font-family:var(--mono); font-size:.79rem; color:var(--ink-2); word-break:break-all}
+td.idx{font-family:var(--mono); color:var(--ink-3); font-size:.75rem; width:2.2rem}
+tbody tr:hover{background:var(--sunk)}
+.chip{display:inline-flex; align-items:center; gap:.32rem; font-family:var(--mono); font-size:.68rem;
+  letter-spacing:.06em; text-transform:uppercase; padding:.12rem .45rem; border:1px solid var(--rule-2);
+  color:var(--ink-2); white-space:nowrap; background:var(--surface)}
+.chip .g{font-size:.85em; line-height:1}
+tfoot td{font-family:var(--mono); font-size:.78rem; background:var(--sunk); font-weight:600;
+  border-top:1px solid var(--rule-2)}
+
+/* ---------- callouts ---------- */
+.note-box{border:1px solid var(--rule-2); background:var(--surface); padding:1.15rem 1.3rem; margin:1.75rem 0}
+.note-box .nlab{font-family:var(--mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:.6rem}
+.note-box p{font-size:.92rem; margin-bottom:.8rem}
+.note-box p:last-child{margin-bottom:0}
+
+ol.steps{counter-reset:s; list-style:none; padding:0; margin:1.5rem 0 0}
+ol.steps li{counter-increment:s; position:relative; padding:0 0 1.4rem 3rem; max-width:68ch}
+ol.steps li::before{content:counter(s,decimal-leading-zero); position:absolute; left:0; top:.1rem;
+  font-family:var(--mono); font-size:.78rem; color:var(--accent)}
+ol.steps li h3{font-size:1rem; margin:0 0 .3rem; font-weight:600}
+ol.steps li p{font-size:.92rem; color:var(--ink-2); margin:0}
+
+.foot{border-top:1px solid var(--rule-2); padding-top:1.5rem; font-family:var(--mono);
+  font-size:.72rem; letter-spacing:.04em; color:var(--ink-3); line-height:1.8}
+
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker">
+    <span>Outrider Digital <b>&rarr;</b> UTM.io</span>
+    <span>Organic performance review</span>
+    <span>27 Jul 2026</span>
+    <span>Source: Search Console + GA4</span>
+  </div>
+  <h1>The organic line that fell isn't the one <em>we were hired to move.</em></h1>
+  <p class="dek">Dan's chart blends Organic&nbsp;Search with Organic&nbsp;Social. Social and email went to
+  approximately zero in the first week of January 2026 and never came back. Search, over that same period,
+  went up. Here is every number, and every thing we shipped, with what it did.</p>
+</header>
+
+<!-- ============================================================= -->
+<section>
+  <div class="shead">
+    <div class="num">§ 01</div>
+    <div>
+      <h2>The finding</h2>
+      <p class="sub">Two different lines, moving in opposite directions, added together into one number.</p>
+    </div>
+  </div>
+  <div class="body">
+    <blockquote>
+      <p>&ldquo;Our organic traffic&hellip; was typically around 200, 250&hellip; and now our traffic is down,
+      right, like, we don't hit 200 ever.&rdquo;</p>
+      <p>&ldquo;Naturally, this does include organic social and search, I guess, so I'll assume some of
+      these are social posts.&rdquo;</p>
+      <cite>Dan McGaw &mdash; client feedback, July 2026</cite>
+    </blockquote>
+
+    <p>That second sentence is the whole answer. The metric on screen is
+    <strong>Organic Search + Organic Social combined</strong>. Those two channels did not do the same thing.</p>
+
+    <div class="tiles">
+      <div class="tile">
+        <div class="lab">Organic search &mdash; sessions/day</div>
+        <div class="fig" style="color:var(--s1)">115 &rarr; 186</div>
+        <div class="note">Jan 2026 floor to Jun 2026. <strong>+61%.</strong> June 2026 was the strongest
+        organic-search month in the entire 19-month record except April 2025.</div>
+      </div>
+      <div class="tile">
+        <div class="lab">Organic social + email &mdash; sessions/day</div>
+        <div class="fig" style="color:var(--s2)">366 &rarr; 9</div>
+        <div class="note">Dec 2025 to Jul 2026. <strong>&minus;98%.</strong> The break is a single week
+        &mdash; w/c 5 Jan 2026 &mdash; not a decay curve.</div>
+      </div>
+      <div class="tile">
+        <div class="lab">The blended number Dan sees</div>
+        <div class="fig">374 &rarr; 161</div>
+        <div class="note">Sessions/day, Dec 2025 to Jul 2026. Every point of that fall, and then some,
+        comes from the social and email collapse.</div>
+      </div>
+    </div>
+
+    <figure>
+      <div class="ftitle">UTM.io &mdash; GA4 sessions per day, by channel</div>
+      <div class="fsub">Jan 2025 &ndash; Jul 2026, normalised per day so partial months don't distort.
+      The vertical rule marks the first week of January 2026.</div>
+      <div class="legend" id="lg-a"></div>
+      <div class="chart-scroll"><svg id="ch-a" viewBox="0 0 960 380" role="img"
+        aria-label="Line chart: organic search sessions per day rise from 114 to 186 while organic social falls from 260 to 2 and email from 106 to 7."></svg></div>
+      <figcaption>Organic Social ran 95&ndash;260 sessions/day for all of 2025, then dropped to
+      1&ndash;17 from January 2026 onward and stayed there. Email did the same thing in the same week.
+      Organic Search is the only one of the three that is higher today than it was at kickoff.
+      Source: GA4 property 387725674, <span class="m">sessionDefaultChannelGroup</span>.</figcaption>
+    </figure>
+
+    <div class="note-box">
+      <div class="nlab">What this is not</div>
+      <p>This isn't a measurement artefact. Organic Social sessions fell from 1,201 in the week of
+      22 Dec 2025 to <strong>71 in the week of 5 Jan 2026</strong> and have averaged under 20/week ever
+      since. That is a switch being thrown &mdash; a paused posting cadence, a retired scheduler, or a
+      tracking change on social links. It's worth finding, because it's the largest single movement in
+      the account and it has nothing to do with search.</p>
+      <p>Email did the same: 2,930 sessions in the week of 1 Dec 2025 to under 60/week from January.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section>
+  <div class="shead">
+    <div class="num">§ 02</div>
+    <div>
+      <h2>What search actually did</h2>
+      <p class="sub">Search Console clicks, both properties, normalised per day.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>web.utm.io was in steady structural decline through 2025 &mdash; from 68.7 clicks/day in March to
+    29.0 in December, a fall of 58% over nine months. <strong>That decline stopped at kickoff and reversed.</strong>
+    The site has climbed every month since January and, as of July, has caught back up to where it was a
+    year ago.</p>
+
+    <figure>
+      <div class="ftitle">Search Console clicks per day</div>
+      <div class="fsub">web.utm.io from Mar 2025; utmbuilder.com from Dec 2025, when the property was
+      verified at kickoff. Dashed rule = project kickoff, 28 Dec 2025.</div>
+      <div class="legend" id="lg-b"></div>
+      <div class="chart-scroll"><svg id="ch-b" viewBox="0 0 960 380" role="img"
+        aria-label="Line chart: web.utm.io clicks per day fall from 68.7 in March 2025 to 29.0 in December, then rise steadily to 46.0 by July 2026. utmbuilder.com rises from 47.6 to a peak of 78.7 in March 2026 then falls back to 45.5."></svg></div>
+      <figcaption>March 2025 covers 17 days (the edge of Search Console's 16-month window) and July 2026
+      covers 25; both are shown as daily averages so the shape is comparable. Sources: GSC properties
+      <span class="m">https://web.utm.io/</span> and <span class="m">sc-domain:utmbuilder.com</span>,
+      <span class="m">dataState: final</span>.</figcaption>
+    </figure>
+
+    <p>The clearest way to see it: the year-over-year gap on web.utm.io, month by month. In March 2026 the
+    site was 42% below the previous March. By July it is level.</p>
+
+    <figure>
+      <div class="ftitle">web.utm.io &mdash; clicks/day vs. the same month last year</div>
+      <div class="fsub">Each bar is 2026 measured against 2025. The gap closes to nothing over five months.</div>
+      <div class="chart-scroll"><svg id="ch-c" viewBox="0 0 960 230" role="img"
+        aria-label="Bar chart: year-over-year gap for web.utm.io closes from minus 42 percent in March 2026 to minus 3 percent in July 2026."></svg></div>
+      <figcaption>Read this as a trajectory, not a verdict: the line was falling, it now isn't, and it has
+      recovered nine months of decline in six.</figcaption>
+    </figure>
+
+    <div class="tiles">
+      <div class="tile">
+        <div class="lab">Combined clicks/day, both properties</div>
+        <div class="fig">76.6 &rarr; 91.4</div>
+        <div class="note">Dec 2025 (first month both properties were tracked) to Jul 2026.
+        <strong>+19%.</strong> Peak was 120.4 in April, <strong>+57%.</strong></div>
+      </div>
+      <div class="tile">
+        <div class="lab">web.utm.io YoY gap</div>
+        <div class="fig" style="color:var(--s1)">&minus;42% &rarr; &minus;3%</div>
+        <div class="note">March 2026 vs. March 2025, through July vs. July. The pre-project decline is
+        effectively fully arrested.</div>
+      </div>
+      <div class="tile">
+        <div class="lab">Organic clicks delivered, Feb&ndash;Jul 2026</div>
+        <div class="fig">19,380</div>
+        <div class="note">Across both properties in the 175 days after the work landed.
+        1,365 of those came from pages that did not exist before the project.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section>
+  <div class="shead">
+    <div class="num">§ 03</div>
+    <div>
+      <h2>Why April&rarr;July looks like a slide</h2>
+      <p class="sub">Two things are happening at once, and only one of them is a problem.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p><strong>First: this account has a summer.</strong> In 2025, web.utm.io ran 65.0 clicks/day in April
+    down to 47.5 in July &mdash; a 27% seasonal fall. In 2026 the combined footprint ran 120.4 in April
+    down to 91.4 in July &mdash; a 24% fall. Near-identical seasonal shape, at roughly double the volume.
+    The April peak was never the new baseline; it was the top of the annual curve.</p>
+
+    <p><strong>Second: the impression pool is shrinking.</strong> Comparing the same 31-day window in both
+    years on web.utm.io:</p>
+
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>25 Jun &ndash; 25 Jul</th><th class="n">2025</th><th class="n">2026</th><th class="n">Change</th><th>Reading</th></tr></thead>
+        <tbody>
+          <tr><td>Clicks</td><td class="n">1,468</td><td class="n">1,430</td><td class="n">&minus;3%</td><td>Held flat.</td></tr>
+          <tr><td>Impressions</td><td class="n">715,668</td><td class="n">420,845</td><td class="n">&minus;41%</td><td>Google is showing the pages to far fewer people.</td></tr>
+          <tr><td>Click-through rate</td><td class="n">0.205%</td><td class="n">0.340%</td><td class="n">+66%</td><td>Of the people who do see them, far more click.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>That combination &mdash; impressions collapsing, positions improving, CTR climbing, clicks flat
+    &mdash; is the signature of AI Overviews absorbing informational queries. The pages didn't get worse;
+    the SERP got smaller. It shows up most sharply on the pure how-to content:
+    <span class="m">/blog/track-linkedin-ads-with-utms/</span> went from position 10.4 to <strong>7.5</strong>
+    and still lost 74% of its clicks. Ranking better is no longer sufficient on that class of query.</p>
+
+    <div class="note-box">
+      <div class="nlab">The strategic consequence</div>
+      <p>Tool and transactional pages are not affected the same way &mdash; someone searching
+      &ldquo;utm builder&rdquo; wants to use a builder, and an AI answer doesn't satisfy that.
+      Every page that grew in this project is a tool page or a page with a tool intent;
+      almost every page that shrank is an explainer. That is where the next phase of budget belongs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section>
+  <div class="shead">
+    <div class="num">§ 04</div>
+    <div>
+      <h2>Everything we shipped &mdash; page optimisations</h2>
+      <p class="sub">All 15 scoped optimisations plus 3 bonus pages, measured Jul&ndash;Dec 2025 against
+      Feb&ndash;Jul 2026 in Search Console.</p>
+    </div>
+  </div>
+  <div class="body">
+    <div class="tbl-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th class="idx">#</th><th>Page &amp; what we did</th>
+            <th class="n">Position</th><th class="n">Clicks before</th><th class="n">Clicks after</th><th>Result</th>
+          </tr>
+        </thead>
+        <tbody id="opt-rows"></tbody>
+      </table>
+    </div>
+    <p style="font-size:.85rem;color:var(--ink-2)">Position is the Search Console average across the whole
+    window. &ldquo;Before&rdquo; is 1 Jul&ndash;27 Dec 2025 (180 days); &ldquo;after&rdquo; is
+    1 Feb&ndash;25 Jul 2026 (175 days) &mdash; comparable lengths, so the raw click counts are directly
+    comparable. The one exception is utmbuilder.com, flagged in the table: its Search Console history only
+    begins 11 Dec 2025, so its &ldquo;before&rdquo; is 17 days and is shown as a daily rate.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section>
+  <div class="shead">
+    <div class="num">§ 05</div>
+    <div>
+      <h2>Everything we shipped &mdash; new content</h2>
+      <p class="sub">Scope was &ldquo;10+ pieces&rdquo;. 15 new pages are live and earning clicks;
+      2 planned pieces are not in Search Console.</p>
+    </div>
+  </div>
+  <div class="body">
+    <div class="tbl-scroll">
+      <table>
+        <thead>
+          <tr><th class="idx">#</th><th>Planned piece</th><th>Shipped as</th>
+          <th class="n">Position</th><th class="n">Clicks</th><th class="n">Impressions</th><th>Status</th></tr>
+        </thead>
+        <tbody id="new-rows"></tbody>
+        <tfoot><tr><td></td><td colspan="3">15 pages live &mdash; clicks in the 175 days to 25 Jul 2026</td>
+          <td class="n">1,365</td><td class="n">&mdash;</td><td></td></tr></tfoot>
+      </table>
+    </div>
+
+    <div class="note-box">
+      <div class="nlab">Two gaps, stated plainly</div>
+      <p><strong>GCLID vs UTM</strong> and <strong>UTM Parameters for Bing</strong> do not appear as
+      URLs in Search Console for either property. The queries themselves improved &mdash;
+      &ldquo;gclid vs utm&rdquo; moved from position 10.7 to 8.1 and &ldquo;utm parameters for bing&rdquo;
+      from 32.9 to 18.2, both on existing pages &mdash; but the dedicated pieces either weren't published
+      or weren't indexed. We'll confirm which and close it out.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section>
+  <div class="shead">
+    <div class="num">§ 06</div>
+    <div>
+      <h2>The keyword picture</h2>
+      <p class="sub">Where the two properties ended up on the terms the strategy was built around.</p>
+    </div>
+  </div>
+  <div class="body">
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Query</th><th class="n">web.utm.io</th><th class="n">utmbuilder.com</th>
+        <th class="n">Combined before</th><th class="n">Combined after</th><th>Note</th></tr></thead>
+        <tbody id="q-rows"></tbody>
+      </table>
+    </div>
+
+    <div class="note-box">
+      <div class="nlab">Read the utmbuilder.com column carefully</div>
+      <p>That property's Search Console history only starts 11 Dec 2025, so its &ldquo;before&rdquo; figures
+      cover <strong>17 days measured against 175 days after</strong>. The raw counts are real but the ratio
+      is not: on a per-day basis, &ldquo;utm builder&rdquo; on utmbuilder.com went from 17.4 to
+      <strong>23.1 clicks/day &mdash; a genuine +33%</strong>, not the 14&times; the raw numbers suggest.
+      The web.utm.io column is a like-for-like 180 days against 175.</p>
+    </div>
+
+    <p><strong>The cannibalisation risk we flagged at kickoff did materialise, and it was worth it.</strong>
+    We warned that pushing utmbuilder.com on &ldquo;utm builder&rdquo; would cost web.utm.io some of the
+    same term. It did: web.utm.io lost 195 clicks on that query &mdash; a like-for-like fall of 48%.
+    utmbuilder.com picked up 3,750 clicks on the same term over the shorter measured window, and even
+    after normalising the windows its daily rate on it rose a third. The trade was clearly positive.
+    The same pattern holds on &ldquo;linkedin utm builder&rdquo; and &ldquo;utm generator&rdquo;.</p>
+
+    <p>One number to watch that isn't ours to fix: <strong>the brand query</strong>.
+    &ldquo;utm.io&rdquo; improved from position 9.2 to <strong>2.6</strong> &mdash; a large ranking win
+    &mdash; and clicks still fell from 512 to 440. When you rank 2.6 for your own name and clicks decline,
+    the constraint is how many people are searching the brand, not where you sit. That tracks with Direct
+    traffic, which is down from 1,368 to 852 sessions/day over the same period. Both are demand-side, and
+    both sit outside an SEO scope.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section>
+  <div class="shead">
+    <div class="num">§ 07</div>
+    <div>
+      <h2>What we'd tell you if you weren't paying us</h2>
+      <p class="sub">The parts of this that are genuinely soft.</p>
+    </div>
+  </div>
+  <div class="body">
+    <ol class="steps">
+      <li>
+        <h3>utmbuilder.com peaked in March and gave most of it back</h3>
+        <p>47.6 clicks/day in December, 78.7 at the March peak, 45.5 now. Some of that is the same summer
+        seasonality that hit web.utm.io, but the fall is steeper than season alone accounts for
+        (&minus;42% vs. &minus;27% on the sister site). The position on &ldquo;utm builder&rdquo; only moved
+        from 4.8 to 4.5 &mdash; we did not get it to position 2, and the supporting pages haven't yet had
+        enough link equity to force it. This is the single clearest piece of unfinished business.</p>
+      </li>
+      <li>
+        <h3>Backlink delivery isn't verifiable from this data</h3>
+        <p>Search Console and GA4 don't report referring domains, and the Semrush API quota on this account
+        is exhausted as of today, so we can't put a number on the 10&ndash;15 links here. What is observable
+        is that the specific pages we allocated links to are the ones whose positions moved most:
+        UTM Best Practices 19.5&rarr;7.9, the QR generator 43.7&rarr;9.3, the homepage 20.8&rarr;10.8,
+        utmbuilder.com 11.0&rarr;8.1. We'll send the actual link log separately rather than infer it.</p>
+      </li>
+      <li>
+        <h3>Six of eighteen optimisations are flat or down</h3>
+        <p>UTM Campaign Tracking, Conventions, Link Builder and UTM Templates all moved sideways or
+        slightly backwards. On the first three, positions worsened &mdash; those are real misses, not
+        AI Overview effects. On the informational pages that lost clicks while holding position
+        (UTM Cleaner, LinkedIn Ads, Naming Conventions) the cause is the SERP, but the outcome is the same
+        for you.</p>
+      </li>
+      <li>
+        <h3>Your biggest channel is the one nobody is working on</h3>
+        <p>Direct traffic is 5&ndash;6&times; organic search on this property and it's down roughly a third
+        year on year, on top of the social and email shutdown. Organic search is currently the only channel
+        in the account that is growing. That's a good thing for this engagement and a bad thing for the
+        business, and it deserves a conversation that isn't about SEO.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section>
+  <div class="shead">
+    <div class="num">§ 08</div>
+    <div>
+      <h2>What we'd do next</h2>
+      <p class="sub">In priority order, based on what the data says is working.</p>
+    </div>
+  </div>
+  <div class="body">
+    <ol class="steps">
+      <li>
+        <h3>Find the January switch</h3>
+        <p>Before anything else. Organic Social and Email both went to near-zero in the same week.
+        If that's a tracking break, the reported decline is partly fictional and fixing it changes the
+        picture immediately. If it's a real pause in posting and sending, restarting it is the single
+        highest-leverage thing available &mdash; it was worth 260 sessions/day.</p>
+      </li>
+      <li>
+        <h3>Move budget from explainers to tools</h3>
+        <p>Every winner in this project has tool intent. Every loser is an explainer competing with an AI
+        answer. The next content batch should be free micro-tools with a page around them
+        &mdash; validator, bulk builder, parameter linter &mdash; not more &ldquo;what is&rdquo; posts.</p>
+      </li>
+      <li>
+        <h3>Finish utmbuilder.com</h3>
+        <p>It's at position 4.5 for the money term with six supporting pages already live and indexed.
+        Concentrated link acquisition on the homepage plus internal linking from the six supporting pages
+        is the shortest path to position 2&ndash;3, and it's the highest-commercial-intent traffic in the
+        account.</p>
+      </li>
+      <li>
+        <h3>Publish the two missing pieces</h3>
+        <p>GCLID vs UTM and UTM Parameters for Bing. Both queries are already improving on unrelated pages,
+        which usually means a dedicated page ranks fast.</p>
+      </li>
+      <li>
+        <h3>Report on search and social separately</h3>
+        <p>The blended organic view is what caused this conversation. Split it. We're rebuilding the
+        dashboard view for you either way &mdash; see below.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section>
+  <div class="shead">
+    <div class="num">§ 09</div>
+    <div>
+      <h2>Our own error, for the record</h2>
+      <p class="sub">Two configuration faults on our side that meant our dashboard was under-reporting this account.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>While pulling this data we found that our reporting dashboard had UTM.io connected to the wrong
+    Search Console property. It was set to <span class="m">http://utm.io/</span> &mdash; a URL-prefix
+    property that matches only that exact scheme and host, and carries 5,212 lifetime clicks. The actual
+    footprint is <span class="m">https://web.utm.io/</span> (22,257) plus
+    <span class="m">sc-domain:utmbuilder.com</span> (14,530). Our dashboard was seeing roughly
+    <strong>12% of your organic search traffic</strong>.</p>
+    <p>Separately, the account was archived in our system on 7 May 2026, which stopped the nightly sync
+    entirely &mdash; so even the 12% stopped updating in early May. Neither fault affects any number in this
+    document: everything here is pulled directly from the Google APIs against the correct properties. But
+    it does mean the dashboard you were sent was wrong, and we're fixing both.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  Prepared by Outrider Digital &mdash; 27 July 2026<br>
+  Search Console: <span class="m">https://web.utm.io/</span>, <span class="m">sc-domain:utmbuilder.com</span>,
+  <span class="m">dataState: final</span>, date-dimension queries for totals.<br>
+  GA4: property 387725674 (UTM.io), property 292934931 (utmbuilder.com), <span class="m">sessions</span> by
+  <span class="m">sessionDefaultChannelGroup</span>.<br>
+  Comparison windows: before = 1 Jul&ndash;27 Dec 2025 (180d) &middot; after = 1 Feb&ndash;25 Jul 2026 (175d)
+  &middot; matched YoY = 25 Jun&ndash;25 Jul.<br>
+  All monthly figures normalised per day. Kickoff 28 Dec 2025.
+</footer>
+
+</div>
+
+<div class="tip" id="tip"></div>
+
+<script>
+/* ---------------------------------------------------------------- data */
+const MONTHS_A = ["2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07"];
+const SERIES_A = [
+  {name:"Organic Search", color:"--s1", v:[133.9,145.5,140.8,212.5,176.8,174.2,171.3,139.2,154.7,154,143.5,114.2,115.6,148.1,158.2,167.6,164.9,185.9,158.8]},
+  {name:"Organic Social", color:"--s2", v:[9.9,15.5,48.1,133.9,116.4,143.2,94.3,112.8,166.9,119.2,143.7,260,14.8,17.3,5,5.8,3.6,1.4,2]},
+  {name:"Email",          color:"--s3", v:[22.4,12.2,22.6,17,14.7,11.7,46.4,39.4,58.3,18.1,15.8,105.9,6.1,9.3,6.5,5.6,7,5.5,6.8]},
+];
+const MONTHS_B = ["2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07"];
+const SERIES_B = [
+  {name:"web.utm.io",     color:"--s1", v:[68.7,65,51.5,50.1,47.5,37.1,44.2,45.3,39.3,29,30.7,39.8,40,43.5,46.3,47.1,46]},
+  {name:"utmbuilder.com", color:"--s2", v:[null,null,null,null,null,null,null,null,null,47.6,58.2,75.6,78.7,76.9,64.7,57.2,45.5]},
+];
+const YOY = [["Mar",-41.8],["Apr",-33.1],["May",-10.1],["Jun",-6.0],["Jul",-3.2]];
+
+const OPTS = [
+ [1,"utmbuilder.com &mdash; full on-page rebuild of the homepage","utmbuilder.com/",11.0,8.1,"51.1/day","65.7/day","up","Grew","17-day baseline"],
+ [2,"UTM Builder Code Generator &mdash; on-page + link target","/utm-builder-code-generator/",12.5,12.4,741,591,"flat","Flat",""],
+ [3,"Track LinkedIn Ads With UTMs &mdash; optimisation + links","/blog/track-linkedin-ads-with-utms/",10.4,7.5,517,135,"down","Rank up, clicks lost","AI Overview"],
+ [4,"UTM Parameters Best Practices &mdash; rebuilt as a checklist asset","/blog/utm-parameters-best-practices/",19.5,7.9,245,727,"up","Best result",""],
+ [5,"UTM Cleaner Guide &mdash; optimisation + links","/blog/utm-cleaner-guide-tool-removing-utms/",6.4,6.5,415,117,"down","Rank held, clicks lost","AI Overview"],
+ [6,"Link Shortener product page","/link-shortener/",13.5,16.0,272,267,"flat","Flat",""],
+ [7,"Custom Design QR Code Generator","/custom-design-qr-code-generator/",43.7,9.3,98,265,"up","Big rank gain",""],
+ [8,"Google Analytics Custom UTM Parameters","/blog/google-analytics-custom-utm-parameters/",25.5,15.8,180,106,"down","Rank up, clicks lost",""],
+ [9,"Manual UTM Tagging vs AdWords Autotagging","/blog/manual-utm-tagging-vs-adwords-autotagging/",18.2,9.2,84,71,"flat","Rank up, clicks flat",""],
+ [10,"web.utm.io homepage &mdash; cannibalisation fix + on-page SEO","web.utm.io/",20.8,10.8,2788,2719,"flat","Rank halved, clicks held",""],
+ [11,"UTM Campaign Tracking product page","/utm-campaign-tracking/",9.7,16.1,15,10,"down","Miss",""],
+ [12,"UTM Parameters in CRM","/blog/utm-parameters-in-crm/",18.7,10.4,43,76,"up","Grew",""],
+ [13,"UTM Email Tracking &mdash; was page 3 (bonus)","/blog/utm-email-tracking/",28.1,11.8,59,59,"flat","Page 3 &rarr; page 1",""],
+ [14,"UTM Naming Conventions Guide","/blog/utm-naming-conventions-guide/",8.5,5.9,194,115,"down","Rank up, clicks lost","AI Overview"],
+ [15,"Conventions product page &mdash; anti-cannibalisation","/conventions/",8.7,11.2,12,7,"down","Miss",""],
+ [16,"Link Builder product page (bonus)","/link-builder/",14.2,15.2,67,47,"down","Miss",""],
+ [17,"Facebook UTM Builder (bonus)","/facebook-utm-builder/",21.0,9.3,5,11,"up","Grew",""],
+ [18,"UTM Templates (bonus)","/utm-templates/",8.9,9.8,35,15,"down","Miss",""],
+];
+
+const NEWC = [
+ [1,"GA4 UTM Parameters","/blog/utm-parameters-ga4/","web",7.8,296,113297,"live"],
+ [2,"Mastering utm_campaign / utm_medium / utm_source","/blog/utm_medium-utm_campaign-utm_source/","web",6.6,284,29216,"live"],
+ [3,"Shopify UTM Tracking","/blog/shopify-utm-parameters/","web",5.8,215,15106,"live"],
+ [4,"What Are UTMs","/blog/what-is-utm-tracking/","web",12.7,148,59068,"live"],
+ [5,"UTM Branded Link Shorteners","/utm-link-shortener/","builder",5.7,133,7419,"live"],
+ [6,"Short URLs vs Long URLs","/blog/short-url-vs-long-url/","web",6.4,92,4664,"live"],
+ [7,"Marketo UTM Tracking","/blog/marketo-utm-tracking/","web",7.6,63,2472,"live"],
+ [8,"UTM Conventions","/utm-conventions/","builder",6.7,31,2062,"live"],
+ [9,"UTM Spreadsheets","/utm-builder-template-spreadsheet/","builder",15.0,21,3919,"live"],
+ [10,"UTM Best Practices (ported)","/utm-best-practices/","builder",10.8,18,1531,"live"],
+ [11,"QR Codes &amp; Attribution","/blog/why-your-qr-codes-are-failing-for-marketing-attribution/","web",8.4,17,1177,"live"],
+ [12,"Branded QR","/branded-qr/","web",11.7,14,1613,"live"],
+ [13,"Simple URL Builders","/simple-url-builders/","builder",29.0,12,2260,"live"],
+ [14,"QR Code Advertising","/blog/qr-code-advertising/","web",6.4,10,447,"live"],
+ [15,"Custom UTM Parameters (ported)","/custom-utm-parameters/","builder",17.7,9,1102,"live"],
+ [16,"GCLID vs UTM","&mdash; not found in Search Console","","",null,null,"missing"],
+ [17,"UTM Parameters for Bing","&mdash; not found in Search Console","","",null,null,"missing"],
+];
+
+const QRY = [
+ ["utm builder","410 &rarr; 215 <span class='mut'>(7.4&rarr;7.8)</span>","295 &rarr; 4,045 <span class='mut'>(4.8&rarr;4.5)</span>",705,4260,"Intentional shift to utmbuilder.com"],
+ ["utm generator","30 &rarr; 43 <span class='mut'>(9.9&rarr;9.4)</span>","42 &rarr; 731 <span class='mut'>(4.6&rarr;4.6)</span>",72,774,"New volume on both"],
+ ["utm link builder","10 &rarr; 18 <span class='mut'>(9.6&rarr;10.1)</span>","9 &rarr; 413 <span class='mut'>(4.7&rarr;4.7)</span>",19,431,"New volume"],
+ ["linkedin utm builder","25 &rarr; 6 <span class='mut'>(4.5&rarr;10.0)</span>","10 &rarr; 124 <span class='mut'>(1.8&rarr;3.3)</span>",35,130,"Shifted to utmbuilder.com"],
+ ["utm best practices","8 &rarr; 54 <span class='mut'>(9.3&rarr;7.0)</span>","0 &rarr; 1 <span class='mut'>(51.3&rarr;30.1)</span>",8,55,"Optimisation #4"],
+ ["utm shortener","12 &rarr; 23 <span class='mut'>(6.2&rarr;4.9)</span>","0 &rarr; 12 <span class='mut'>(&mdash;&rarr;7.2)</span>",12,35,"New page ranked"],
+ ["utm parameters best practices","5 &rarr; 14 <span class='mut'>(7.0&rarr;4.0)</span>","&mdash;",5,14,"Position 7 &rarr; 4"],
+ ["utm conventions","2 &rarr; 3 <span class='mut'>(2.1&rarr;2.6)</span>","0 &rarr; 2 <span class='mut'>(&mdash;&rarr;3.1)</span>",2,5,"New page ranked"],
+ ["custom utm parameters","56 &rarr; 26 <span class='mut'>(4.2&rarr;9.3)</span>","0 &rarr; 0 <span class='mut'>(10.1&rarr;13.7)</span>",56,26,"Lost ground &mdash; needs review"],
+ ["utm naming convention","20 &rarr; 15 <span class='mut'>(7.1&rarr;13.2)</span>","0 &rarr; 2 <span class='mut'>(37.4&rarr;8.8)</span>",20,17,"Slipped on web.utm.io"],
+ ["utm.io <span class='mut'>(brand)</span>","512 &rarr; 440 <span class='mut'>(9.2&rarr;2.6)</span>","1 &rarr; 5 <span class='mut'>(8.1&rarr;6.7)</span>",513,445,"Rank 9.2&rarr;2.6, clicks still down"],
+];
+
+/* ---------------------------------------------------------------- tables */
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const GLYPH = {up:"▲", down:"▼", flat:"▬"};
+function chip(dir, text){ return `<span class="chip"><span class="g">${GLYPH[dir]}</span>${text}</span>`; }
+
+document.getElementById("opt-rows").innerHTML = OPTS.map(o=>{
+  const [n,label,url,p1,p2,c1,c2,dir,verdict,tag]=o;
+  const flag = tag ? ` <span class="chip" style="margin-left:.3rem">${tag}</span>` : "";
+  return `<tr>
+    <td class="idx">${String(n).padStart(2,"0")}</td>
+    <td>${label}<div class="u" style="margin-top:.15rem">${url}</div></td>
+    <td class="n">${p1.toFixed(1)} &rarr; <strong>${p2.toFixed(1)}</strong></td>
+    <td class="n">${typeof c1==="number"?c1.toLocaleString():c1}</td>
+    <td class="n">${typeof c2==="number"?c2.toLocaleString():c2}</td>
+    <td>${chip(dir,verdict)}${flag}</td></tr>`;
+}).join("");
+
+document.getElementById("new-rows").innerHTML = NEWC.map(r=>{
+  const [n,plan,url,prop,pos,clicks,impr,st]=r;
+  if(st==="missing") return `<tr>
+    <td class="idx">${String(n).padStart(2,"0")}</td><td>${plan}</td>
+    <td class="u" style="color:var(--ink-3)">${url}</td>
+    <td class="n">&mdash;</td><td class="n">&mdash;</td><td class="n">&mdash;</td>
+    <td>${chip("flat","Not shipped")}</td></tr>`;
+  const host = prop==="builder" ? "utmbuilder.com" : "web.utm.io";
+  return `<tr>
+    <td class="idx">${String(n).padStart(2,"0")}</td><td>${plan}</td>
+    <td class="u">${host}${url}</td>
+    <td class="n">${pos.toFixed(1)}</td>
+    <td class="n">${clicks.toLocaleString()}</td>
+    <td class="n">${impr.toLocaleString()}</td>
+    <td>${chip("up","Live &amp; ranking")}</td></tr>`;
+}).join("");
+
+document.getElementById("q-rows").innerHTML = QRY.map(q=>{
+  const dir = q[4]>q[3] ? "up" : (q[4]<q[3] ? "down" : "flat");
+  return `<tr><td><strong>${q[0]}</strong></td><td class="n">${q[1]}</td><td class="n">${q[2]}</td>
+    <td class="n">${q[3].toLocaleString()}</td>
+    <td class="n"><strong>${q[4].toLocaleString()}</strong> <span class="chip"><span class="g">${GLYPH[dir]}</span></span></td>
+    <td style="font-size:.82rem;color:var(--ink-2)">${q[5]}</td></tr>`;
+}).join("");
+
+/* ---------------------------------------------------------------- charts */
+const tip = document.getElementById("tip");
+function showTip(e, html){
+  tip.innerHTML = html; tip.style.opacity = "1";
+  const r = tip.getBoundingClientRect();
+  let x = e.clientX + 16, y = e.clientY - r.height/2;
+  if(x + r.width > innerWidth - 8) x = e.clientX - r.width - 16;
+  y = Math.max(8, Math.min(y, innerHeight - r.height - 8));
+  tip.style.left = x+"px"; tip.style.top = y+"px";
+}
+const hideTip = () => tip.style.opacity = "0";
+const SVGNS = "http://www.w3.org/2000/svg";
+const el = (n,a={}) => { const x=document.createElementNS(SVGNS,n); for(const k in a) x.setAttribute(k,a[k]); return x; };
+const fmtMonth = (m) => { const [y,mm]=m.split("-");
+  return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+mm-1]+" "+y.slice(2); };
+
+function lineChart(svgId, legendId, months, series, opts){
+  const svg = document.getElementById(svgId);
+  svg.innerHTML = "";
+  const W=960, H=380, ML=52, MR=152, MT=16, MB=44;
+  const iw = W-ML-MR, ih = H-MT-MB;
+  const all = series.flatMap(s=>s.v).filter(v=>v!=null);
+  const max = Math.ceil(Math.max(...all)/50)*50;
+  const x = i => ML + (iw*i)/(months.length-1);
+  const y = v => MT + ih - (ih*v)/max;
+
+  // gridlines
+  const ticks = 5;
+  for(let t=0;t<=ticks;t++){
+    const v = max*t/ticks;
+    svg.appendChild(el("line",{x1:ML,x2:ML+iw,y1:y(v),y2:y(v),stroke:css("--rule"),"stroke-width":1}));
+    const lb = el("text",{x:ML-10,y:y(v)+4,"text-anchor":"end",fill:css("--ink-3"),
+      "font-size":11,"font-family":css("--mono")});
+    lb.textContent = v; svg.appendChild(lb);
+  }
+  // marker rule
+  if(opts && opts.markerIndex != null){
+    const mx = x(opts.markerIndex);
+    svg.appendChild(el("line",{x1:mx,x2:mx,y1:MT,y2:MT+ih,stroke:css("--rule-2"),
+      "stroke-width":1.5,"stroke-dasharray":"4 4"}));
+    const t = el("text",{x:mx+6,y:MT+13,fill:css("--ink-3"),"font-size":10.5,
+      "font-family":css("--mono"),"letter-spacing":"0.08em"});
+    t.textContent = opts.markerLabel; svg.appendChild(t);
+  }
+  // x labels
+  months.forEach((m,i)=>{
+    if(i % (months.length>14?2:1) !== 0 && i !== months.length-1) return;
+    const t = el("text",{x:x(i),y:H-MB+20,"text-anchor":"middle",fill:css("--ink-3"),
+      "font-size":10.5,"font-family":css("--mono")});
+    t.textContent = fmtMonth(m); svg.appendChild(t);
+  });
+  // series
+  const ends = [];
+  series.forEach(s=>{
+    const c = css(s.color);
+    let d="", started=false;
+    s.v.forEach((v,i)=>{ if(v==null){started=false;return;}
+      d += (started?" L ":" M ") + x(i).toFixed(1)+" "+y(v).toFixed(1); started=true; });
+    svg.appendChild(el("path",{d,fill:"none",stroke:c,"stroke-width":2,
+      "stroke-linecap":"round","stroke-linejoin":"round"}));
+    let last=-1; s.v.forEach((v,i)=>{ if(v!=null) last=i; });
+    if(last>=0){
+      svg.appendChild(el("circle",{cx:x(last),cy:y(s.v[last]),r:4,fill:c,
+        stroke:css("--surface"),"stroke-width":2}));
+      ends.push({y:y(s.v[last]), x:x(last), text:s.name+" "+s.v[last], color:c});
+    }
+  });
+  // de-collide end labels: keep ≥14px apart, nudging downward from the top
+  ends.sort((a,b)=>a.y-b.y);
+  for(let i=1;i<ends.length;i++)
+    if(ends[i].y - ends[i-1].y < 14) ends[i].y = ends[i-1].y + 14;
+  const overflow = ends.length ? ends[ends.length-1].y - (MT+ih) : 0;
+  if(overflow > 0) ends.forEach(e => e.y -= overflow);
+  ends.forEach(e=>{
+    const t = el("text",{x:e.x+10,y:e.y+4,fill:css("--ink-2"),
+      "font-size":11,"font-family":css("--mono")});
+    t.textContent = e.text; svg.appendChild(t);
+  });
+  // crosshair + hit zones
+  const cross = el("line",{x1:0,x2:0,y1:MT,y2:MT+ih,stroke:css("--rule-2"),
+    "stroke-width":1,opacity:0});
+  svg.appendChild(cross);
+  const dots = series.map(s=>{
+    const c = el("circle",{r:5,fill:css(s.color),stroke:css("--surface"),"stroke-width":2,opacity:0});
+    svg.appendChild(c); return c;
+  });
+  months.forEach((m,i)=>{
+    const bw = iw/(months.length-1);
+    const r = el("rect",{x:x(i)-bw/2,y:MT,width:bw,height:ih,fill:"transparent"});
+    r.style.cursor="crosshair";
+    r.addEventListener("mousemove",(e)=>{
+      cross.setAttribute("x1",x(i)); cross.setAttribute("x2",x(i)); cross.setAttribute("opacity",1);
+      let html = `<b>${fmtMonth(m)}</b>`;
+      series.forEach((s,si)=>{
+        const v=s.v[i];
+        if(v==null){ dots[si].setAttribute("opacity",0); return; }
+        dots[si].setAttribute("cx",x(i)); dots[si].setAttribute("cy",y(v)); dots[si].setAttribute("opacity",1);
+        html += `<div><u style="background:${css(s.color)}"></u>${s.name} &nbsp;<strong>${v}</strong></div>`;
+      });
+      html += `<div style="color:${css("--ink-3")};margin-top:.25rem">${opts.unit}</div>`;
+      showTip(e, html);
+    });
+    r.addEventListener("mouseleave",()=>{ cross.setAttribute("opacity",0);
+      dots.forEach(d=>d.setAttribute("opacity",0)); hideTip(); });
+    svg.appendChild(r);
+  });
+  // legend
+  if(legendId) document.getElementById(legendId).innerHTML =
+    series.map(s=>`<span><i style="background:${css(s.color)}"></i>${s.name}</span>`).join("");
+}
+
+function gapChart(){
+  const svg = document.getElementById("ch-c");
+  svg.innerHTML="";
+  const W=960,H=230,ML=52,MR=104,MT=14,MB=40;
+  const iw=W-ML-MR, ih=H-MT-MB;
+  const min=-50;
+  const y = v => MT + (ih*(v-0))/(min-0);
+  const bw = iw/YOY.length;
+  for(let v=0;v>=min;v-=10){
+    svg.appendChild(el("line",{x1:ML,x2:ML+iw,y1:y(v),y2:y(v),
+      stroke: v===0?css("--rule-2"):css("--rule"),"stroke-width":1}));
+    const t=el("text",{x:ML-10,y:y(v)+4,"text-anchor":"end",fill:css("--ink-3"),
+      "font-size":11,"font-family":css("--mono")});
+    t.textContent = v+"%"; svg.appendChild(t);
+  }
+  YOY.forEach(([m,v],i)=>{
+    const bx = ML + bw*i + bw*0.22, w = bw*0.56;
+    const h = Math.abs(y(v)-y(0));
+    const g = el("g");
+    const rect = el("path",{d:`M ${bx} ${y(0)} L ${bx+w} ${y(0)} L ${bx+w} ${y(v)+4}
+      Q ${bx+w} ${y(v)} ${bx+w-4} ${y(v)} L ${bx+4} ${y(v)} Q ${bx} ${y(v)} ${bx} ${y(v)+4} Z`,
+      fill:css("--s1"), opacity:0.9});
+    g.appendChild(rect);
+    const lab = el("text",{x:bx+w/2,y:y(v)-9,"text-anchor":"middle",fill:css("--ink"),
+      "font-size":13,"font-family":css("--mono"),"font-weight":600});
+    lab.textContent = v.toFixed(1)+"%"; g.appendChild(lab);
+    const mo = el("text",{x:bx+w/2,y:H-MB+20,"text-anchor":"middle",fill:css("--ink-3"),
+      "font-size":11,"font-family":css("--mono")});
+    mo.textContent = m+" 26"; g.appendChild(mo);
+    const hit = el("rect",{x:ML+bw*i,y:MT,width:bw,height:ih,fill:"transparent"});
+    hit.addEventListener("mousemove",e=>{ rect.setAttribute("opacity",1);
+      showTip(e,`<b>${m} 2026 vs ${m} 2025</b><div>web.utm.io clicks/day <strong>${v.toFixed(1)}%</strong></div>`); });
+    hit.addEventListener("mouseleave",()=>{ rect.setAttribute("opacity",0.9); hideTip(); });
+    g.appendChild(hit);
+    svg.appendChild(g);
+  });
+  const note = el("text",{x:ML+iw+12,y:MT+16,fill:css("--ink-2"),"font-size":11,
+    "font-family":css("--mono")});
+  note.textContent = "gap closing"; svg.appendChild(note);
+}
+
+function drawAll(){
+  lineChart("ch-a","lg-a",MONTHS_A,SERIES_A,{markerIndex:12,markerLabel:"JAN 2026",unit:"sessions / day"});
+  lineChart("ch-b","lg-b",MONTHS_B,SERIES_B,{markerIndex:9,markerLabel:"KICKOFF",unit:"clicks / day"});
+  gapChart();
+}
+drawAll();
+addEventListener("resize", ()=>{ hideTip(); });
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawAll);
+new MutationObserver(drawAll).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+</script>
+
+<style>.mut{color:var(--ink-3);font-weight:400}</style>
+</body>
+</html>
