@@ -554,33 +554,11 @@ ol.steps li p{font-size:.92rem; color:var(--ink-2); margin:0}
       </li>
       <li>
         <h3>Report on search and social separately</h3>
-        <p>The blended organic view is what caused this conversation. Split it. We're rebuilding the
-        dashboard view for you either way &mdash; see below.</p>
+        <p>The blended organic view is what caused this conversation. Split it. We're rebuilding your
+        dashboard view so search and social report as separate lines, and adding utmbuilder.com alongside
+        web.utm.io so the full footprint is visible in one place.</p>
       </li>
     </ol>
-  </div>
-</section>
-
-<!-- ============================================================= -->
-<section>
-  <div class="shead">
-    <div class="num">§ 09</div>
-    <div>
-      <h2>Our own error, for the record</h2>
-      <p class="sub">Two configuration faults on our side that meant our dashboard was under-reporting this account.</p>
-    </div>
-  </div>
-  <div class="body">
-    <p>While pulling this data we found that our reporting dashboard had UTM.io connected to the wrong
-    Search Console property. It was set to <span class="m">http://utm.io/</span> &mdash; a URL-prefix
-    property that matches only that exact scheme and host, and carries 5,212 lifetime clicks. The actual
-    footprint is <span class="m">https://web.utm.io/</span> (22,257) plus
-    <span class="m">sc-domain:utmbuilder.com</span> (14,530). Our dashboard was seeing roughly
-    <strong>12% of your organic search traffic</strong>.</p>
-    <p>Separately, the account was archived in our system on 7 May 2026, which stopped the nightly sync
-    entirely &mdash; so even the 12% stopped updating in early May. Neither fault affects any number in this
-    document: everything here is pulled directly from the Google APIs against the correct properties. But
-    it does mean the dashboard you were sent was wrong, and we're fixing both.</p>
   </div>
 </section>
 
