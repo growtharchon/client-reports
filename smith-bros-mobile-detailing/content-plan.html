@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SB Mobile Detailing - Content Plan & 90-Day Implementation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface-2: #232735;
+    --border: #2e3345;
+    --text: #e8eaf0;
+    --text-muted: #8b90a0;
+    --accent: #6366f1;
+    --accent-light: #818cf8;
+    --green: #22c55e;
+    --green-dim: rgba(34, 197, 94, 0.12);
+    --blue: #3b82f6;
+    --blue-dim: rgba(59, 130, 246, 0.12);
+    --amber: #f59e0b;
+    --amber-dim: rgba(245, 158, 11, 0.12);
+    --pink: #ec4899;
+    --pink-dim: rgba(236, 72, 153, 0.12);
+    --cyan: #06b6d4;
+    --cyan-dim: rgba(6, 182, 212, 0.12);
+    --purple: #a855f7;
+    --purple-dim: rgba(168, 85, 247, 0.12);
+    --red: #ef4444;
+    --red-dim: rgba(239, 68, 68, 0.12);
+    --orange: #f97316;
+    --orange-dim: rgba(249, 115, 22, 0.12);
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    padding: 80px 0 60px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 100px; padding: 6px 16px; font-size: 13px;
+    color: var(--accent-light); font-weight: 500; margin-bottom: 24px;
+  }
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green); box-shadow: 0 0 8px var(--green);
+  }
+  .hero h1 {
+    font-size: 48px; font-weight: 800; line-height: 1.1;
+    letter-spacing: -1.5px; margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero p { font-size: 18px; color: var(--text-muted); max-width: 600px; }
+
+  /* Stats bar */
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px; margin: 48px 0 60px;
+  }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: var(--accent); }
+  .stat-number {
+    font-size: 36px; font-weight: 800; letter-spacing: -1px;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 13px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-card:nth-child(1) .stat-number { color: var(--accent-light); }
+  .stat-card:nth-child(2) .stat-number { color: var(--green); }
+  .stat-card:nth-child(3) .stat-number { color: var(--blue); }
+  .stat-card:nth-child(4) .stat-number { color: var(--amber); }
+  .stat-card:nth-child(5) .stat-number { color: var(--pink); }
+
+  /* Section headers */
+  .section {
+    margin-bottom: 64px;
+  }
+  .section-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 32px; padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
+  .section-header .count {
+    margin-left: auto; background: var(--surface-2);
+    border-radius: 100px; padding: 4px 14px; font-size: 13px;
+    color: var(--text-muted); font-weight: 600;
+  }
+
+  /* Tables */
+  .table-wrap {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead { background: var(--surface-2); }
+  th {
+    text-align: left; padding: 14px 20px; font-size: 11px;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+    color: var(--text-muted); white-space: nowrap;
+  }
+  td {
+    padding: 14px 20px; font-size: 14px; border-top: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:hover td { background: rgba(99,102,241,0.04); }
+  .page-num {
+    font-weight: 700; font-size: 13px; color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .tag {
+    display: inline-block; padding: 3px 10px; border-radius: 6px;
+    font-size: 12px; font-weight: 600; white-space: nowrap;
+  }
+  .tag-optimize { background: var(--blue-dim); color: var(--blue); }
+  .tag-nearme { background: var(--green-dim); color: var(--green); }
+  .tag-blog { background: var(--purple-dim); color: var(--purple); }
+  .tag-ceramic { background: var(--cyan-dim); color: var(--cyan); }
+  .tag-detailing { background: var(--amber-dim); color: var(--amber); }
+  .tag-tinting { background: var(--pink-dim); color: var(--pink); }
+  .tag-ppf { background: var(--orange-dim); color: var(--orange); }
+  .tag-motorcycle { background: var(--green-dim); color: var(--green); }
+  .tag-boat { background: var(--blue-dim); color: var(--blue); }
+  .tag-rv { background: var(--red-dim); color: var(--red); }
+  .tag-fleet { background: rgba(148,163,184,0.12); color: #94a3b8; }
+  .url { color: var(--accent-light); font-size: 13px; font-family: 'SF Mono', 'Fira Code', monospace; }
+  .kw { font-weight: 500; }
+  .seo-title { color: var(--text-muted); font-size: 13px; font-style: italic; }
+  .char-count {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    color: var(--green); background: var(--green-dim);
+    padding: 1px 6px; border-radius: 4px; margin-left: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* 90-day plan */
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 15px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, var(--accent), var(--green), var(--amber));
+    border-radius: 2px;
+  }
+  .phase {
+    position: relative; margin-bottom: 48px;
+  }
+  .phase-dot {
+    position: absolute; left: -33px; top: 6px;
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 3px solid; background: var(--bg);
+  }
+  .phase:nth-child(1) .phase-dot { border-color: var(--accent); box-shadow: 0 0 12px rgba(99,102,241,0.4); }
+  .phase:nth-child(2) .phase-dot { border-color: var(--blue); box-shadow: 0 0 12px rgba(59,130,246,0.4); }
+  .phase:nth-child(3) .phase-dot { border-color: var(--green); box-shadow: 0 0 12px rgba(34,197,94,0.4); }
+  .phase-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px;
+  }
+  .phase-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 8px;
+  }
+  .phase:nth-child(1) .phase-label { color: var(--accent-light); }
+  .phase:nth-child(2) .phase-label { color: var(--blue); }
+  .phase:nth-child(3) .phase-label { color: var(--green); }
+  .phase-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .phase-card .dates { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+  .phase-tasks { list-style: none; }
+  .phase-tasks li {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 0; border-top: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .phase-tasks li:first-child { border-top: none; }
+  .task-check {
+    width: 18px; height: 18px; border-radius: 5px;
+    border: 2px solid var(--border); flex-shrink: 0; margin-top: 2px;
+  }
+  .week-label {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    padding: 2px 8px; border-radius: 4px; margin-right: 6px;
+    white-space: nowrap;
+  }
+  .phase:nth-child(1) .week-label { background: rgba(99,102,241,0.15); color: var(--accent-light); }
+  .phase:nth-child(2) .week-label { background: rgba(59,130,246,0.15); color: var(--blue); }
+  .phase:nth-child(3) .week-label { background: rgba(34,197,94,0.15); color: var(--green); }
+
+  /* Summary boxes */
+  .summary-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px; margin-top: 32px;
+  }
+  .summary-box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px;
+  }
+  .summary-box h4 {
+    font-size: 14px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 16px; color: var(--text-muted);
+  }
+  .summary-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 0; border-top: 1px solid var(--border);
+  }
+  .summary-row:first-of-type { border-top: none; }
+  .summary-row .label { font-size: 14px; }
+  .summary-row .value { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+  /* Cadence */
+  .cadence-bar {
+    display: flex; gap: 4px; height: 32px; border-radius: 8px; overflow: hidden;
+    margin: 16px 0 8px;
+  }
+  .cadence-seg {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: #fff;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center; padding: 48px 0; margin-top: 48px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted); font-size: 13px;
+  }
+
+  /* Filter tabs */
+  .filter-tabs {
+    display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .filter-tab {
+    padding: 8px 16px; border-radius: 8px; font-size: 13px;
+    font-weight: 600; cursor: pointer; border: 1px solid var(--border);
+    background: var(--surface); color: var(--text-muted);
+    transition: all 0.2s;
+  }
+  .filter-tab:hover, .filter-tab.active {
+    border-color: var(--accent); color: var(--accent-light);
+    background: rgba(99,102,241,0.08);
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Content Plan Ready</div>
+    <h1>SB Mobile Detailing<br>Content Plan</h1>
+    <p>148 pages across service page optimization, near-me pages, and blog content. Complete 90-day implementation roadmap included.</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div class="stat-number">148</div>
+      <div class="stat-label">Total Pages</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">53</div>
+      <div class="stat-label">Pages to Optimize</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">8</div>
+      <div class="stat-label">Near Me Pages</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">87</div>
+      <div class="stat-label">Blog Posts</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">8</div>
+      <div class="stat-label">Service Categories</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: OPTIMIZE PAGES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: var(--blue-dim); color: var(--blue);">&#9881;</div>
+      <div>
+        <h2>Pages to Optimize</h2>
+        <div style="font-size:13px; color:var(--text-muted); margin-top:2px;">Existing location service pages needing content optimization</div>
+      </div>
+      <span class="count">53 pages</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:50px">#</th>
+            <th>Service Category</th>
+            <th>Location</th>
+            <th>URL</th>
+            <th>Primary Keyword</th>
+            <th>SEO Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="page-num">1</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td>Carlsbad</td><td class="url">/mobile-ceramic-coating/carlsbad</td><td class="kw">ceramic coating carlsbad</td><td class="seo-title">CUSTOM Ceramic Coating in Carlsbad (Licensed & Insured)</td></tr>
+          <tr><td class="page-num">2</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td>Encinitas</td><td class="url">/mobile-ceramic-coating/encinitas</td><td class="kw">ceramic coating encinitas</td><td class="seo-title">CUSTOM Ceramic Coating in Encinitas (Licensed & Insured)</td></tr>
+          <tr><td class="page-num">3</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td>Rancho Santa Fe</td><td class="url">/mobile-ceramic-coating/rancho-santa-fe</td><td class="kw">ceramic coating rancho santa fe</td><td class="seo-title">CUSTOM Ceramic Coating in Rancho Santa Fe (Licensed & Insured)</td></tr>
+          <tr><td class="page-num">4</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td>Valley Center</td><td class="url">/mobile-ceramic-coating/valley-center</td><td class="kw">ceramic coating valley center</td><td class="seo-title">CUSTOM Ceramic Coating in Valley Center (Licensed & Insured)</td></tr>
+          <tr><td class="page-num">5</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>4S Ranch</td><td class="url">/mobile-detailing/4s-ranch</td><td class="kw">mobile detailing 4s ranch</td><td class="seo-title">PREMIER Mobile Auto Detailing in 4S Ranch (Free Quotes)</td></tr>
+          <tr><td class="page-num">6</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Cardiff</td><td class="url">/mobile-detailing/cardiff</td><td class="kw">mobile detailing cardiff by the sea</td><td class="seo-title">PREMIER Mobile Auto Detailing in Cardiff by the Sea (Free Quotes)</td></tr>
+          <tr><td class="page-num">7</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Carlsbad</td><td class="url">/mobile-detailing/carlsbad</td><td class="kw">mobile detailing carlsbad</td><td class="seo-title">PREMIER Mobile Auto Detailing in Carlsbad (Free Quotes)</td></tr>
+          <tr><td class="page-num">8</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Carmel Valley</td><td class="url">/mobile-detailing/carmel-valley</td><td class="kw">mobile detailing carmel valley</td><td class="seo-title">PREMIER Mobile Auto Detailing in Carmel Valley (Free Quotes)</td></tr>
+          <tr><td class="page-num">9</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Coronado</td><td class="url">/mobile-detailing/coronado-ca</td><td class="kw">mobile detailing coronado</td><td class="seo-title">PREMIER Mobile Auto Detailing in Coronado (Free Quotes)</td></tr>
+          <tr><td class="page-num">10</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Del Mar</td><td class="url">/mobile-detailing/del-mar</td><td class="kw">mobile detailing del mar</td><td class="seo-title">PREMIER Mobile Auto Detailing in Del Mar (Free Quotes)</td></tr>
+          <tr><td class="page-num">11</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>East Lake</td><td class="url">/mobile-detailing/east-lake</td><td class="kw">mobile detailing east lake</td><td class="seo-title">PREMIER Mobile Auto Detailing in East Lake (Free Quotes)</td></tr>
+          <tr><td class="page-num">12</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>El Cajon</td><td class="url">/mobile-detailing/el-cajon</td><td class="kw">mobile detailing el cajon</td><td class="seo-title">PREMIER Mobile Auto Detailing in El Cajon (Free Quotes)</td></tr>
+          <tr><td class="page-num">13</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Encinitas</td><td class="url">/mobile-detailing/encinitas</td><td class="kw">mobile detailing encinitas</td><td class="seo-title">PREMIER Mobile Auto Detailing in Encinitas (Free Quotes)</td></tr>
+          <tr><td class="page-num">14</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Escondido</td><td class="url">/mobile-detailing/escondido</td><td class="kw">mobile detailing escondido</td><td class="seo-title">PREMIER Mobile Auto Detailing in Escondido (Free Quotes)</td></tr>
+          <tr><td class="page-num">15</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Fallbrook</td><td class="url">/mobile-detailing/fallbrook-ca</td><td class="kw">mobile detailing fallbrook</td><td class="seo-title">PREMIER Mobile Auto Detailing in Fallbrook (Free Quotes)</td></tr>
+          <tr><td class="page-num">16</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Lakeside</td><td class="url">/mobile-detailing/lakeside</td><td class="kw">mobile detailing lakeside</td><td class="seo-title">PREMIER Mobile Auto Detailing in Lakeside (Free Quotes)</td></tr>
+          <tr><td class="page-num">17</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Mira Mar</td><td class="url">/mobile-detailing/mira-mar</td><td class="kw">mobile detailing mira mar</td><td class="seo-title">PREMIER Mobile Auto Detailing in Mira Mar (Free Quotes)</td></tr>
+          <tr><td class="page-num">18</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Mira Mesa</td><td class="url">/mobile-detailing/mira-mesa</td><td class="kw">mobile detailing mira mesa</td><td class="seo-title">PREMIER Mobile Auto Detailing in Mira Mesa (Free Quotes)</td></tr>
+          <tr><td class="page-num">19</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Oceanside</td><td class="url">/mobile-detailing/oceanside</td><td class="kw">mobile detailing oceanside</td><td class="seo-title">PREMIER Mobile Auto Detailing in Oceanside (Free Quotes)</td></tr>
+          <tr><td class="page-num">20</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Pacific Beach</td><td class="url">/mobile-detailing/pacific-beach</td><td class="kw">mobile detailing pacific beach</td><td class="seo-title">PREMIER Mobile Auto Detailing in Pacific Beach (Free Quotes)</td></tr>
+          <tr><td class="page-num">21</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Poway</td><td class="url">/mobile-detailing/poway</td><td class="kw">mobile detailing poway</td><td class="seo-title">PREMIER Mobile Auto Detailing in Poway (Free Quotes)</td></tr>
+          <tr><td class="page-num">22</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Ramona</td><td class="url">/mobile-detailing/ramona</td><td class="kw">mobile detailing ramona</td><td class="seo-title">PREMIER Mobile Auto Detailing in Ramona (Free Quotes)</td></tr>
+          <tr><td class="page-num">23</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Rancho Bernardo</td><td class="url">/mobile-detailing/rancho-bernardo</td><td class="kw">mobile detailing rancho bernardo</td><td class="seo-title">PREMIER Mobile Auto Detailing in Rancho Bernardo (Free Quotes)</td></tr>
+          <tr><td class="page-num">24</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Rancho Santa Fe</td><td class="url">/mobile-detailing/rancho-santa-fe</td><td class="kw">mobile detailing rancho santa fe</td><td class="seo-title">PREMIER Mobile Auto Detailing in Rancho Santa Fe (Free Quotes)</td></tr>
+          <tr><td class="page-num">25</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>San Marcos</td><td class="url">/mobile-detailing/san-marcos</td><td class="kw">mobile detailing san marcos</td><td class="seo-title">PREMIER Mobile Auto Detailing in San Marcos (Free Quotes)</td></tr>
+          <tr><td class="page-num">26</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Santee</td><td class="url">/mobile-detailing/santee</td><td class="kw">mobile detailing santee</td><td class="seo-title">PREMIER Mobile Auto Detailing in Santee (Free Quotes)</td></tr>
+          <tr><td class="page-num">27</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Scripps Ranch</td><td class="url">/mobile-detailing/scripps-ranch</td><td class="kw">mobile detailing scripps ranch</td><td class="seo-title">PREMIER Mobile Auto Detailing in Scripps Ranch (Free Quotes)</td></tr>
+          <tr><td class="page-num">28</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Solana Beach</td><td class="url">/mobile-detailing/solana-beach</td><td class="kw">mobile detailing solana beach</td><td class="seo-title">PREMIER Mobile Auto Detailing in Solana Beach (Free Quotes)</td></tr>
+          <tr><td class="page-num">29</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Sorrento Valley</td><td class="url">/mobile-detailing/sorrento-valley</td><td class="kw">mobile detailing sorrento valley</td><td class="seo-title">PREMIER Mobile Auto Detailing in Sorrento Valley (Free Quotes)</td></tr>
+          <tr><td class="page-num">30</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Valley Center</td><td class="url">/mobile-detailing/valley-center</td><td class="kw">mobile detailing valley center</td><td class="seo-title">PREMIER Mobile Auto Detailing in Valley Center (Free Quotes)</td></tr>
+          <tr><td class="page-num">31</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td>Vista</td><td class="url">/mobile-detailing/vista</td><td class="kw">mobile detailing vista</td><td class="seo-title">PREMIER Mobile Auto Detailing in Vista (Free Quotes)</td></tr>
+          <tr><td class="page-num">32</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Cardiff</td><td class="url">/mobile-window-tinting/cardiff</td><td class="kw">window tinting cardiff by the sea</td><td class="seo-title">BEST Window Tinting in Cardiff by the Sea (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">33</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Carlsbad</td><td class="url">/mobile-window-tinting/carlsbad</td><td class="kw">window tinting carlsbad</td><td class="seo-title">BEST Window Tinting in Carlsbad (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">34</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Chula Vista</td><td class="url">/mobile-window-tinting/chula-vista</td><td class="kw">window tinting chula vista</td><td class="seo-title">BEST Window Tinting in Chula Vista (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">35</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Downtown</td><td class="url">/mobile-window-tinting/downtown</td><td class="kw">window tinting downtown</td><td class="seo-title">BEST Window Tinting in Downtown (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">36</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>El Cajon</td><td class="url">/mobile-window-tinting/el-cajon</td><td class="kw">window tinting el cajon</td><td class="seo-title">BEST Window Tinting in El Cajon (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">37</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Encinitas</td><td class="url">/mobile-window-tinting/encinitas</td><td class="kw">window tinting encinitas</td><td class="seo-title">BEST Window Tinting in Encinitas (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">38</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Escondido</td><td class="url">/mobile-window-tinting/escondido</td><td class="kw">window tinting escondido</td><td class="seo-title">BEST Window Tinting in Escondido (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">39</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Fallbrook</td><td class="url">/mobile-window-tinting/fallbrook</td><td class="kw">window tinting fallbrook</td><td class="seo-title">BEST Window Tinting in Fallbrook (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">40</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Kearny Mesa</td><td class="url">/mobile-window-tinting/kearny-mesa</td><td class="kw">window tinting kearny mesa</td><td class="seo-title">BEST Window Tinting in Kearny Mesa (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">41</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Miramar</td><td class="url">/mobile-window-tinting/miramar</td><td class="kw">window tinting miramar</td><td class="seo-title">BEST Window Tinting in Miramar (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">42</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Mira Mesa</td><td class="url">/mobile-window-tinting/mira-mesa</td><td class="kw">window tinting mira mesa</td><td class="seo-title">BEST Window Tinting in Mira Mesa (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">43</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Oceanside</td><td class="url">/mobile-window-tinting/oceanside</td><td class="kw">window tinting oceanside</td><td class="seo-title">BEST Window Tinting in Oceanside (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">44</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Poway</td><td class="url">/mobile-window-tinting/poway</td><td class="kw">window tinting poway</td><td class="seo-title">BEST Window Tinting in Poway (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">45</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Rancho Bernardo</td><td class="url">/mobile-window-tinting/rancho-bernardo</td><td class="kw">window tinting rancho bernardo</td><td class="seo-title">BEST Window Tinting in Rancho Bernardo (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">46</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>San Marcos</td><td class="url">/mobile-window-tinting/san-marcos</td><td class="kw">window tinting san marcos</td><td class="seo-title">BEST Window Tinting in San Marcos (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">47</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Solana Beach</td><td class="url">/mobile-window-tinting/solana-beach</td><td class="kw">window tinting solana beach</td><td class="seo-title">BEST Window Tinting in Solana Beach (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">48</td><td><span class="tag tag-tinting">Window Tinting</span></td><td>Vista</td><td class="url">/mobile-window-tinting/vista</td><td class="kw">window tinting vista</td><td class="seo-title">BEST Window Tinting in Vista (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">49</td><td><span class="tag tag-ppf">Paint Protection Film</span></td><td>Carlsbad</td><td class="url">/paint-protection-film/carlsbad</td><td class="kw">paint protection film carlsbad</td><td class="seo-title">TRUSTED Paint Protection Film in Carlsbad (1,000+ Reviews)</td></tr>
+          <tr><td class="page-num">50</td><td><span class="tag tag-ppf">Paint Protection Film</span></td><td>Del Mar</td><td class="url">/paint-protection-film/del-mar</td><td class="kw">paint protection film del mar</td><td class="seo-title">TRUSTED Paint Protection Film in Del Mar (1,000+ Reviews)</td></tr>
+          <tr><td class="page-num">51</td><td><span class="tag tag-ppf">Paint Protection Film</span></td><td>Escondido</td><td class="url">/paint-protection-film/escondido</td><td class="kw">paint protection film escondido</td><td class="seo-title">TRUSTED Paint Protection Film in Escondido (1,000+ Reviews)</td></tr>
+          <tr><td class="page-num">52</td><td><span class="tag tag-ppf">Paint Protection Film</span></td><td>Mira Mesa</td><td class="url">/paint-protection-film/mira-mesa</td><td class="kw">paint protection film mira mesa</td><td class="seo-title">TRUSTED Paint Protection Film in Mira Mesa (1,000+ Reviews)</td></tr>
+          <tr><td class="page-num">53</td><td><span class="tag tag-ppf">Paint Protection Film</span></td><td>Oceanside</td><td class="url">/paint-protection-film/oceanside</td><td class="kw">paint protection film oceanside</td><td class="seo-title">TRUSTED Paint Protection Film in Oceanside (1,000+ Reviews)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 2: NEAR ME PAGES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: var(--green-dim); color: var(--green);">&#128205;</div>
+      <div>
+        <h2>Near Me Pages</h2>
+        <div style="font-size:13px; color:var(--text-muted); margin-top:2px;">New pages targeting "near me" search intent</div>
+      </div>
+      <span class="count">8 pages</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:50px">#</th>
+            <th>Service Category</th>
+            <th>URL</th>
+            <th>Primary Keyword</th>
+            <th>SEO Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="page-num">54</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/service/mobile-auto-detailing-near-me/</td><td class="kw">mobile auto detailing near me</td><td class="seo-title">PREMIER Mobile Auto Detailing Near Me (Free Quotes)</td></tr>
+          <tr><td class="page-num">55</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/service/ceramic-coating-near-me/</td><td class="kw">ceramic coating near me</td><td class="seo-title">CUSTOM Ceramic Coating Near Me (Licensed & Insured)</td></tr>
+          <tr><td class="page-num">56</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/service/window-tinting-near-me/</td><td class="kw">window tinting near me</td><td class="seo-title">BEST Window Tinting Near Me (Satisfaction Guaranteed)</td></tr>
+          <tr><td class="page-num">57</td><td><span class="tag tag-ppf">Paint Protection Film</span></td><td class="url">/service/paint-protection-film-near-me/</td><td class="kw">paint protection film near me</td><td class="seo-title">TRUSTED Paint Protection Film Near Me (1,000+ Reviews)</td></tr>
+          <tr><td class="page-num">58</td><td><span class="tag tag-motorcycle">Motorcycle Detailing</span></td><td class="url">/service/motorcycle-detailing-near-me/</td><td class="kw">motorcycle detailing near me</td><td class="seo-title">LICENSED Motorcycle Detailing Near Me (30+ Yrs Experience)</td></tr>
+          <tr><td class="page-num">59</td><td><span class="tag tag-boat">Boat Detailing</span></td><td class="url">/service/boat-detailing-near-me/</td><td class="kw">boat detailing near me</td><td class="seo-title">EXPERT Boat Detailing Near Me (Open 7 Days)</td></tr>
+          <tr><td class="page-num">60</td><td><span class="tag tag-rv">RV Detailing</span></td><td class="url">/service/rv-detailing-near-me/</td><td class="kw">rv detailing near me</td><td class="seo-title">RELIABLE RV Detailing Near Me (Since 1994)</td></tr>
+          <tr><td class="page-num">61</td><td><span class="tag tag-fleet">Fleet Detailing</span></td><td class="url">/service/fleet-detailing-near-me/</td><td class="kw">fleet detailing near me</td><td class="seo-title">TOP Fleet Detailing Near Me (5-Star Rated)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 3: BLOG POSTS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: var(--purple-dim); color: var(--purple);">&#9998;</div>
+      <div>
+        <h2>Blog Posts</h2>
+        <div style="font-size:13px; color:var(--text-muted); margin-top:2px;">SEO-optimized blog content targeting informational keywords</div>
+      </div>
+      <span class="count">87 posts</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:50px">#</th>
+            <th>Category</th>
+            <th>URL</th>
+            <th>Primary Keyword</th>
+            <th>SEO Title <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;opacity:0.6">(50-60 chars)</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="page-num">62</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/20-window-tint-vs-35/</td><td class="kw">20 window tint vs 35</td><td class="seo-title">20 Window Tint vs 35: Which to Pick? (w/ Real Photos)</td></tr>
+          <tr><td class="page-num">63</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/5-vs-20-window-tint/</td><td class="kw">5 vs 20 window tint</td><td class="seo-title">5 vs 20 Window Tint: Key Differences (& How to Pick)</td></tr>
+          <tr><td class="page-num">64</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/30-vs-20-tint/</td><td class="kw">30 vs 20 tint</td><td class="seo-title">30 vs 20 Tint: Side-by-Side Comparison (w/ Photos)</td></tr>
+          <tr><td class="page-num">65</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/50-vs-70-windshield-tint/</td><td class="kw">50 vs 70 windshield tint</td><td class="seo-title">50 vs 70 Windshield Tint: Which One to Get? (& Why)</td></tr>
+          <tr><td class="page-num">66</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/70-tint-vs-no-tint/</td><td class="kw">70 tint vs no tint</td><td class="seo-title">70 Tint vs No Tint: Is the Difference Worth It? (Pics)</td></tr>
+          <tr><td class="page-num">67</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/50-tint-vs-no-tint/</td><td class="kw">50 tint vs no tint</td><td class="seo-title">50 Tint vs No Tint: Can You See the Difference? (Pics)</td></tr>
+          <tr><td class="page-num">68</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/ceramic-tint-vs-regular-tint/</td><td class="kw">Ceramic tint vs regular tint</td><td class="seo-title">Ceramic Tint vs Regular Tint: Full Comparison (& Cost)</td></tr>
+          <tr><td class="page-num">69</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/ceramic-tint-vs-metallic/</td><td class="kw">Ceramic tint vs metallic</td><td class="seo-title">Ceramic Tint vs Metallic Tint: Which Is Better? (& Why)</td></tr>
+          <tr><td class="page-num">70</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/carbon-vs-ceramic-tint/</td><td class="kw">Carbon vs ceramic tint</td><td class="seo-title">Carbon vs Ceramic Tint: Real Differences (& Pricing)</td></tr>
+          <tr><td class="page-num">71</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/ceramic-coating-vs-teflon-coating/</td><td class="kw">Ceramic coating vs teflon coating</td><td class="seo-title">Ceramic Coating vs Teflon Coating: Which Lasts Longer?</td></tr>
+          <tr><td class="page-num">72</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/ceramic-coating-vs-ppf/</td><td class="kw">Ceramic coating vs PPF</td><td class="seo-title">Ceramic Coating vs PPF: Which Do You Need? (& Why)</td></tr>
+          <tr><td class="page-num">73</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/ceramic-coating-vs-wrap/</td><td class="kw">Ceramic coating vs wrap</td><td class="seo-title">Ceramic Coating vs Wrap: Key Differences (& Costs)</td></tr>
+          <tr><td class="page-num">74</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/graphene-vs-ceramic-coating/</td><td class="kw">Graphene vs ceramic coating</td><td class="seo-title">Graphene vs Ceramic Coating: Which One Is Better? (2026)</td></tr>
+          <tr><td class="page-num">75</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/nano-ceramic-vs-ceramic-tint/</td><td class="kw">Nano ceramic vs ceramic tint</td><td class="seo-title">Nano Ceramic vs Ceramic Tint: Is There a Difference?</td></tr>
+          <tr><td class="page-num">76</td><td><span class="tag tag-ppf">Paint Protection Film</span></td><td class="url">/blog/ppf-vs-vinyl-wrap/</td><td class="kw">PPF vs vinyl wrap</td><td class="seo-title">PPF vs Vinyl Wrap: Which Protects Your Car Better?</td></tr>
+          <tr><td class="page-num">77</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/20-tint-vs-15/</td><td class="kw">20 tint vs 15</td><td class="seo-title">20 Tint vs 15: Side-by-Side Comparison (w/ Photos)</td></tr>
+          <tr><td class="page-num">78</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/soft-touch-vs-touchless-car-wash/</td><td class="kw">Soft touch vs touchless car wash</td><td class="seo-title">Soft Touch vs Touchless Car Wash (Which Is Safer?)</td></tr>
+          <tr><td class="page-num">79</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/wax-vs-ceramic-coating/</td><td class="kw">Wax vs ceramic coating</td><td class="seo-title">Wax vs Ceramic Coating: Is the Upgrade Worth It? (2026)</td></tr>
+          <tr><td class="page-num">80</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/mobile-car-wash-vs-detailing/</td><td class="kw">Mobile car wash vs detailing</td><td class="seo-title">Mobile Car Wash vs Detailing (What You Actually Need)</td></tr>
+          <tr><td class="page-num">81</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/ceramic-tint-vs-regular-tint-at-night/</td><td class="kw">Ceramic tint vs regular tint at night</td><td class="seo-title">Ceramic Tint vs Regular Tint at Night (w/ Real Photos)</td></tr>
+          <tr><td class="page-num">82</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/car-wash-vs-hand-wash/</td><td class="kw">Car wash vs hand wash</td><td class="seo-title">Car Wash vs Hand Wash: Which Is Better for Your Car?</td></tr>
+          <tr><td class="page-num">83</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/best-car-wax-for-black-cars/</td><td class="kw">Best car wax for black cars</td><td class="seo-title">Best Car Wax for Black Cars (Top 5 Picks for 2026)</td></tr>
+          <tr><td class="page-num">84</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/car-paint-oxidation/</td><td class="kw">Car paint oxidation</td><td class="seo-title">Car Paint Oxidation: How to Fix & Prevent It (Guide)</td></tr>
+          <tr><td class="page-num">85</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/enzyme-cleaner-for-vomit-smell/</td><td class="kw">Enzyme cleaner for vomit smell</td><td class="seo-title">Enzyme Cleaner for Vomit Smell in Cars (Best Picks)</td></tr>
+          <tr><td class="page-num">86</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/best-auto-leather-conditioner/</td><td class="kw">Best auto leather conditioner</td><td class="seo-title">Best Auto Leather Conditioner (Top 5 Picks for 2026)</td></tr>
+          <tr><td class="page-num">87</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/how-to-keep-car-cool-in-summer/</td><td class="kw">How to keep car cool in summer</td><td class="seo-title">How to Keep Your Car Cool in Summer (7 Pro Tips 2026)</td></tr>
+          <tr><td class="page-num">88</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/best-ceramic-coating-brands/</td><td class="kw">Best ceramic coating brands</td><td class="seo-title">Best Ceramic Coating Brands (Top 5 Ranked for 2026)</td></tr>
+          <tr><td class="page-num">89</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/is-ceramic-coating-worth-the-money/</td><td class="kw">Is ceramic coating worth the money</td><td class="seo-title">Is Ceramic Coating Worth the Money? (Honest Answer)</td></tr>
+          <tr><td class="page-num">90</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/can-you-take-a-ceramic-coated-car-through-a-car-wash/</td><td class="kw">Can you take a ceramic coated car through a car wash</td><td class="seo-title">Ceramic Coated Car Through a Car Wash (Safe or Not?)</td></tr>
+          <tr><td class="page-num">91</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/how-long-will-a-ceramic-coating-last-on-a-car/</td><td class="kw">How long will a ceramic coating last on a car</td><td class="seo-title">How Long Does Ceramic Coating Last on a Car? (Data)</td></tr>
+          <tr><td class="page-num">92</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/what-is-the-highest-quality-ceramic-coating/</td><td class="kw">What is the highest quality ceramic coating</td><td class="seo-title">Highest Quality Ceramic Coating in 2026 (Top 5 Picks)</td></tr>
+          <tr><td class="page-num">93</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/can-auto-detailers-remove-scratches/</td><td class="kw">Can auto detailers remove scratches</td><td class="seo-title">Can Auto Detailers Remove Scratches? (What to Know)</td></tr>
+          <tr><td class="page-num">94</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/whats-the-best-time-of-year-to-detail/</td><td class="kw">What's the best time of year to detail</td><td class="seo-title">Best Time of Year to Detail Your Car (& Why It Matters)</td></tr>
+          <tr><td class="page-num">95</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/how-much-is-it-to-get-all-four-windows-tinted/</td><td class="kw">How much is it to get all four windows tinted</td><td class="seo-title">How Much to Tint All Four Windows? (2026 Cost Guide)</td></tr>
+          <tr><td class="page-num">96</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/is-a-35-tint-legal-in-california/</td><td class="kw">Is a 35% tint legal in California</td><td class="seo-title">Is a 35% Tint Legal in California? (2026 Law Explained)</td></tr>
+          <tr><td class="page-num">97</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/what-is-the-darkest-legal-tint-in-california/</td><td class="kw">What is the darkest legal tint in California</td><td class="seo-title">Darkest Legal Tint in California: 2026 Laws Explained</td></tr>
+          <tr><td class="page-num">98</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/how-much-does-it-cost-to-tint-each-window/</td><td class="kw">How much does it cost to tint each window</td><td class="seo-title">How Much to Tint Each Window (2026 Cost Breakdown)</td></tr>
+          <tr><td class="page-num">99</td><td><span class="tag tag-ppf">Paint Protection Film</span></td><td class="url">/blog/is-paint-protection-film-worth-it/</td><td class="kw">Is paint protection film worth it</td><td class="seo-title">Is Paint Protection Film Worth It? (Honest Review)</td></tr>
+          <tr><td class="page-num">100</td><td><span class="tag tag-ppf">Paint Protection Film</span></td><td class="url">/blog/what-is-the-best-paint-protection-film-on-the-market/</td><td class="kw">What is the best paint protection film on the market</td><td class="seo-title">Best Paint Protection Film on the Market (Top Picks)</td></tr>
+          <tr><td class="page-num">101</td><td><span class="tag tag-ppf">Paint Protection Film</span></td><td class="url">/blog/what-is-the-lifespan-of-paint-protection-film/</td><td class="kw">What is the lifespan of paint protection film</td><td class="seo-title">Paint Protection Film Lifespan: How Long Does It Last?</td></tr>
+          <tr><td class="page-num">102</td><td><span class="tag tag-ppf">Paint Protection Film</span></td><td class="url">/blog/what-is-the-average-cost-to-ppf-a-car/</td><td class="kw">What is the average cost to PPF a car</td><td class="seo-title">Average Cost to PPF a Car in 2026 (Full Price Guide)</td></tr>
+          <tr><td class="page-num">103</td><td><span class="tag tag-ppf">Paint Protection Film</span></td><td class="url">/blog/can-i-go-through-a-carwash-with-ppf/</td><td class="kw">Can I go through a carwash with PPF</td><td class="seo-title">Can You Go Through a Carwash w/ PPF? (Quick Answer)</td></tr>
+          <tr><td class="page-num">104</td><td><span class="tag tag-motorcycle">Motorcycle Detailing</span></td><td class="url">/blog/how-long-does-motorcycle-detailing-take/</td><td class="kw">How long does motorcycle detailing take</td><td class="seo-title">How Long Does Motorcycle Detailing Take? (Answered)</td></tr>
+          <tr><td class="page-num">105</td><td><span class="tag tag-motorcycle">Motorcycle Detailing</span></td><td class="url">/blog/how-much-should-a-motorcycle-detail-cost/</td><td class="kw">How much should a motorcycle detail cost</td><td class="seo-title">Motorcycle Detail Cost: 2026 San Diego Price Guide</td></tr>
+          <tr><td class="page-num">106</td><td><span class="tag tag-motorcycle">Motorcycle Detailing</span></td><td class="url">/blog/is-bike-detailing-worth-the-cost/</td><td class="kw">Is bike detailing worth the cost</td><td class="seo-title">Is Bike Detailing Worth the Cost? (Honest Breakdown)</td></tr>
+          <tr><td class="page-num">107</td><td><span class="tag tag-motorcycle">Motorcycle Detailing</span></td><td class="url">/blog/what-does-motorcycle-detailing-include/</td><td class="kw">What does motorcycle detailing include</td><td class="seo-title">What Does Motorcycle Detailing Include? (Full List)</td></tr>
+          <tr><td class="page-num">108</td><td><span class="tag tag-motorcycle">Motorcycle Detailing</span></td><td class="url">/blog/is-ceramic-coating-worth-it-on-a-motorcycle/</td><td class="kw">Is ceramic coating worth it on a motorcycle</td><td class="seo-title">Ceramic Coating on a Motorcycle: Is It Worth It? (2026)</td></tr>
+          <tr><td class="page-num">109</td><td><span class="tag tag-motorcycle">Motorcycle Detailing</span></td><td class="url">/blog/is-detailing-good-for-a-motorcycle/</td><td class="kw">Is detailing good for a motorcycle</td><td class="seo-title">Is Detailing Good for a Motorcycle? (Pros, Cons & Cost)</td></tr>
+          <tr><td class="page-num">110</td><td><span class="tag tag-boat">Boat Detailing</span></td><td class="url">/blog/what-is-the-average-cost-to-detail-a-boat/</td><td class="kw">What is the average cost to detail a boat</td><td class="seo-title">Average Cost to Detail a Boat in 2026 (Price Guide)</td></tr>
+          <tr><td class="page-num">111</td><td><span class="tag tag-boat">Boat Detailing</span></td><td class="url">/blog/is-boat-detailing-worth-it/</td><td class="kw">Is boat detailing worth it</td><td class="seo-title">Is Boat Detailing Worth It? (What You Get & Costs)</td></tr>
+          <tr><td class="page-num">112</td><td><span class="tag tag-boat">Boat Detailing</span></td><td class="url">/blog/what-does-a-full-boat-detail-include/</td><td class="kw">What does a full boat detail include</td><td class="seo-title">What Does a Full Boat Detail Include? (Full Checklist)</td></tr>
+          <tr><td class="page-num">113</td><td><span class="tag tag-boat">Boat Detailing</span></td><td class="url">/blog/how-long-does-it-take-to-detail-a-boat/</td><td class="kw">How long does it take to detail a boat</td><td class="seo-title">How Long Does It Take to Detail a Boat? (By Boat Size)</td></tr>
+          <tr><td class="page-num">114</td><td><span class="tag tag-boat">Boat Detailing</span></td><td class="url">/blog/how-often-should-a-boat-be-detailed/</td><td class="kw">How often should a boat be detailed</td><td class="seo-title">How Often Should a Boat Be Detailed? (Quick Guide)</td></tr>
+          <tr><td class="page-num">115</td><td><span class="tag tag-rv">RV Detailing</span></td><td class="url">/blog/how-long-does-it-take-to-detail-an-rv/</td><td class="kw">How long does it take to detail an RV</td><td class="seo-title">How Long Does It Take to Detail an RV? (By RV Size)</td></tr>
+          <tr><td class="page-num">116</td><td><span class="tag tag-rv">RV Detailing</span></td><td class="url">/blog/what-is-rv-detailing-service/</td><td class="kw">What is RV detailing service</td><td class="seo-title">What Is RV Detailing Service? (& What to Expect in 2026)</td></tr>
+          <tr><td class="page-num">117</td><td><span class="tag tag-rv">RV Detailing</span></td><td class="url">/blog/how-much-does-rv-detailing-cost-per-foot/</td><td class="kw">How much does RV detailing cost per foot</td><td class="seo-title">RV Detailing Cost Per Foot: Full 2026 Price Breakdown</td></tr>
+          <tr><td class="page-num">118</td><td><span class="tag tag-rv">RV Detailing</span></td><td class="url">/blog/how-much-does-it-cost-to-wax-an-rv/</td><td class="kw">How much does it cost to wax an RV</td><td class="seo-title">How Much Does It Cost to Wax an RV? (2026 Pricing)</td></tr>
+          <tr><td class="page-num">119</td><td><span class="tag tag-fleet">Fleet Detailing</span></td><td class="url">/blog/how-much-should-i-pay-for-a-truck-detail/</td><td class="kw">How much should I pay for a truck detail</td><td class="seo-title">How Much Should You Pay for a Truck Detail? (2026)</td></tr>
+          <tr><td class="page-num">120</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/why-is-detailing-so-expensive/</td><td class="kw">Why is detailing so expensive</td><td class="seo-title">Why Is Detailing So Expensive? (Real Costs Explained)</td></tr>
+          <tr><td class="page-num">121</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/what-is-a-clay-bar-treatment/</td><td class="kw">What is a clay bar treatment</td><td class="seo-title">What Is a Clay Bar Treatment? (& Is It Really Worth It?)</td></tr>
+          <tr><td class="page-num">122</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/how-do-you-remove-swirl-marks-from-a-car/</td><td class="kw">How do you remove swirl marks from a car</td><td class="seo-title">How to Remove Swirl Marks From a Car (Step-by-Step)</td></tr>
+          <tr><td class="page-num">123</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/how-do-you-protect-your-car-from-salt-air/</td><td class="kw">How do you protect your car from salt air</td><td class="seo-title">How to Protect Your Car From Salt Air (7 Easy Tips)</td></tr>
+          <tr><td class="page-num">124</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/why-do-interior-parts-get-sticky-in-cars/</td><td class="kw">Why do interior parts get sticky in cars</td><td class="seo-title">Why Interior Parts Get Sticky in Cars (& How to Fix)</td></tr>
+          <tr><td class="page-num">125</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/how-much-does-interior-car-detailing-cost/</td><td class="kw">How much does interior car detailing cost</td><td class="seo-title">Interior Car Detailing Cost: Full 2026 Price Breakdown</td></tr>
+          <tr><td class="page-num">126</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/should-you-ceramic-coat-a-new-car/</td><td class="kw">Should you ceramic coat a new car</td><td class="seo-title">Should You Ceramic Coat a New Car? (Real Pros & Cons)</td></tr>
+          <tr><td class="page-num">127</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/should-you-put-ceramic-coating-on-wheels/</td><td class="kw">Should you put ceramic coating on wheels</td><td class="seo-title">Ceramic Coating on Wheels: Is It Worth It? (& Why)</td></tr>
+          <tr><td class="page-num">128</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/what-is-paint-correction/</td><td class="kw">What is paint correction</td><td class="seo-title">What Is Paint Correction? (Full Process & Cost Guide)</td></tr>
+          <tr><td class="page-num">129</td><td><span class="tag tag-tinting">Window Tinting</span></td><td class="url">/blog/how-do-you-remove-window-tint/</td><td class="kw">How do you remove window tint</td><td class="seo-title">How to Remove Window Tint: 3 Easy DIY Methods (2026)</td></tr>
+          <tr><td class="page-num">130</td><td><span class="tag tag-ppf">Paint Protection Film</span></td><td class="url">/blog/how-much-does-it-cost-to-vinyl-wrap-a-car/</td><td class="kw">How much does it cost to vinyl wrap a car</td><td class="seo-title">How Much to Vinyl Wrap a Car (2026 Cost Breakdown)</td></tr>
+          <tr><td class="page-num">131</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/how-do-you-remove-stains-from-car-seats/</td><td class="kw">How do you remove stains from car seats</td><td class="seo-title">How to Remove Stains From Car Seats (Step-by-Step)</td></tr>
+          <tr><td class="page-num">132</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/how-do-you-remove-pet-hair-from-a-car/</td><td class="kw">How do you remove pet hair from a car</td><td class="seo-title">How to Remove Pet Hair From a Car (5 Easy Methods)</td></tr>
+          <tr><td class="page-num">133</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/is-steam-cleaning-or-shampooing-better-for-car-seats/</td><td class="kw">Is steam cleaning or shampooing better for car seats</td><td class="seo-title">Steam Cleaning vs Shampooing Car Seats (Which Wins?)</td></tr>
+          <tr><td class="page-num">134</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/how-often-should-you-detail-your-car/</td><td class="kw">How often should you detail your car</td><td class="seo-title">How Often Should You Detail Your Car? (Quick Guide)</td></tr>
+          <tr><td class="page-num">135</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/what-is-mobile-detailing/</td><td class="kw">What is mobile detailing</td><td class="seo-title">What Is Mobile Detailing? (& Is It Worth the Cost?)</td></tr>
+          <tr><td class="page-num">136</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/what-does-engine-bay-detailing-include/</td><td class="kw">What does engine bay detailing include</td><td class="seo-title">What Does Engine Bay Detailing Include? (Full Breakdown)</td></tr>
+          <tr><td class="page-num">137</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/can-you-wax-over-ceramic-coating/</td><td class="kw">Can you wax over ceramic coating</td><td class="seo-title">Can You Wax Over Ceramic Coating? (The Honest Answer)</td></tr>
+          <tr><td class="page-num">138</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/is-ceramic-coating-worth-it-on-a-black-car/</td><td class="kw">Is ceramic coating worth it on a black car</td><td class="seo-title">Ceramic Coating on a Black Car: Worth It? (Real Talk)</td></tr>
+          <tr><td class="page-num">139</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/why-dont-car-manufacturers-use-ceramic-coating/</td><td class="kw">Why don't car manufacturers use ceramic coating</td><td class="seo-title">Why Don't Car Manufacturers Use Ceramic Coating? (2026)</td></tr>
+          <tr><td class="page-num">140</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/should-you-ceramic-coat-your-windshield/</td><td class="kw">Should you ceramic coat your windshield</td><td class="seo-title">Should You Ceramic Coat Your Windshield? (Pros & Cons)</td></tr>
+          <tr><td class="page-num">141</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/what-does-a-ceramic-coating-warranty-cover/</td><td class="kw">What does a ceramic coating warranty cover</td><td class="seo-title">Ceramic Coating Warranty: What It Covers (& Limits)</td></tr>
+          <tr><td class="page-num">142</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/how-to-protect-car-interior-leather/</td><td class="kw">How to protect car interior leather</td><td class="seo-title">How to Protect Car Interior Leather (5 Easy Steps)</td></tr>
+          <tr><td class="page-num">143</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/what-is-ozone-treatment-for-cars/</td><td class="kw">What is ozone treatment for cars</td><td class="seo-title">What Is Ozone Treatment for Cars? (& Does It Work?)</td></tr>
+          <tr><td class="page-num">144</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/diy-vs-professional-engine-bay-cleaning/</td><td class="kw">DIY vs professional engine bay cleaning</td><td class="seo-title">DIY vs Professional Engine Bay Cleaning (Which Wins?)</td></tr>
+          <tr><td class="page-num">145</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/what-is-car-buffing-and-polishing/</td><td class="kw">What is car buffing and polishing</td><td class="seo-title">What Is Car Buffing & Polishing? (Process & Costs)</td></tr>
+          <tr><td class="page-num">146</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/does-the-cybertruck-rust/</td><td class="kw">Does the Cybertruck rust</td><td class="seo-title">Does the Cybertruck Rust? (The Honest Answer for 2026)</td></tr>
+          <tr><td class="page-num">147</td><td><span class="tag tag-ceramic">Ceramic Coating</span></td><td class="url">/blog/how-much-does-paint-correction-cost/</td><td class="kw">How much does paint correction cost</td><td class="seo-title">How Much Does Paint Correction Cost? (2026 Pricing)</td></tr>
+          <tr><td class="page-num">148</td><td><span class="tag tag-detailing">Mobile Auto Detailing</span></td><td class="url">/blog/what-causes-car-paint-oxidation/</td><td class="kw">What causes car paint oxidation</td><td class="seo-title">What Causes Car Paint Oxidation? (& How to Fix It)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CONTENT BY CATEGORY SUMMARY -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: rgba(148,163,184,0.12); color: #94a3b8;">&#9776;</div>
+      <h2>Content by Category</h2>
+    </div>
+    <div class="summary-grid">
+      <div class="summary-box">
+        <h4>Service Pages to Optimize</h4>
+        <div class="summary-row"><span class="label"><span class="tag tag-detailing">Mobile Auto Detailing</span></span><span class="value">27</span></div>
+        <div class="summary-row"><span class="label"><span class="tag tag-tinting">Window Tinting</span></span><span class="value">17</span></div>
+        <div class="summary-row"><span class="label"><span class="tag tag-ppf">Paint Protection Film</span></span><span class="value">5</span></div>
+        <div class="summary-row"><span class="label"><span class="tag tag-ceramic">Ceramic Coating</span></span><span class="value">4</span></div>
+      </div>
+      <div class="summary-box">
+        <h4>Blog Posts by Category</h4>
+        <div class="summary-row"><span class="label"><span class="tag tag-detailing">Mobile Auto Detailing</span></span><span class="value">28</span></div>
+        <div class="summary-row"><span class="label"><span class="tag tag-ceramic">Ceramic Coating</span></span><span class="value">22</span></div>
+        <div class="summary-row"><span class="label"><span class="tag tag-tinting">Window Tinting</span></span><span class="value">18</span></div>
+        <div class="summary-row"><span class="label"><span class="tag tag-ppf">Paint Protection Film</span></span><span class="value">8</span></div>
+        <div class="summary-row"><span class="label"><span class="tag tag-motorcycle">Motorcycle Detailing</span></span><span class="value">6</span></div>
+        <div class="summary-row"><span class="label"><span class="tag tag-boat">Boat Detailing</span></span><span class="value">5</span></div>
+        <div class="summary-row"><span class="label"><span class="tag tag-rv">RV Detailing</span></span><span class="value">4</span></div>
+        <div class="summary-row"><span class="label"><span class="tag tag-fleet">Fleet Detailing</span></span><span class="value">1</span></div>
+      </div>
+      <div class="summary-box">
+        <h4>Content Mix</h4>
+        <div class="cadence-bar">
+          <div class="cadence-seg" style="flex:53; background: var(--blue);">53</div>
+          <div class="cadence-seg" style="flex:8; background: var(--green);">8</div>
+          <div class="cadence-seg" style="flex:87; background: var(--purple);">87</div>
+        </div>
+        <div style="display:flex; gap:20px; font-size:12px; color:var(--text-muted);">
+          <span><span style="color:var(--blue);">&#9632;</span> Optimize</span>
+          <span><span style="color:var(--green);">&#9632;</span> Near Me</span>
+          <span><span style="color:var(--purple);">&#9632;</span> Blog</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 90-DAY IMPLEMENTATION PLAN -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: rgba(99,102,241,0.12); color: var(--accent-light);">&#128197;</div>
+      <div>
+        <h2>90-Day Implementation Plan</h2>
+        <div style="font-size:13px; color:var(--text-muted); margin-top:2px;">July 28 - October 25, 2026</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <!-- PHASE 1 -->
+      <div class="phase">
+        <div class="phase-dot"></div>
+        <div class="phase-card">
+          <div class="phase-label">Phase 1: Foundation & Quick Wins</div>
+          <h3>Service Page Optimization + Near Me Pages</h3>
+          <div class="dates">July 28 - August 24 (Weeks 1-4)</div>
+          <ul class="phase-tasks">
+            <li><div class="task-check"></div><div><span class="week-label">WK 1</span> Optimize 14 Mobile Auto Detailing location pages (4S Ranch through Lakeside). Update titles, meta descriptions, H1s, and on-page content for each location keyword.</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 1</span> Optimize 4 Ceramic Coating location pages (Carlsbad, Encinitas, Rancho Santa Fe, Valley Center).</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 2</span> Optimize remaining 13 Mobile Auto Detailing location pages (Mira Mar through Vista).</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 2</span> Create and publish 4 Near Me pages: Mobile Auto Detailing, Ceramic Coating, Window Tinting, Paint Protection Film.</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 3</span> Optimize 17 Window Tinting location pages (Cardiff through Vista).</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 3</span> Create and publish 4 Near Me pages: Motorcycle Detailing, Boat Detailing, RV Detailing, Fleet Detailing.</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 4</span> Optimize 5 Paint Protection Film location pages (Carlsbad, Del Mar, Escondido, Mira Mesa, Oceanside).</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 4</span> Internal linking audit: connect all optimized location pages to corresponding Near Me pages and main service pages. Add schema markup to all Near Me pages.</div></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="phase">
+        <div class="phase-dot"></div>
+        <div class="phase-card">
+          <div class="phase-label">Phase 2: High-Volume Blog Content</div>
+          <h3>Comparison Posts + Core Service Blogs</h3>
+          <div class="dates">August 25 - September 21 (Weeks 5-8)</div>
+          <ul class="phase-tasks">
+            <li><div class="task-check"></div><div><span class="week-label">WK 5</span> Publish 8 window tint comparison blogs (#62-69): 20 vs 35, 5 vs 20, 30 vs 20, 50 vs 70 windshield, 70 vs no tint, 50 vs no tint, ceramic vs regular, ceramic vs metallic. These target high-volume "vs" keywords.</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 6</span> Publish 5 ceramic coating comparison blogs (#70-74, #79): carbon vs ceramic tint, ceramic coating vs teflon, vs PPF, vs wrap, graphene vs ceramic coating, wax vs ceramic coating.</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 6</span> Publish 3 remaining comparison blogs (#75-77, #78, #80-82): nano ceramic vs ceramic tint, PPF vs vinyl wrap, 20 vs 15 tint, soft touch vs touchless, mobile car wash vs detailing, ceramic tint at night, car wash vs hand wash.</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 7</span> Publish 7 "best of" and informational blogs (#83-88, #84): best car wax for black cars, car paint oxidation, enzyme cleaner for vomit smell, best auto leather conditioner, how to keep car cool, best ceramic coating brands, plus ceramic coating worth the money (#89).</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 8</span> Publish 8 core ceramic coating and window tinting blogs (#90-98): ceramic coated car through car wash, how long does ceramic coating last, highest quality ceramic coating, can detailers remove scratches, best time to detail, tinting costs, 35% tint legal, darkest legal tint, cost per window.</div></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="phase">
+        <div class="phase-dot"></div>
+        <div class="phase-card">
+          <div class="phase-label">Phase 3: Long-Tail & Niche Content</div>
+          <h3>PPF, Motorcycle, Boat, RV, Fleet & Remaining Blogs</h3>
+          <div class="dates">September 22 - October 25 (Weeks 9-13)</div>
+          <ul class="phase-tasks">
+            <li><div class="task-check"></div><div><span class="week-label">WK 9</span> Publish 5 PPF blogs (#99-103): is PPF worth it, best PPF on market, PPF lifespan, average cost to PPF, carwash with PPF. Publish 3 motorcycle detailing blogs (#104-106).</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 10</span> Publish 3 remaining motorcycle blogs (#107-109) + 5 boat detailing blogs (#110-114): cost to detail, is it worth it, what's included, how long, how often.</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 11</span> Publish 4 RV detailing blogs (#115-118) + 1 fleet blog (#119) + 5 mobile detailing blogs (#120-124): why detailing is expensive, clay bar, swirl marks, salt air, sticky interior.</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 12</span> Publish 8 remaining blogs (#125-132): interior detailing cost, ceramic coat new car, ceramic on wheels, paint correction, remove window tint, vinyl wrap cost, remove stains, remove pet hair.</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 13</span> Publish final 16 blogs (#133-148): steam vs shampoo, how often to detail, what is mobile detailing, engine bay, wax over ceramic, black car ceramic, why no OEM ceramic, windshield ceramic, warranty, leather care, ozone treatment, DIY vs pro engine bay, buffing & polishing, Cybertruck rust, paint correction cost, paint oxidation.</div></li>
+            <li><div class="task-check"></div><div><span class="week-label">WK 13</span> Final internal linking pass: ensure all 87 blogs link to relevant service pages, Near Me pages, and related blog posts. Submit updated sitemap to Google Search Console.</div></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Weekly cadence summary -->
+    <div class="summary-grid" style="margin-top:40px">
+      <div class="summary-box">
+        <h4>Weekly Publishing Cadence</h4>
+        <div class="summary-row"><span class="label">Weeks 1-4 (Phase 1)</span><span class="value" style="color:var(--blue);">~15 pages/wk</span></div>
+        <div class="summary-row"><span class="label">Weeks 5-8 (Phase 2)</span><span class="value" style="color:var(--blue);">~8 blogs/wk</span></div>
+        <div class="summary-row"><span class="label">Weeks 9-13 (Phase 3)</span><span class="value" style="color:var(--blue);">~8 blogs/wk</span></div>
+      </div>
+      <div class="summary-box">
+        <h4>Phase Deliverables</h4>
+        <div class="summary-row"><span class="label">Phase 1</span><span class="value">53 optimized + 8 new pages</span></div>
+        <div class="summary-row"><span class="label">Phase 2</span><span class="value">31 blog posts published</span></div>
+        <div class="summary-row"><span class="label">Phase 3</span><span class="value">56 blog posts published</span></div>
+      </div>
+      <div class="summary-box">
+        <h4>Key Milestones</h4>
+        <div class="summary-row"><span class="label">Aug 24</span><span class="value" style="color:var(--green);">All service pages live</span></div>
+        <div class="summary-row"><span class="label">Sep 21</span><span class="value" style="color:var(--green);">High-volume blogs done</span></div>
+        <div class="summary-row"><span class="label">Oct 25</span><span class="value" style="color:var(--green);">All 148 pages complete</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="container">
+    SB Mobile Detailing Content Plan &middot; Generated July 28, 2026 &middot; 148 Total Pages
+  </div>
+</div>
+
+</body>
+</html>
