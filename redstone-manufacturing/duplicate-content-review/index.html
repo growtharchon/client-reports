@@ -515,53 +515,7 @@
   </section>
 
   <section>
-    <div class="sechead"><span class="num">03</span><h2>Live search data confirms the noindex is working</h2></div>
-    <p>
-      The setup is not just correct in theory. Third-party index data for the landing page domain shows
-      effectively zero organic footprint alongside an active paid campaign — precisely the profile you'd
-      expect from a working Ads-only property:
-    </p>
-
-    <div class="readout">
-      <div>
-        <p class="k">Organic keywords</p>
-        <p class="v">1</p>
-        <p class="n">Effectively zero presence</p>
-      </div>
-      <div>
-        <p class="k">Organic traffic</p>
-        <p class="v">0</p>
-        <p class="n">Monthly estimate</p>
-      </div>
-      <div>
-        <p class="k">Paid keywords</p>
-        <p class="v hi">21</p>
-        <p class="n">One per landing page</p>
-      </div>
-      <div>
-        <p class="k">Paid traffic</p>
-        <p class="v hi">237</p>
-        <p class="n">Monthly estimate</p>
-      </div>
-      <div>
-        <p class="k">Paid spend</p>
-        <p class="v hi">$704</p>
-        <p class="n">Monthly estimate</p>
-      </div>
-    </div>
-    <p class="cap">Semrush, US database, current snapshot · retrieved 29 July 2026.</p>
-
-    <p>
-      The shape of this is unambiguous: a domain with an active paid campaign and essentially no organic
-      footprint is a paid acquisition asset doing its job and staying out of the organic index while it does.
-      The count of 21 paid keywords alongside 21 landing pages is consistent with one campaign per page,
-      though we have not confirmed that mapping directly — the Google Ads account is the place to verify it
-      if it matters.
-    </p>
-  </section>
-
-  <section>
-    <div class="sechead"><span class="num">04</span><h2>Measured similarity, and what it means against a control</h2></div>
+    <div class="sechead"><span class="num">03</span><h2>Measured similarity, and what it means against a control</h2></div>
     <p>
       Our SEO team ran a full text comparison of every landing page against its closest match on the main
       site, using two independent measures. <strong>Sequence similarity</strong> compares the pages as
@@ -573,17 +527,17 @@
       <div>
         <p class="k">Sequence range</p>
         <p class="v">10.2–14.0%</p>
-        <p class="n">Across all 21 pairs</p>
+        <p class="n">All 21 pairs · content analysis</p>
       </div>
       <div>
         <p class="k">3-gram range</p>
         <p class="v">3.8–5.5%</p>
-        <p class="n">Across all 21 pairs</p>
+        <p class="n">All 21 pairs · content analysis</p>
       </div>
       <div>
         <p class="k">Control · 3-gram</p>
         <p class="v hi">37.3%</p>
-        <p class="n">Two unrelated main-site pages</p>
+        <p class="n">Two unrelated main-site pages · control test</p>
       </div>
       <div>
         <p class="k">Pairs flagged</p>
@@ -694,7 +648,7 @@
   </section>
 
   <section>
-    <div class="sechead"><span class="num">05</span><h2>One clarification worth putting on the record</h2></div>
+    <div class="sechead"><span class="num">04</span><h2>One clarification worth putting on the record</h2></div>
 
     <div class="note rust">
       <h3>"They're on different domains, so it's fine" is not the reason</h3>
@@ -713,7 +667,7 @@
   </section>
 
   <section>
-    <div class="sechead"><span class="num">06</span><h2>What we found that wasn't in the original question</h2></div>
+    <div class="sechead"><span class="num">05</span><h2>What we found that wasn't in the original question</h2></div>
 
     <div class="note">
       <span class="pill watch">Low priority · paid media</span>
@@ -744,7 +698,7 @@
   </section>
 
   <section>
-    <div class="sechead"><span class="num">07</span><h2>Recommendation</h2></div>
+    <div class="sechead"><span class="num">06</span><h2>Recommendation</h2></div>
 
     <div class="rec">
       <div>
@@ -755,7 +709,7 @@
       <div>
         <p class="lbl">Do not</p>
         <p class="act">Redirect to the main site</p>
-        <p>This would break all 21 Google Ads destinations, ending campaigns currently drawing ~237 visits and $704 of spend a month. Real cost, no benefit.</p>
+        <p>All 21 pages are live Google Ads destinations. Redirecting them would break every one of those campaigns — a real cost, to fix a problem that isn't occurring.</p>
       </div>
       <div>
         <p class="lbl">Do not</p>
@@ -796,17 +750,18 @@
         <strong>Control test.</strong> To establish what a low score actually means, each of three landing
         pages was additionally compared against a deliberately mismatched main-site page covering a different
         service, and two unrelated main-site service pages were compared against each other. These controls
-        are what the argument in section 04 rests on.
+        are what the argument in section 03 rests on.
       </p>
       <p>
         <strong>Technical verification.</strong> All 21 URLs were fetched live on 29 July 2026 and inspected
         for HTTP status, robots meta directive and canonical tag. The robots.txt file was reviewed directly.
       </p>
       <p>
-        <strong>Index data.</strong> Semrush, US database, current snapshot, retrieved 29 July 2026. Traffic
-        and spend figures are Semrush estimates, not account data; treat them as indicative of scale rather
-        than exact. The landing pages' own analytics and Google Ads account are the authoritative source for
-        actual performance.
+        <strong>Sourcing.</strong> Every figure in this report is either taken directly from the content
+        comparison or measured against the live pages on the date shown. No third-party traffic or spend
+        estimates are used anywhere in this analysis, and none are needed — the conclusion rests on the
+        robots directives, which are facts read from the pages themselves, and on the measured content
+        overlap. For campaign performance figures, the Google Ads account is the authoritative source.
       </p>
     </details>
     <p>Prepared by Outrider Digital for Redstone Manufacturing · 29 July 2026</p>
