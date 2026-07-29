@@ -19,6 +19,12 @@
     --ink:#15181C; --ink-2:#3E464F; --steel:#6B7681;
     --rule:#D6DADE; --rule-soft:#E4E7EA;
     --rust:#A8442A; --pass:#2C6650; --pass-soft:#DFEBE5;
+
+    /* spreadsheet-style tokens */
+    --th-bg:#2F5597; --th-bg-alt:#2E9BD6; --th-ink:#FFFFFF;
+    --cell-green:#D6EFD8; --cell-green-ink:#1B5E20;
+    --link:#1155CC; --grid:#BFC6CC;
+
     --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --mono: ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace;
     --pad: clamp(1.25rem, 5vw, 3rem);
@@ -29,6 +35,9 @@
       --ink:#E7EAEC; --ink-2:#B4BBC2; --steel:#8B959E;
       --rule:#333A41; --rule-soft:#272D33;
       --rust:#DA6D4B; --pass:#6FBE9B; --pass-soft:#172A23;
+      --th-bg:#24457B; --th-bg-alt:#1F7BAD; --th-ink:#F2F5F7;
+      --cell-green:#1C3823; --cell-green-ink:#9EDCA8;
+      --link:#7FB0F5; --grid:#3A424A;
     }
   }
   :root[data-theme="dark"] {
@@ -36,12 +45,18 @@
     --ink:#E7EAEC; --ink-2:#B4BBC2; --steel:#8B959E;
     --rule:#333A41; --rule-soft:#272D33;
     --rust:#DA6D4B; --pass:#6FBE9B; --pass-soft:#172A23;
+    --th-bg:#24457B; --th-bg-alt:#1F7BAD; --th-ink:#F2F5F7;
+    --cell-green:#1C3823; --cell-green-ink:#9EDCA8;
+    --link:#7FB0F5; --grid:#3A424A;
   }
   :root[data-theme="light"] {
     --paper:#F6F7F8; --surface:#FFFFFF; --surface-2:#EDEFF1;
     --ink:#15181C; --ink-2:#3E464F; --steel:#6B7681;
     --rule:#D6DADE; --rule-soft:#E4E7EA;
     --rust:#A8442A; --pass:#2C6650; --pass-soft:#DFEBE5;
+    --th-bg:#2F5597; --th-bg-alt:#2E9BD6; --th-ink:#FFFFFF;
+    --cell-green:#D6EFD8; --cell-green-ink:#1B5E20;
+    --link:#1155CC; --grid:#BFC6CC;
   }
 
   body {
@@ -50,7 +65,7 @@
     -webkit-font-smoothing: antialiased;
   }
   .wrap {
-    max-width: 72rem; margin-inline: auto; padding: var(--pad);
+    max-width: 76rem; margin-inline: auto; padding: var(--pad);
     display: flex; flex-direction: column; gap: clamp(2rem, 4vw, 3rem);
   }
   p, li { color: var(--ink-2); }
@@ -79,7 +94,7 @@
 
   .findings { display: flex; flex-direction: column; gap: 0.85rem; padding-left: 1.15rem; }
   .findings li::marker { color: var(--rust); }
-  .findings li { max-width: 74ch; }
+  .findings li { max-width: 76ch; }
 
   .verdict {
     background: var(--surface); border: 1px solid var(--rule);
@@ -94,29 +109,45 @@
     background: var(--pass-soft); color: var(--pass);
   }
   .pill::before { content:""; width:6px; height:6px; border-radius:50%; background: currentColor; }
-  .verdict p { max-width: 74ch; }
+  .verdict p { max-width: 76ch; }
 
   .tablewrap { overflow-x: auto; border: 1px solid var(--rule); background: var(--surface); }
+
+  /* generic table (properties comparison) */
   table { border-collapse: collapse; width: 100%; font-size: 0.83rem; }
-  thead th {
+  .plain thead th {
     background: var(--surface-2); text-align: left;
     font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em;
     text-transform: uppercase; color: var(--steel); font-weight: 500;
     padding: 0.7rem 0.85rem; border-bottom: 1px solid var(--rule); white-space: nowrap;
   }
-  tbody td {
+  .plain tbody td {
     padding: 0.55rem 0.85rem; border-bottom: 1px solid var(--rule-soft);
     color: var(--ink-2); vertical-align: top;
   }
-  tbody tr:last-child td { border-bottom: 0; }
-  td.u { font-family: var(--mono); font-size: 0.76rem; color: var(--ink); white-space: nowrap; }
-  td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
-  td.n.good { color: var(--pass); }
-  tbody tr.grp td {
-    background: var(--surface-2); font-family: var(--mono); font-size: 0.68rem;
-    letter-spacing: 0.11em; text-transform: uppercase; color: var(--steel);
-    padding: 0.5rem 0.85rem;
+  .plain tbody tr:last-child td { border-bottom: 0; }
+  .plain td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+
+  /* spreadsheet-style table (the SEO analysis) */
+  .sheet { font-size: 0.8rem; }
+  .sheet th, .sheet td { border: 1px solid var(--grid); }
+  .sheet thead th {
+    background: var(--th-bg); color: var(--th-ink);
+    font-weight: 700; text-align: center; padding: 0.6rem 0.7rem;
+    line-height: 1.25; vertical-align: middle;
   }
+  .sheet thead th.alt { background: var(--th-bg-alt); }
+  .sheet tbody td { padding: 0.35rem 0.6rem; color: var(--ink-2); white-space: nowrap; }
+  .sheet td.url { font-size: 0.78rem; }
+  .sheet td.url a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+  .sheet td.url a:focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; }
+  .sheet td.pct {
+    background: var(--cell-green); color: var(--cell-green-ink);
+    text-align: center; font-variant-numeric: tabular-nums; font-weight: 600;
+  }
+  .sheet td.num { text-align: center; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .sheet td.status { text-align: center; font-weight: 600; color: var(--ink); }
+
   .cap { font-family: var(--mono); font-size: 0.72rem; color: var(--steel); }
 
   footer { border-top: 1px solid var(--rule); padding-top: 1.2rem; }
@@ -152,26 +183,15 @@
     <ul class="findings">
       <li>
         <strong>The pages are not duplicates.</strong> Across all 21 pairs, phrase-level overlap with the
-        matching main-site page runs between <strong>3.8% and 5.5%</strong>.
+        matching main-site page runs between <strong>3.8% and 5.5%</strong>, and sequence similarity between
+        <strong>10.2% and 14.0%</strong>. Every pair passed.
       </li>
       <li>
-        <strong>For context, two unrelated pages on the main site itself overlap by 37%</strong> — roughly
-        seven times more than any landing page overlaps with the main site. If 4% were a duplicate content
-        problem, the main site would have a far larger one internally.
-      </li>
-      <li>
-        <strong>The overlap that does exist is unavoidable shared fact</strong> — ISO 9001, the Monterrey
-        facility, USMCA tariff treatment, tolerances, the company name. Two pages describing the same
-        certified business will always share this material.
-      </li>
-      <li>
-        <strong>The two properties were built for opposite jobs</strong> — the landing pages convert paid ad
-        clicks, the main site earns organic rankings. They differ in length, structure, navigation and
-        conversion path, as the comparison below shows.
-      </li>
-      <li>
-        <strong>The landing pages are set to noindex</strong>, so they are not eligible to appear in Google's
-        organic results and cannot compete with the main site for rankings.
+        <strong>The small overlap that does exist is unavoidable shared fact</strong> — ISO 9001, the
+        Monterrey facility, USMCA tariff treatment, tolerances, the company name. Any two pages describing the
+        same certified business will share this material. Beyond it, the pages have little in common: the
+        landing pages run roughly half the length of their main-site counterparts and are built for a
+        different job entirely.
       </li>
     </ul>
   </section>
@@ -179,7 +199,7 @@
   <section>
     <h2>How the two properties differ</h2>
     <div class="tablewrap">
-      <table>
+      <table class="plain">
         <thead>
           <tr><th>&nbsp;</th><th>Landing pages</th><th>Main site</th></tr>
         </thead>
@@ -198,53 +218,46 @@
   <section>
     <h2>Content comparison — all 21 pages</h2>
     <div class="tablewrap">
-      <table>
+      <table class="sheet">
         <thead>
           <tr>
-            <th>Landing page</th>
-            <th>Closest main-site page</th>
-            <th>Sequence</th>
-            <th>3-gram</th>
-            <th>Words (LP)</th>
-            <th>Words (main)</th>
+            <th>theredstonemanufacturing.com Page</th>
+            <th class="alt">redstonemanufacturing.com Page</th>
+            <th>Sequence<br>Similarity %</th>
+            <th>Jaccard<br>3-gram %</th>
+            <th>Words<br>(Source)</th>
+            <th>Words<br>(Target)</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="grp"><td colspan="6">CNC machining — 8 pages</td></tr>
-          <tr><td class="u">/cnc-machining-company/</td><td class="u">/services/cnc-machining/</td><td class="n good">12.0%</td><td class="n good">4.6%</td><td class="n">1,288</td><td class="n">3,247</td></tr>
-          <tr><td class="u">/cnc-machining-mexico/</td><td class="u">/mexico/cnc-machining/</td><td class="n good">14.0%</td><td class="n good">5.5%</td><td class="n">1,305</td><td class="n">2,603</td></tr>
-          <tr><td class="u">/cnc-manufacturing/</td><td class="u">/services/cnc-machining/</td><td class="n good">12.0%</td><td class="n good">4.5%</td><td class="n">1,287</td><td class="n">3,247</td></tr>
-          <tr><td class="u">/cnc-manufacturing-mexico/</td><td class="u">/mexico/cnc-machining/</td><td class="n good">13.9%</td><td class="n good">5.4%</td><td class="n">1,311</td><td class="n">2,603</td></tr>
-          <tr><td class="u">/cnc-mexico/</td><td class="u">/mexico/cnc-machining/</td><td class="n good">14.0%</td><td class="n good">5.5%</td><td class="n">1,308</td><td class="n">2,603</td></tr>
-          <tr><td class="u">/custom-cnc-machining/</td><td class="u">/services/cnc-machining/</td><td class="n good">11.9%</td><td class="n good">4.6%</td><td class="n">1,289</td><td class="n">3,247</td></tr>
-          <tr><td class="u">/custom-machining-services/</td><td class="u">/services/cnc-machining/</td><td class="n good">12.0%</td><td class="n good">4.5%</td><td class="n">1,288</td><td class="n">3,247</td></tr>
-          <tr><td class="u">/precision-machining-services/</td><td class="u">/services/cnc-machining/precision/</td><td class="n good">11.6%</td><td class="n good">4.2%</td><td class="n">1,285</td><td class="n">2,333</td></tr>
-
-          <tr class="grp"><td colspan="6">Precision, geographic — 2 pages</td></tr>
-          <tr><td class="u">/precision-machining-mexico/</td><td class="u">/mexico/cnc-machining/</td><td class="n good">13.6%</td><td class="n good">5.4%</td><td class="n">1,318</td><td class="n">2,603</td></tr>
-          <tr><td class="u">/precision-machining-india/</td><td class="u">/india/cnc-machining/</td><td class="n good">13.2%</td><td class="n good">5.1%</td><td class="n">1,352</td><td class="n">2,637</td></tr>
-
-          <tr class="grp"><td colspan="6">Die casting — 4 pages</td></tr>
-          <tr><td class="u">/aluminum-die-casting/</td><td class="u">/services/die-casting/aluminum-die-casting/</td><td class="n good">13.2%</td><td class="n good">4.5%</td><td class="n">1,032</td><td class="n">2,703</td></tr>
-          <tr><td class="u">/aluminum-die-casting-companies-in-mexico/</td><td class="u">/mexico/die-casting/</td><td class="n good">13.5%</td><td class="n good">4.5%</td><td class="n">1,041</td><td class="n">2,687</td></tr>
-          <tr><td class="u">/die-casting-companies-in-mexico/</td><td class="u">/mexico/die-casting/</td><td class="n good">13.3%</td><td class="n good">4.4%</td><td class="n">1,040</td><td class="n">2,687</td></tr>
-          <tr><td class="u">/lp-die-casting-services-mexico.html</td><td class="u">/mexico/die-casting/</td><td class="n good">12.9%</td><td class="n good">4.0%</td><td class="n">1,047</td><td class="n">2,687</td></tr>
-
-          <tr class="grp"><td colspan="6">Sheet metal fabrication — 7 pages</td></tr>
-          <tr><td class="u">/sheet-metal-fabrication-company/</td><td class="u">/services/sheet-metal-fabrication/</td><td class="n good">10.9%</td><td class="n good">3.8%</td><td class="n">1,130</td><td class="n">2,853</td></tr>
-          <tr><td class="u">/sheet-metal-fabrication-services/</td><td class="u">/services/sheet-metal-fabrication/</td><td class="n good">10.7%</td><td class="n good">4.0%</td><td class="n">1,087</td><td class="n">2,853</td></tr>
-          <tr><td class="u">/sheet-metal-fabrication-companies-in-mexico/</td><td class="u">/mexico/sheet-metal-fabrication/</td><td class="n good">11.7%</td><td class="n good">4.2%</td><td class="n">1,121</td><td class="n">2,532</td></tr>
-          <tr><td class="u">/custom-sheet-metal-fabrication/</td><td class="u">/services/sheet-metal-fabrication/</td><td class="n good">10.5%</td><td class="n good">4.0%</td><td class="n">1,089</td><td class="n">2,853</td></tr>
-          <tr><td class="u">/industrial-sheet-metal-fabrication/</td><td class="u">/services/sheet-metal-fabrication/</td><td class="n good">10.7%</td><td class="n good">3.8%</td><td class="n">1,157</td><td class="n">2,853</td></tr>
-          <tr><td class="u">/aluminum-sheet-metal-fabrication/</td><td class="u">/services/sheet-metal-fabrication/</td><td class="n good">10.2%</td><td class="n good">3.8%</td><td class="n">1,093</td><td class="n">2,853</td></tr>
-          <tr><td class="u">/aluminum-sheet-metal-fabrication-mexico/</td><td class="u">/mexico/sheet-metal-fabrication/</td><td class="n good">11.2%</td><td class="n good">4.2%</td><td class="n">1,107</td><td class="n">2,532</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/cnc-machining-company/">https://theredstonemanufacturing.com/cnc-machining-company/</a></td><td class="url"><a href="https://redstonemanufacturing.com/services/cnc-machining/">https://redstonemanufacturing.com/services/cnc-machining/</a></td><td class="pct">12.0%</td><td class="pct">4.6%</td><td class="num">1288</td><td class="num">3247</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/cnc-machining-mexico/">https://theredstonemanufacturing.com/cnc-machining-mexico/</a></td><td class="url"><a href="https://redstonemanufacturing.com/mexico/cnc-machining/">https://redstonemanufacturing.com/mexico/cnc-machining/</a></td><td class="pct">14.0%</td><td class="pct">5.5%</td><td class="num">1305</td><td class="num">2603</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/cnc-manufacturing/">https://theredstonemanufacturing.com/cnc-manufacturing/</a></td><td class="url"><a href="https://redstonemanufacturing.com/services/cnc-machining/">https://redstonemanufacturing.com/services/cnc-machining/</a></td><td class="pct">12.0%</td><td class="pct">4.5%</td><td class="num">1287</td><td class="num">3247</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/cnc-manufacturing-mexico/">https://theredstonemanufacturing.com/cnc-manufacturing-mexico/</a></td><td class="url"><a href="https://redstonemanufacturing.com/mexico/cnc-machining/">https://redstonemanufacturing.com/mexico/cnc-machining/</a></td><td class="pct">13.9%</td><td class="pct">5.4%</td><td class="num">1311</td><td class="num">2603</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/cnc-mexico/">https://theredstonemanufacturing.com/cnc-mexico/</a></td><td class="url"><a href="https://redstonemanufacturing.com/mexico/cnc-machining/">https://redstonemanufacturing.com/mexico/cnc-machining/</a></td><td class="pct">14.0%</td><td class="pct">5.5%</td><td class="num">1308</td><td class="num">2603</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/custom-cnc-machining/">https://theredstonemanufacturing.com/custom-cnc-machining/</a></td><td class="url"><a href="https://redstonemanufacturing.com/services/cnc-machining/">https://redstonemanufacturing.com/services/cnc-machining/</a></td><td class="pct">11.9%</td><td class="pct">4.6%</td><td class="num">1289</td><td class="num">3247</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/custom-machining-services/">https://theredstonemanufacturing.com/custom-machining-services/</a></td><td class="url"><a href="https://redstonemanufacturing.com/services/cnc-machining/">https://redstonemanufacturing.com/services/cnc-machining/</a></td><td class="pct">12.0%</td><td class="pct">4.5%</td><td class="num">1288</td><td class="num">3247</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/precision-machining-services/">https://theredstonemanufacturing.com/precision-machining-services/</a></td><td class="url"><a href="https://redstonemanufacturing.com/services/cnc-machining/precision/">https://redstonemanufacturing.com/services/cnc-machining/precision/</a></td><td class="pct">11.6%</td><td class="pct">4.2%</td><td class="num">1285</td><td class="num">2333</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/precision-machining-mexico/">https://theredstonemanufacturing.com/precision-machining-mexico/</a></td><td class="url"><a href="https://redstonemanufacturing.com/mexico/cnc-machining/">https://redstonemanufacturing.com/mexico/cnc-machining/</a></td><td class="pct">13.6%</td><td class="pct">5.4%</td><td class="num">1318</td><td class="num">2603</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/precision-machining-india/">https://theredstonemanufacturing.com/precision-machining-india/</a></td><td class="url"><a href="https://redstonemanufacturing.com/india/cnc-machining/">https://redstonemanufacturing.com/india/cnc-machining/</a></td><td class="pct">13.2%</td><td class="pct">5.1%</td><td class="num">1352</td><td class="num">2637</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/aluminum-die-casting/">https://theredstonemanufacturing.com/aluminum-die-casting/</a></td><td class="url"><a href="https://redstonemanufacturing.com/services/die-casting/aluminum-die-casting/">https://redstonemanufacturing.com/services/die-casting/aluminum-die-casting/</a></td><td class="pct">13.2%</td><td class="pct">4.5%</td><td class="num">1032</td><td class="num">2703</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/aluminum-die-casting-companies-in-mexico/">https://theredstonemanufacturing.com/aluminum-die-casting-companies-in-mexico/</a></td><td class="url"><a href="https://redstonemanufacturing.com/mexico/die-casting/">https://redstonemanufacturing.com/mexico/die-casting/</a></td><td class="pct">13.5%</td><td class="pct">4.5%</td><td class="num">1041</td><td class="num">2687</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/die-casting-companies-in-mexico/">https://theredstonemanufacturing.com/die-casting-companies-in-mexico/</a></td><td class="url"><a href="https://redstonemanufacturing.com/mexico/die-casting/">https://redstonemanufacturing.com/mexico/die-casting/</a></td><td class="pct">13.3%</td><td class="pct">4.4%</td><td class="num">1040</td><td class="num">2687</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/lp-die-casting-services-mexico.html">https://theredstonemanufacturing.com/lp-die-casting-services-mexico.html</a></td><td class="url"><a href="https://redstonemanufacturing.com/mexico/die-casting/">https://redstonemanufacturing.com/mexico/die-casting/</a></td><td class="pct">12.9%</td><td class="pct">4.0%</td><td class="num">1047</td><td class="num">2687</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/sheet-metal-fabrication-company/">https://theredstonemanufacturing.com/sheet-metal-fabrication-company/</a></td><td class="url"><a href="https://redstonemanufacturing.com/services/sheet-metal-fabrication/">https://redstonemanufacturing.com/services/sheet-metal-fabrication/</a></td><td class="pct">10.9%</td><td class="pct">3.8%</td><td class="num">1130</td><td class="num">2853</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/sheet-metal-fabrication-services/">https://theredstonemanufacturing.com/sheet-metal-fabrication-services/</a></td><td class="url"><a href="https://redstonemanufacturing.com/services/sheet-metal-fabrication/">https://redstonemanufacturing.com/services/sheet-metal-fabrication/</a></td><td class="pct">10.7%</td><td class="pct">4.0%</td><td class="num">1087</td><td class="num">2853</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/sheet-metal-fabrication-companies-in-mexico/">https://theredstonemanufacturing.com/sheet-metal-fabrication-companies-in-mexico/</a></td><td class="url"><a href="https://redstonemanufacturing.com/mexico/sheet-metal-fabrication/">https://redstonemanufacturing.com/mexico/sheet-metal-fabrication/</a></td><td class="pct">11.7%</td><td class="pct">4.2%</td><td class="num">1121</td><td class="num">2532</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/custom-sheet-metal-fabrication/">https://theredstonemanufacturing.com/custom-sheet-metal-fabrication/</a></td><td class="url"><a href="https://redstonemanufacturing.com/services/sheet-metal-fabrication/">https://redstonemanufacturing.com/services/sheet-metal-fabrication/</a></td><td class="pct">10.5%</td><td class="pct">4.0%</td><td class="num">1089</td><td class="num">2853</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/industrial-sheet-metal-fabrication/">https://theredstonemanufacturing.com/industrial-sheet-metal-fabrication/</a></td><td class="url"><a href="https://redstonemanufacturing.com/services/sheet-metal-fabrication/">https://redstonemanufacturing.com/services/sheet-metal-fabrication/</a></td><td class="pct">10.7%</td><td class="pct">3.8%</td><td class="num">1157</td><td class="num">2853</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/aluminum-sheet-metal-fabrication/">https://theredstonemanufacturing.com/aluminum-sheet-metal-fabrication/</a></td><td class="url"><a href="https://redstonemanufacturing.com/services/sheet-metal-fabrication/">https://redstonemanufacturing.com/services/sheet-metal-fabrication/</a></td><td class="pct">10.2%</td><td class="pct">3.8%</td><td class="num">1093</td><td class="num">2853</td><td class="status">OK</td></tr>
+          <tr><td class="url"><a href="https://theredstonemanufacturing.com/aluminum-sheet-metal-fabrication-mexico/">https://theredstonemanufacturing.com/aluminum-sheet-metal-fabrication-mexico/</a></td><td class="url"><a href="https://redstonemanufacturing.com/mexico/sheet-metal-fabrication/">https://redstonemanufacturing.com/mexico/sheet-metal-fabrication/</a></td><td class="pct">11.2%</td><td class="pct">4.2%</td><td class="num">1107</td><td class="num">2532</td><td class="status">OK</td></tr>
         </tbody>
       </table>
     </div>
     <p class="cap">
       Sequence similarity compares the pages as continuous text; Jaccard 3-gram overlap compares each page's
-      pool of three-word phrases, which is closer to how a search engine detects copied passages. No pair
-      required escalation.
+      pool of three-word phrases, which is closer to how a search engine detects copied passages.
     </p>
   </section>
 
