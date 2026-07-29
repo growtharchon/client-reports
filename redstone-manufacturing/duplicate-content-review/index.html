@@ -446,8 +446,9 @@
     </p>
     <p>
       Second, even setting the noindex aside, <strong>the content genuinely isn't duplicated</strong>. Across
-      all 21 pairs, textual overlap with the matching main-site page runs between 10% and 14%. Duplicate-content
-      thresholds sit north of 80%. These are different pages written for different jobs.
+      all 21 pairs, phrase-level overlap with the matching main-site page runs between 3.8% and 5.5%. For
+      comparison, two unrelated pages on the main site itself share 37% — roughly seven times more. These are
+      different pages written for different jobs.
     </p>
     <p>
       Our recommendation is to <strong>leave the landing pages exactly as they are</strong>. Redirecting or
@@ -477,13 +478,17 @@
           <tr><td><strong>Job</strong></td><td>Convert paid ad clicks</td><td>Earn and hold organic rankings</td></tr>
           <tr><td><strong>Search visibility</strong></td><td>Blocked (noindex)</td><td>Indexable</td></tr>
           <tr><td><strong>Length</strong></td><td class="n">1,032–1,352 words</td><td class="n">2,333–3,247 words</td></tr>
-          <tr><td><strong>Navigation</strong></td><td>Minimal, in-page only — no exits</td><td>Full Services / Locations / Industries / Resources architecture</td></tr>
+          <tr><td><strong>Navigation</strong></td><td>In-page anchors only — no exit links</td><td>Full Services / Locations / Industries / Resources architecture</td></tr>
           <tr><td><strong>Structure</strong></td><td>Single conversion path to one form</td><td>Hub page with internal links, resources, related capabilities</td></tr>
-          <tr><td><strong>Contact</strong></td><td>Phone number shown for call tracking</td><td>Form-led</td></tr>
+          <tr><td><strong>Contact</strong></td><td>Click-to-call phone number on every page</td><td>Form-led</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="cap">Observed directly from the live pages, 29 July 2026.</p>
+    <p class="cap">
+      Word counts from the content comparison. All other rows verified directly against the live HTML of all
+      21 landing pages, 29 July 2026: one <span class="m">&lt;form&gt;</span> per page, navigation consisting
+      solely of in-page anchors, and a <span class="m">tel:</span> link on every page.
+    </p>
   </section>
 
   <section>
@@ -547,14 +552,16 @@
     <p class="cap">Semrush, US database, current snapshot · retrieved 29 July 2026.</p>
 
     <p>
-      The 21 paid keywords mapping one-to-one onto the 21 landing pages is the clearest possible confirmation
-      of what this domain is: a paid acquisition asset that is doing its job and staying out of the organic
-      index while it does.
+      The shape of this is unambiguous: a domain with an active paid campaign and essentially no organic
+      footprint is a paid acquisition asset doing its job and staying out of the organic index while it does.
+      The count of 21 paid keywords alongside 21 landing pages is consistent with one campaign per page,
+      though we have not confirmed that mapping directly — the Google Ads account is the place to verify it
+      if it matters.
     </p>
   </section>
 
   <section>
-    <div class="sechead"><span class="num">04</span><h2>Measured similarity: 10–14%, against an 80%+ threshold</h2></div>
+    <div class="sechead"><span class="num">04</span><h2>Measured similarity, and what it means against a control</h2></div>
     <p>
       Our SEO team ran a full text comparison of every landing page against its closest match on the main
       site, using two independent measures. <strong>Sequence similarity</strong> compares the pages as
@@ -574,9 +581,9 @@
         <p class="n">Across all 21 pairs</p>
       </div>
       <div>
-        <p class="k">Duplicate threshold</p>
-        <p class="v hi">80%+</p>
-        <p class="n">Industry working standard</p>
+        <p class="k">Control · 3-gram</p>
+        <p class="v hi">37.3%</p>
+        <p class="n">Two unrelated main-site pages</p>
       </div>
       <div>
         <p class="k">Pairs flagged</p>
@@ -585,10 +592,39 @@
       </div>
     </div>
 
+    <h3>The number that settles it</h3>
     <p>
-      Not one pair comes within 65 percentage points of the threshold. The highest reading in the entire set
-      is 14.0%. For context, two pages on completely unrelated topics that merely share a language and a
-      footer will often score in this range on their own.
+      Google has never published a numeric duplicate-content threshold, so a raw percentage on its own proves
+      little. What makes these readings conclusive is the comparison against a control, which we ran
+      specifically to test this:
+    </p>
+    <ul>
+      <li>
+        A landing page and its <strong>closest</strong> main-site match share <strong>3.6–5.2%</strong> of
+        their three-word phrases.
+      </li>
+      <li>
+        The same landing page against a <strong>deliberately mismatched</strong> main-site page — a different
+        service entirely — scores <strong>3.8–4.8%</strong>. Statistically identical.
+      </li>
+      <li>
+        Two <strong>unrelated pages on the main site itself</strong> — CNC machining versus sheet metal
+        fabrication — share <strong>37.3%</strong>.
+      </li>
+    </ul>
+    <p>
+      The first two lines are the finding. A CNC landing page is <em>no more similar</em> to the CNC page on
+      the main site than it is to the sheet metal page. That means the small overlap being measured is
+      ordinary shared vocabulary — company name, certifications, industry terms — and not duplicated content,
+      because genuine duplication would show up as a gap between the matched and mismatched scores. There
+      isn't one.
+    </p>
+    <p>
+      The third line puts it in perspective: the main site's own service pages share roughly
+      <strong>seven times more</strong> language with each other than any landing page shares with the main
+      site. If 4% constituted a duplicate content problem, the main site would have a far larger one
+      internally — and it doesn't, because that level of overlap is simply what pages from the same company
+      look like.
     </p>
 
     <div class="tablewrap">
@@ -643,7 +679,10 @@
       making one of the two pages wrong:
     </p>
     <ul>
-      <li>Certifications and facts: ISO 9001, IATF 16949, the Monterrey facility, USMCA tariff treatment.</li>
+      <li>
+        Certifications and facts: ISO 9001 (present on all 21 pages), the Monterrey facility (19 of 21),
+        USMCA tariff treatment (20 of 21), and IATF 16949 on the four die casting pages.
+      </li>
       <li>Technical specifications: tolerances, axis counts, lead times.</li>
       <li>Company identifiers: the Redstone name, contact details, industry terms like "CNC machining" and "die casting".</li>
     </ul>
@@ -745,6 +784,19 @@
         body text, and Jaccard overlap of three-word phrase sets. Boilerplate was retained in both, which is
         the conservative choice — it inflates apparent similarity rather than hiding it, so the true content
         overlap is lower than the figures shown.
+      </p>
+      <p>
+        <strong>Independent reproduction.</strong> The phrase-overlap figures were re-derived from scratch
+        against the live pages using a separate implementation, and reproduced the original analysis closely
+        (for example 5.2% against 5.5%, 4.3% against 4.5%, 3.6% against 3.8%). The conclusion does not rest on
+        a single tool. Note that sequence-similarity percentages are more sensitive to implementation than
+        phrase overlap is, so the phrase-overlap measure is the one to compare across figures in this report.
+      </p>
+      <p>
+        <strong>Control test.</strong> To establish what a low score actually means, each of three landing
+        pages was additionally compared against a deliberately mismatched main-site page covering a different
+        service, and two unrelated main-site service pages were compared against each other. These controls
+        are what the argument in section 04 rests on.
       </p>
       <p>
         <strong>Technical verification.</strong> All 21 URLs were fetched live on 29 July 2026 and inspected
