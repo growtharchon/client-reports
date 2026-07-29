@@ -440,9 +440,10 @@
     <span class="pill pass">No action required</span>
     <h2>Two independent reasons this can't hurt the main site's rankings</h2>
     <p>
-      First, every one of the 21 landing pages carries a <strong>noindex</strong> instruction, so none of them
-      is eligible to appear in Google's organic results at all. Duplicate content is a problem that happens
-      <em>inside</em> the search index — a page that can't enter the index can't compete with anything in it.
+      First, every one of the 21 landing pages carries a <strong>noindex</strong> instruction — we checked each
+      URL individually on 29 July 2026 — so none of them is eligible to appear in Google's organic results at
+      all. Duplicate content is a problem that happens <em>inside</em> the search index, and a page that cannot
+      enter the index cannot compete with anything in it.
     </p>
     <p>
       Second, even setting the noindex aside, <strong>the content genuinely isn't duplicated</strong>. Across
@@ -492,30 +493,7 @@
   </section>
 
   <section>
-    <div class="sechead"><span class="num">02</span><h2>The noindex is in place on all 21 pages — verified</h2></div>
-    <p>
-      We fetched each of the 21 URLs individually. All returned HTTP 200, and all 21 carry the noindex
-      directive in the page head:
-    </p>
-
-    <div class="snippet">
-<pre><span class="c">&lt;!-- present on all 21 landing pages --&gt;</span>
-&lt;meta name="robots" content="noindex, nofollow" /&gt;
-&lt;link rel="canonical" href="https://theredstonemanufacturing.com/…" /&gt;</pre>
-    </div>
-    <p class="cap">Verified 29 July 2026 · 21/21 pages · HTTP 200 · noindex present on every page.</p>
-
-    <p>
-      The <span class="m">robots.txt</span> file on the landing page domain is also configured correctly, and
-      worth a specific note because it's a detail that is very commonly got wrong. Crawling is deliberately
-      left <em>allowed</em>. That looks counterintuitive, but it's right: blocking crawlers would stop them
-      fetching the pages, which means they would never see the noindex tag — and any URL that had already
-      been indexed would linger there indefinitely. Allowing the crawl is what makes the noindex work.
-    </p>
-  </section>
-
-  <section>
-    <div class="sechead"><span class="num">03</span><h2>Measured similarity, and what it means against a control</h2></div>
+    <div class="sechead"><span class="num">02</span><h2>Measured similarity, and what it means against a control</h2></div>
     <p>
       Our SEO team ran a full text comparison of every landing page against its closest match on the main
       site, using two independent measures. <strong>Sequence similarity</strong> compares the pages as
@@ -648,7 +626,7 @@
   </section>
 
   <section>
-    <div class="sechead"><span class="num">04</span><h2>One clarification worth putting on the record</h2></div>
+    <div class="sechead"><span class="num">03</span><h2>One clarification worth putting on the record</h2></div>
 
     <div class="note rust">
       <h3>"They're on different domains, so it's fine" is not the reason</h3>
@@ -667,7 +645,7 @@
   </section>
 
   <section>
-    <div class="sechead"><span class="num">05</span><h2>What we found that wasn't in the original question</h2></div>
+    <div class="sechead"><span class="num">04</span><h2>What we found that wasn't in the original question</h2></div>
 
     <div class="note">
       <span class="pill watch">Low priority · paid media</span>
@@ -698,7 +676,7 @@
   </section>
 
   <section>
-    <div class="sechead"><span class="num">06</span><h2>Recommendation</h2></div>
+    <div class="sechead"><span class="num">05</span><h2>Recommendation</h2></div>
 
     <div class="rec">
       <div>
@@ -750,7 +728,7 @@
         <strong>Control test.</strong> To establish what a low score actually means, each of three landing
         pages was additionally compared against a deliberately mismatched main-site page covering a different
         service, and two unrelated main-site service pages were compared against each other. These controls
-        are what the argument in section 03 rests on.
+        are what the argument in section 02 rests on.
       </p>
       <p>
         <strong>Technical verification.</strong> All 21 URLs were fetched live on 29 July 2026 and inspected
