@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrueForm Pilates - Content Plan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface-2: #232735;
+    --border: #2a2e3d;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent: #6366f1;
+    --accent-light: #818cf8;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 64px 0 48px;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(34,197,94,0.1);
+    color: #22c55e;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .badge .dot {
+    width: 8px; height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  .hero p {
+    color: var(--text-muted);
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 48px 0;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: var(--accent); }
+  .stat-num {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Sections */
+  .section {
+    margin: 64px 0;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .section-header .icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+  .section-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .section-header .count {
+    background: rgba(99,102,241,0.12);
+    color: var(--accent-light);
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  /* Tables */
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead th {
+    background: var(--surface-2);
+    padding: 14px 20px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+  }
+  tbody td {
+    padding: 14px 20px;
+    border-top: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:hover {
+    background: rgba(99,102,241,0.04);
+  }
+  code {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  }
+
+  /* Category breakdown */
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .cat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  /* Timeline */
+  .timeline {
+    display: grid;
+    gap: 24px;
+    margin: 24px 0;
+  }
+  .phase {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .phase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+  }
+  .phase-1::before { background: linear-gradient(180deg, #6366f1, #818cf8); }
+  .phase-2::before { background: linear-gradient(180deg, #3b82f6, #60a5fa); }
+  .phase-3::before { background: linear-gradient(180deg, #22c55e, #4ade80); }
+  .phase-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .phase h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .phase .date {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .phase ul {
+    list-style: none;
+    padding: 0;
+  }
+  .phase li {
+    padding: 6px 0;
+    color: var(--text-muted);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .phase li::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .phase .week {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-light);
+    background: rgba(99,102,241,0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 48px 0;
+    color: var(--text-muted);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    margin-top: 64px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="badge"><span class="dot"></span> Content Plan Ready</div>
+    <h1>TrueForm Pilates</h1>
+    <p>Comprehensive content strategy covering location pages, comparison articles, and educational blog posts to drive organic traffic.</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-num" style="color:#6366f1;">53</div>
+      <div class="stat-label">Total Pages</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#3b82f6;">3</div>
+      <div class="stat-label">Location Pages</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#f59e0b;">1</div>
+      <div class="stat-label">Near Me Pages</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#22c55e;">49</div>
+      <div class="stat-label">Blog Posts</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#ec4899;">30,800</div>
+      <div class="stat-label">Total Keyword Volume</div>
+    </div>
+  </div>
+
+  <!-- Location Pages -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:rgba(59,130,246,0.12);color:#3b82f6;">&#x1f4cd;</div>
+      <h2>Location Pages</h2>
+      <span class="count">3 pages</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>URL Slug</th>
+            <th>Primary Keyword</th>
+            <th style="text-align:center;">Volume</th>
+            <th style="text-align:center;">KD</th>
+            <th style="text-align:center;">Cluster Vol</th>
+            <th>Secondary Keywords</th>
+            <th>SEO Title</th>
+          </tr>
+        </thead>
+        <tbody><tr>
+            <td style="color:#64748b;font-weight:500;">1</td>
+            
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/pilates-ann-arbor</code></td>
+            <td style="font-weight:600;">pilates ann arbor</td>
+            <td style="text-align:center;font-weight:700;">720</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">15</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">1,190</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates in ann arbor (170), ann arbor pilates (140), pilates ann arbor mi (140), prenatal pilates ann arbor (20)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates Ann Arbor: Reformer & Mat Classes (All Levels Welcome)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">2</td>
+            
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/pilates-ypsilanti</code></td>
+            <td style="font-weight:600;">pilates ypsilanti</td>
+            <td style="text-align:center;font-weight:700;">20</td>
+            <td style="text-align:center;"><span style="color:#f97316;font-weight:700;">37</span> <span style="color:#64748b;font-size:11px;">(Difficult)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">20</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates classes ypsilanti mi, pilates in ypsilanti, ypsilanti pilates</td>
+            <td style="font-size:13px;font-weight:500;">Pilates Ypsilanti MI: Local Studio & Classes (w/ Free Intro)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">3</td>
+            
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/pilates-saline</code></td>
+            <td style="font-weight:600;">pilates saline</td>
+            <td style="text-align:center;font-weight:700;">0</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">9</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">0</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates saline mi, pre natal pilates saline</td>
+            <td style="font-size:13px;font-weight:500;">Pilates Saline MI: Nearby Classes & Studios (Beginners Welcome)</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Near Me Pages -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:rgba(245,158,11,0.12);color:#f59e0b;">&#x1f50d;</div>
+      <h2>Near Me Pages</h2>
+      <span class="count">1 page</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>URL Slug</th>
+            <th>Primary Keyword</th>
+            <th style="text-align:center;">Volume</th>
+            <th style="text-align:center;">KD</th>
+            <th style="text-align:center;">Cluster Vol</th>
+            <th>Secondary Keywords</th>
+            <th>SEO Title</th>
+          </tr>
+        </thead>
+        <tbody><tr>
+            <td style="color:#64748b;font-weight:500;">1</td>
+            
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/pilates-near-me</code></td>
+            <td style="font-weight:600;">pilates near me</td>
+            <td style="text-align:center;font-weight:700;">0</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">0</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">0</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates classes near me, pilates studio near me, reformer pilates near me</td>
+            <td style="font-size:13px;font-weight:500;">Pilates Near Me: How To Find the Right Studio (& What To Expect)</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Blog Category Breakdown -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">&#x1f4ca;</div>
+      <h2>Blog Posts by Category</h2>
+      <span class="count">49 posts</span>
+    </div>
+    <div class="cat-card">
+      <div style="display:flex;align-items:center;gap:12px;padding:8px 0;"><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;min-width:160px;">Comparison</span><span style="color:#e2e8f0;font-weight:700;font-size:18px;">14</span><span style="color:#64748b;font-size:13px;">posts</span></div><div style="display:flex;align-items:center;gap:12px;padding:8px 0;"><span style="color:#ec4899;background:rgba(236,72,153,0.10);padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;min-width:160px;">Women's Health</span><span style="color:#e2e8f0;font-weight:700;font-size:18px;">8</span><span style="color:#64748b;font-size:13px;">posts</span></div><div style="display:flex;align-items:center;gap:12px;padding:8px 0;"><span style="color:#6366f1;background:rgba(99,102,241,0.10);padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;min-width:160px;">Pilates Fundamentals</span><span style="color:#e2e8f0;font-weight:700;font-size:18px;">6</span><span style="color:#64748b;font-size:13px;">posts</span></div><div style="display:flex;align-items:center;gap:12px;padding:8px 0;"><span style="color:#06b6d4;background:rgba(6,182,212,0.10);padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;min-width:160px;">Equipment</span><span style="color:#e2e8f0;font-weight:700;font-size:18px;">6</span><span style="color:#64748b;font-size:13px;">posts</span></div><div style="display:flex;align-items:center;gap:12px;padding:8px 0;"><span style="color:#22c55e;background:rgba(34,197,94,0.10);padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;min-width:160px;">Health & Recovery</span><span style="color:#e2e8f0;font-weight:700;font-size:18px;">6</span><span style="color:#64748b;font-size:13px;">posts</span></div><div style="display:flex;align-items:center;gap:12px;padding:8px 0;"><span style="color:#ef4444;background:rgba(239,68,68,0.10);padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;min-width:160px;">Core & Abs</span><span style="color:#e2e8f0;font-weight:700;font-size:18px;">5</span><span style="color:#64748b;font-size:13px;">posts</span></div><div style="display:flex;align-items:center;gap:12px;padding:8px 0;"><span style="color:#a855f7;background:rgba(168,85,247,0.10);padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;min-width:160px;">Lifestyle</span><span style="color:#e2e8f0;font-weight:700;font-size:18px;">4</span><span style="color:#64748b;font-size:13px;">posts</span></div>
+    </div>
+  </div>
+
+  <!-- Blog Posts Table -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">&#x270d;</div>
+      <h2>Blog Posts</h2>
+      <span class="count">49 posts &middot; 29,590 total volume</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Category</th>
+            <th>URL Slug</th>
+            <th>Primary Keyword</th>
+            <th style="text-align:center;">Volume</th>
+            <th style="text-align:center;">KD</th>
+            <th style="text-align:center;">Cluster Vol</th>
+            <th>Secondary Keywords</th>
+            <th>SEO Title</th>
+          </tr>
+        </thead>
+        <tbody><tr>
+            <td style="color:#64748b;font-weight:500;">1</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-vs-lagree</code></td>
+            <td style="font-weight:600;">what is lagree pilates</td>
+            <td style="text-align:center;font-weight:700;">1,000</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">22</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">6,280</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates vs lagree (880), what is lagree (4400)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates vs Lagree: They're NOT the Same (Here's Why It Matters)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">2</td>
+            <td><span style="color:#6366f1;background:rgba(99,102,241,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Pilates Fundamentals</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/6-principles-of-pilates</code></td>
+            <td style="font-weight:600;">6 core principles of pilates list</td>
+            <td style="text-align:center;font-weight:700;">2,400</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">12</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">3,330</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates principles (720), 6 principles of pilates (210)</td>
+            <td style="font-size:13px;font-weight:500;">6 Principles of Pilates: Why They Matter (& How To Apply Them)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">3</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-vs-weight-training</code></td>
+            <td style="font-weight:600;">pilates vs weight training</td>
+            <td style="text-align:center;font-weight:700;">720</td>
+            <td style="text-align:center;"><span style="color:#ef4444;font-weight:700;">58</span> <span style="color:#64748b;font-size:11px;">(Hard)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">2,570</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates vs weight lifting (590), pilates vs weights (320), pilates vs. resistance training (320), weight training vs pilates (260), pilates body vs weight training body (90), pilates vs weight training for weight loss (90), pilates vs weight training body (50), pilates vs gym workout (40), pilates vs weightlifting (30), pilates body vs weight lifting (30), pilates vs weight lifting body (30)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates vs Weight Training: Which Is Better for You? (Pros & Cons)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">4</td>
+            <td><span style="color:#06b6d4;background:rgba(6,182,212,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Equipment</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/reformer-pilates-beginners-guide</code></td>
+            <td style="font-weight:600;">reformer pilates for beginners</td>
+            <td style="text-align:center;font-weight:700;">1,300</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">25</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">1,820</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">reformer pilates beginner (260), reformer pilates beginners (260)</td>
+            <td style="font-size:13px;font-weight:500;">Reformer Pilates for Beginners: What To Expect (& Common Mistakes)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">5</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-body-vs-gym-body</code></td>
+            <td style="font-weight:600;">pilates body vs gym body</td>
+            <td style="text-align:center;font-weight:700;">1,000</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">20</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">1,640</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">before after pilates body vs gym body (210), pilates vs gym body (140), after pilates body vs gym body (90), pilates body vs gym body woman (90), pilates body vs gym body women (50), pilates body vs weights body (30), reformer pilates body vs gym body (30)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates Body vs Gym Body: Real Differences (w/ Before & After)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">6</td>
+            <td><span style="color:#ec4899;background:rgba(236,72,153,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Women's Health</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/postpartum-pilates</code></td>
+            <td style="font-weight:600;">postpartum pilates</td>
+            <td style="text-align:center;font-weight:700;">590</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">25</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">1,140</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates postpartum (170), pilates after birth (170), pilates after childbirth (90), postpartum pilates exercises (70), is pilates good for postpartum (50)</td>
+            <td style="font-size:13px;font-weight:500;">Postpartum Pilates: When To Start & What's Safe (w/ 5 Home Exercises)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">7</td>
+            <td><span style="color:#ef4444;background:rgba(239,68,68,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Core & Abs</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-moves-for-abs</code></td>
+            <td style="font-weight:600;">pilates abdominal</td>
+            <td style="text-align:center;font-weight:700;">880</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">24</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">950</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">best pilates moves for abs (70)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates Ab Exercises: 4 Moves for a Stronger Core (w/ Progressions)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">8</td>
+            <td><span style="color:#a855f7;background:rgba(168,85,247,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Lifestyle</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/joseph-pilates-quotes</code></td>
+            <td style="font-weight:600;">joseph pilates quotes</td>
+            <td style="text-align:center;font-weight:700;">480</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">11</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">950</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">joseph pilates sayings (260), quotes from joseph pilates (210)</td>
+            <td style="font-size:13px;font-weight:500;">Joseph Pilates Quotes: 15 Timeless Sayings (& What They Really Mean)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">9</td>
+            <td><span style="color:#ef4444;background:rgba(239,68,68,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Core & Abs</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-bridge-exercise</code></td>
+            <td style="font-weight:600;">pilates bridge</td>
+            <td style="text-align:center;font-weight:700;">590</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">11</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">940</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">bridge pilates (210), benefits of bridge exercise (140)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates Bridge: Benefits & Variations (w/ Step-by-Step Form Guide)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">10</td>
+            <td><span style="color:#06b6d4;background:rgba(6,182,212,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Equipment</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/bosu-ball-pilates-exercises</code></td>
+            <td style="font-weight:600;">bosu ball pilates exercises</td>
+            <td style="text-align:center;font-weight:700;">590</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">25</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">830</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">bosu pilates (70), how to use bosu ball (170)</td>
+            <td style="font-size:13px;font-weight:500;">Bosu Ball Pilates Exercises: Full Workout Guide (w/ Modifications)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">11</td>
+            <td><span style="color:#ec4899;background:rgba(236,72,153,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Women's Health</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-for-diastasis-recti</code></td>
+            <td style="font-weight:600;">pilates diastasis abdominal</td>
+            <td style="text-align:center;font-weight:700;">390</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">6</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">820</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates and diastasis recti (260), is pilates good for diastasis recti (170)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates for Diastasis Recti: Heal Your Core Safely (w/ Exercise Guide)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">12</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-vs-strength-training</code></td>
+            <td style="font-weight:600;">pilates vs strength training</td>
+            <td style="text-align:center;font-weight:700;">590</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">28</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">590</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">—</td>
+            <td style="font-size:13px;font-weight:500;">Pilates vs Strength Training: Can Pilates Replace the Gym? (Honest Take)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">13</td>
+            <td><span style="color:#06b6d4;background:rgba(6,182,212,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Equipment</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/exo-chair-pilates</code></td>
+            <td style="font-weight:600;">exo chair pilates</td>
+            <td style="text-align:center;font-weight:700;">320</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">10</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">570</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates exo chair (140), exo pilates chair (110)</td>
+            <td style="font-size:13px;font-weight:500;">Exo Chair Pilates: What It Is & How To Use It (w/ Exercises)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">14</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-vs-gym</code></td>
+            <td style="font-weight:600;">pilates vs gym</td>
+            <td style="text-align:center;font-weight:700;">320</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">24</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">560</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">gym vs pilates (210), gym body vs pilates body (30)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates vs Gym: Which Gets Better Results? (& Can You Do Both?)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">15</td>
+            <td><span style="color:#ec4899;background:rgba(236,72,153,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Women's Health</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-for-teens</code></td>
+            <td style="font-weight:600;">pilates for teens</td>
+            <td style="text-align:center;font-weight:700;">260</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">6</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">540</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates classes for teenagers (140), teenage pilates classes (140)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates for Teens: Why It's the Perfect Workout (& How To Start)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">16</td>
+            <td><span style="color:#22c55e;background:rgba(34,197,94,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Health & Recovery</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-herniated-bulging-discs</code></td>
+            <td style="font-weight:600;">pilates and bulging discs</td>
+            <td style="text-align:center;font-weight:700;">170</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">24</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">430</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates for slipped disc (170), pilates for herniated disc (90)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates for Herniated & Bulging Discs: Safe Exercises (& What To Avoid)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">17</td>
+            <td><span style="color:#ec4899;background:rgba(236,72,153,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Women's Health</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-and-menopause</code></td>
+            <td style="font-weight:600;">pilates and menopause</td>
+            <td style="text-align:center;font-weight:700;">140</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">21</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">400</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates for menopause (140), pilates for perimenopause (90), is pilates good for perimenopause (30)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates & Menopause: How It Helps w/ Symptoms (& Best Exercises)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">18</td>
+            <td><span style="color:#22c55e;background:rgba(34,197,94,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Health & Recovery</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/does-pilates-make-you-taller</code></td>
+            <td style="font-weight:600;">does pilates make you taller</td>
+            <td style="text-align:center;font-weight:700;">140</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">17</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">390</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates for height (90), can pilates make you taller (90), do pilates make you taller (70)</td>
+            <td style="font-size:13px;font-weight:500;">Does Pilates Make You Taller? The Science Behind It (& Real Results)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">19</td>
+            <td><span style="color:#a855f7;background:rgba(168,85,247,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Lifestyle</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/celebrities-who-do-pilates</code></td>
+            <td style="font-weight:600;">celebrities who do pilates</td>
+            <td style="text-align:center;font-weight:700;">90</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">11</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">370</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">celebrities doing pilates (70), famous people who do pilates (70), celebs that do pilates (70), stars who do pilates (70)</td>
+            <td style="font-size:13px;font-weight:500;">15 Celebrities Who Do Pilates (& Why They Swear by It)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">20</td>
+            <td><span style="color:#ec4899;background:rgba(236,72,153,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Women's Health</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-after-c-section</code></td>
+            <td style="font-weight:600;">pilates after c section</td>
+            <td style="text-align:center;font-weight:700;">140</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">9</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">340</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates after cesarean (110), pilates post c section (90)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates After C-Section: When To Start (& 5 Safe Exercises)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">21</td>
+            <td><span style="color:#22c55e;background:rgba(34,197,94,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Health & Recovery</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/lower-back-pain-after-pilates</code></td>
+            <td style="font-weight:600;">lower back hurts after pilates</td>
+            <td style="text-align:center;font-weight:700;">90</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">10</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">320</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">lower back sore after pilates (90), back pain after pilates (70), back ache after pilates (70)</td>
+            <td style="font-size:13px;font-weight:500;">Lower Back Pain After Pilates: Why It Happens (& How To Fix It)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">22</td>
+            <td><span style="color:#ef4444;background:rgba(239,68,68,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Core & Abs</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-oblique-exercises</code></td>
+            <td style="font-weight:600;">pilates oblique exercises</td>
+            <td style="text-align:center;font-weight:700;">90</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">14</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">300</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates obliques (70), pilates for obliques (50), oblique exercises pilates (50), pilates obliques workout (40)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates Oblique Exercises: 5 Moves To Target Your Sides (w/ Form Tips)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">23</td>
+            <td><span style="color:#ef4444;background:rgba(239,68,68,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Core & Abs</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/core-strengthening-pilates-exercises</code></td>
+            <td style="font-weight:600;">core strengthening pilates exercises</td>
+            <td style="text-align:center;font-weight:700;">170</td>
+            <td style="text-align:center;"><span style="color:#f97316;font-weight:700;">35</span> <span style="color:#64748b;font-size:11px;">(Difficult)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">280</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">core moves pilates (70), 4 pilates core moves (40)</td>
+            <td style="font-size:13px;font-weight:500;">10 Core Strengthening Pilates Exercises (That Actually Work)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">24</td>
+            <td><span style="color:#ec4899;background:rgba(236,72,153,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Women's Health</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-for-pcos</code></td>
+            <td style="font-weight:600;">is pilates good for pcos</td>
+            <td style="text-align:center;font-weight:700;">170</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">6</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">280</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates for pcos (110)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates for PCOS: Does It Help? (w/ Research & Exercise Tips)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">25</td>
+            <td><span style="color:#ef4444;background:rgba(239,68,68,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Core & Abs</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-plank-variations</code></td>
+            <td style="font-weight:600;">pilates plank workout</td>
+            <td style="text-align:center;font-weight:700;">170</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">17</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">260</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates plank exercises (90)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates Plank Workout: 7 Variations for Every Level (w/ Modifications)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">26</td>
+            <td><span style="color:#a855f7;background:rgba(168,85,247,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Lifestyle</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-cardio-sculpt</code></td>
+            <td style="font-weight:600;">pilates cardio sculpt</td>
+            <td style="text-align:center;font-weight:700;">210</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">24</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">250</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">what is cardio sculpt in pilates (40)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates Cardio Sculpt: What It Is & Who It's For (w/ Class Breakdown)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">27</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/sculpt-vs-pilates</code></td>
+            <td style="font-weight:600;">sculpt vs pilates</td>
+            <td style="text-align:center;font-weight:700;">110</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">3</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">230</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">yoga sculpt vs pilates (90), pilates vs sculpt (30)</td>
+            <td style="font-size:13px;font-weight:500;">Sculpt vs Pilates: Key Differences (& Which Burns More)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">28</td>
+            <td><span style="color:#06b6d4;background:rgba(6,182,212,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Equipment</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-cadillac-explained</code></td>
+            <td style="font-weight:600;">what is pilates cadillac</td>
+            <td style="text-align:center;font-weight:700;">110</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">11</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">220</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">what is cadillac pilates (110)</td>
+            <td style="font-size:13px;font-weight:500;">What Is a Pilates Cadillac? Equipment Guide (& Best Exercises)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">29</td>
+            <td><span style="color:#6366f1;background:rgba(99,102,241,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Pilates Fundamentals</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-footwork</code></td>
+            <td style="font-weight:600;">pilates footwork</td>
+            <td style="text-align:center;font-weight:700;">110</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">10</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">200</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">footwork pilates (90)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates Footwork: Why This Warm-Up Matters (& How To Do It Right)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">30</td>
+            <td><span style="color:#ec4899;background:rgba(236,72,153,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Women's Health</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-for-moms</code></td>
+            <td style="font-weight:600;">pilates for moms</td>
+            <td style="text-align:center;font-weight:700;">170</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">10</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">170</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">—</td>
+            <td style="font-size:13px;font-weight:500;">Pilates for Busy Moms: Why It Works (& How To Fit It In)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">31</td>
+            <td><span style="color:#06b6d4;background:rgba(6,182,212,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Equipment</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-ball-guide</code></td>
+            <td style="font-weight:600;">how to use a pilates ball</td>
+            <td style="text-align:center;font-weight:700;">90</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">18</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">160</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates ball size (70)</td>
+            <td style="font-size:13px;font-weight:500;">How To Use a Pilates Ball: Sizes, Exercises & Tips (Beginner Guide)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">32</td>
+            <td><span style="color:#22c55e;background:rgba(34,197,94,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Health & Recovery</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-for-women-over-60</code></td>
+            <td style="font-weight:600;">pilates for women over 60</td>
+            <td style="text-align:center;font-weight:700;">90</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">28</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">140</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates for beginners over 60 (50)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates for Women Over 60: Stay Strong at Any Age (w/ Beginner Tips)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">33</td>
+            <td><span style="color:#6366f1;background:rgba(99,102,241,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Pilates Fundamentals</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/how-many-pilates-classes</code></td>
+            <td style="font-weight:600;">how many pilates classes to see a difference</td>
+            <td style="text-align:center;font-weight:700;">90</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">9</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">130</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">can you do two pilates classes in one day (40)</td>
+            <td style="font-size:13px;font-weight:500;">How Many Pilates Classes To See Results? (What Instructors Say)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">34</td>
+            <td><span style="color:#22c55e;background:rgba(34,197,94,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Health & Recovery</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/sore-after-pilates</code></td>
+            <td style="font-weight:600;">sore from pilates</td>
+            <td style="text-align:center;font-weight:700;">90</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">3</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">130</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates soreness (40)</td>
+            <td style="font-size:13px;font-weight:500;">Sore After Pilates? Here's Why (& What To Do About It)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">35</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-vs-hiit</code></td>
+            <td style="font-weight:600;">pilates vs hiit</td>
+            <td style="text-align:center;font-weight:700;">90</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">11</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">130</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">hiit vs pilates (40)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates vs HIIT: Which Should You Choose? (& When To Combine)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">36</td>
+            <td><span style="color:#ec4899;background:rgba(236,72,153,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Women's Health</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-for-pregnant</code></td>
+            <td style="font-weight:600;">pilates for pregnant</td>
+            <td style="text-align:center;font-weight:700;">110</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">21</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">110</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">—</td>
+            <td style="font-size:13px;font-weight:500;">Pilates While Pregnant: Trimester-by-Trimester Guide (& Safety Tips)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">37</td>
+            <td><span style="color:#6366f1;background:rgba(99,102,241,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Pilates Fundamentals</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/teaser-prep-pilates</code></td>
+            <td style="font-weight:600;">teaser prep pilates</td>
+            <td style="text-align:center;font-weight:700;">70</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">14</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">100</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">teaser prep (30)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates Teaser Prep: 3 Moves To Build Up (w/ Step-by-Step Guide)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">38</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/weightlifting-vs-pilates-muscle-building</code></td>
+            <td style="font-weight:600;">weightlifting vs pilates muscle building</td>
+            <td style="text-align:center;font-weight:700;">70</td>
+            <td style="text-align:center;"><span style="color:#f97316;font-weight:700;">41</span> <span style="color:#64748b;font-size:11px;">(Difficult)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">100</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates body vs weightlifting body (30)</td>
+            <td style="font-size:13px;font-weight:500;">Weightlifting vs Pilates for Muscle: Which Builds More? (The Truth)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">39</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-vs-cardio</code></td>
+            <td style="font-weight:600;">pilates vs cardio</td>
+            <td style="text-align:center;font-weight:700;">70</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">12</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">100</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">pilates vs cardio weight loss (30)</td>
+            <td style="font-size:13px;font-weight:500;">Pilates vs Cardio: Which Burns More Fat? (& the Surprising Answer)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">40</td>
+            <td><span style="color:#22c55e;background:rgba(34,197,94,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Health & Recovery</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-for-ms</code></td>
+            <td style="font-weight:600;">pilates for ms</td>
+            <td style="text-align:center;font-weight:700;">90</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">14</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">90</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">—</td>
+            <td style="font-size:13px;font-weight:500;">Pilates for Multiple Sclerosis: Real Benefits (& How To Start Safely)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">41</td>
+            <td><span style="color:#6366f1;background:rgba(99,102,241,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Pilates Fundamentals</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-breathing</code></td>
+            <td style="font-weight:600;">pilates breath</td>
+            <td style="text-align:center;font-weight:700;">70</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">14</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">70</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">—</td>
+            <td style="font-size:13px;font-weight:500;">Pilates Breathing: How To Master It (& Why It Powers Every Move)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">42</td>
+            <td><span style="color:#06b6d4;background:rgba(6,182,212,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Equipment</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/reformer-pilates-weight-loss</code></td>
+            <td style="font-weight:600;">does reformer pilates help with weight loss</td>
+            <td style="text-align:center;font-weight:700;">70</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">17</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">70</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">—</td>
+            <td style="font-size:13px;font-weight:500;">Does Reformer Pilates Help w/ Weight Loss? (What the Data Shows)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">43</td>
+            <td><span style="color:#a855f7;background:rgba(168,85,247,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Lifestyle</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-for-golf</code></td>
+            <td style="font-weight:600;">golf and pilates</td>
+            <td style="text-align:center;font-weight:700;">70</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">16</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">70</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">—</td>
+            <td style="font-size:13px;font-weight:500;">Pilates for Golfers: Improve Your Swing (w/ Core Exercises)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">44</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-vs-yoga-for-seniors</code></td>
+            <td style="font-weight:600;">pilates vs yoga for seniors</td>
+            <td style="text-align:center;font-weight:700;">50</td>
+            <td style="text-align:center;"><span style="color:#f97316;font-weight:700;">32</span> <span style="color:#64748b;font-size:11px;">(Difficult)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">50</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">—</td>
+            <td style="font-size:13px;font-weight:500;">Pilates vs Yoga for Seniors: Which Is Safer? (w/ Expert Advice)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">45</td>
+            <td><span style="color:#6366f1;background:rgba(99,102,241,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Pilates Fundamentals</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/how-to-prepare-for-pilates</code></td>
+            <td style="font-weight:600;">how to prepare for pilates</td>
+            <td style="text-align:center;font-weight:700;">40</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">4</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">40</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">—</td>
+            <td style="font-size:13px;font-weight:500;">How To Prepare for Pilates: First-Class Checklist (& What To Wear)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">46</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/running-vs-pilates</code></td>
+            <td style="font-weight:600;">running vs pilates</td>
+            <td style="text-align:center;font-weight:700;">40</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">13</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">40</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">—</td>
+            <td style="font-size:13px;font-weight:500;">Running vs Pilates: Do You Need Both? (& How To Combine Them)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">47</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-vs-aerobics</code></td>
+            <td style="font-weight:600;">pilates vs aerobics</td>
+            <td style="text-align:center;font-weight:700;">30</td>
+            <td style="text-align:center;"><span style="color:#22c55e;font-weight:700;">10</span> <span style="color:#64748b;font-size:11px;">(Easy)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">30</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">—</td>
+            <td style="font-size:13px;font-weight:500;">Pilates vs Aerobics: Key Differences (& Which Is Better for You)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">48</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-vs-working-out</code></td>
+            <td style="font-weight:600;">pilates vs working out</td>
+            <td style="text-align:center;font-weight:700;">30</td>
+            <td style="text-align:center;"><span style="color:#f97316;font-weight:700;">39</span> <span style="color:#64748b;font-size:11px;">(Difficult)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">30</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">—</td>
+            <td style="font-size:13px;font-weight:500;">Is Pilates Enough Exercise? Pilates vs Working Out (Honest Answer)</td>
+        </tr><tr>
+            <td style="color:#64748b;font-weight:500;">49</td>
+            <td><span style="color:#f97316;background:rgba(249,115,22,0.10);padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;">Comparison</span></td>
+            <td><code style="color:#818cf8;font-size:13px;font-family:'SF Mono','Fira Code',monospace;">/blog/pilates-vs-yoga-for-flexibility</code></td>
+            <td style="font-weight:600;">pilates vs yoga for flexibility</td>
+            <td style="text-align:center;font-weight:700;">30</td>
+            <td style="text-align:center;"><span style="color:#f59e0b;font-weight:700;">27</span> <span style="color:#64748b;font-size:11px;">(Possible)</span></td>
+            <td style="text-align:center;font-weight:600;color:#818cf8;">30</td>
+            <td style="font-size:13px;color:#94a3b8;max-width:300px;">—</td>
+            <td style="font-size:13px;font-weight:500;">Pilates vs Yoga for Flexibility: Which Stretches You More? (Compared)</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Implementation Timeline -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:rgba(34,197,94,0.12);color:#22c55e;">&#x1f4c5;</div>
+      <h2>Implementation Timeline</h2>
+    </div>
+    <div class="timeline">
+      <div class="phase phase-1">
+        <div class="phase-label" style="color:#818cf8;">Phase 1</div>
+        <h3>Foundation Pages</h3>
+        <div class="date">Weeks 1&ndash;2</div>
+        <ul>
+          <li><span class="week">Week 1</span> Create 3 location pages (Ann Arbor, Ypsilanti, Saline)</li>
+          <li><span class="week">Week 1</span> Create 1 near-me page</li>
+          <li><span class="week">Week 2</span> Publish 5 pilates fundamentals blog posts (6 Principles, Breathing, Footwork, Preparing, How Many Classes)</li>
+          <li><span class="week">Week 2</span> Publish 5 equipment blog posts (Reformer Beginners, BOSU Ball, Exo Chair, Cadillac, Pilates Ball)</li>
+        </ul>
+      </div>
+      <div class="phase phase-2">
+        <div class="phase-label" style="color:#60a5fa;">Phase 2</div>
+        <h3>Core Content &amp; Comparisons</h3>
+        <div class="date">Weeks 3&ndash;6</div>
+        <ul>
+          <li><span class="week">Week 3</span> Publish 5 core &amp; abs posts (Bridge, Abs, Obliques, Plank, Core Strengthening)</li>
+          <li><span class="week">Week 4</span> Publish 5 comparison posts (vs Weight Training, Body vs Gym Body, vs Strength Training, vs Gym, vs Lagree)</li>
+          <li><span class="week">Week 5</span> Publish 5 comparison posts (Sculpt, HIIT, Cardio, Muscle Building, Running)</li>
+          <li><span class="week">Week 6</span> Publish 3 remaining comparison posts + 2 lifestyle posts (Celebrities, Joseph Pilates Quotes)</li>
+        </ul>
+      </div>
+      <div class="phase phase-3">
+        <div class="phase-label" style="color:#4ade80;">Phase 3</div>
+        <h3>Health &amp; Women's Wellness</h3>
+        <div class="date">Weeks 7&ndash;10</div>
+        <ul>
+          <li><span class="week">Week 7</span> Publish 5 women's health posts (Postpartum, Diastasis Recti, Menopause, C-Section, Pregnancy)</li>
+          <li><span class="week">Week 8</span> Publish 4 women's health posts (PCOS, Teens, For Moms, Pregnant)</li>
+          <li><span class="week">Week 9</span> Publish 5 health &amp; recovery posts (Lower Back, Herniated Disc, Taller, Soreness, MS)</li>
+          <li><span class="week">Week 10</span> Publish remaining posts (Over 60, Weight Loss, Golf, Cardio Sculpt, Teaser Prep)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    TrueForm Pilates Content Plan &middot; Generated August 14, 2026 &middot; 53 Total Pages &middot; 30,800 Total Keyword Volume
+  </div>
+
+</div>
+</body>
+</html>
