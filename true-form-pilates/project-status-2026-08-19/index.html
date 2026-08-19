@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>True Form Pilates — Project Status &amp; Recommended Path Forward</title>
+  <style>
+    @page { size: Letter; margin: 0.62in; }
+    :root {
+      --ink: #1b1917;
+      --muted: #685f58;
+      --clay: #b75f3d;
+      --sand: #f3eee7;
+      --line: #ddd3c9;
+      --green: #26734d;
+      --amber: #9a5b10;
+      --red: #9b3434;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: white;
+      font: 10.5pt/1.5 Arial, Helvetica, sans-serif;
+    }
+    main { max-width: 8.1in; margin: 0 auto; }
+    .cover {
+      min-height: 9.1in;
+      padding: 0.8in 0.55in;
+      background: #171411;
+      color: #f8f4ef;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+    }
+    .eyebrow {
+      color: #d58261;
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0.18in 0 0;
+      font-size: 34pt;
+      line-height: 1.03;
+      letter-spacing: -0.03em;
+      max-width: 6.7in;
+    }
+    .cover .subtitle {
+      max-width: 6.3in;
+      margin-top: 0.25in;
+      color: #d8d0c9;
+      font-size: 14pt;
+      line-height: 1.45;
+    }
+    .cover .meta { color: #bfb4ab; font-size: 10pt; }
+    section { padding: 0.1in 0.04in 0.08in; }
+    h2 {
+      margin: 0.22in 0 0.1in;
+      padding-bottom: 0.07in;
+      border-bottom: 2px solid var(--ink);
+      font-size: 18pt;
+      line-height: 1.15;
+    }
+    h3 { margin: 0.18in 0 0.06in; font-size: 12.5pt; }
+    p { margin: 0 0 0.1in; }
+    ul, ol { margin: 0.06in 0 0.12in 0.22in; padding-left: 0.16in; }
+    li { margin: 0.035in 0; }
+    a { color: #8f432a; }
+    .summary {
+      margin: 0.12in 0 0.16in;
+      padding: 0.18in 0.2in;
+      border-left: 5px solid var(--clay);
+      background: var(--sand);
+      font-size: 11.2pt;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.12in;
+      margin: 0.1in 0 0.14in;
+    }
+    .card {
+      border: 1px solid var(--line);
+      padding: 0.14in;
+      break-inside: avoid;
+    }
+    .card strong { display: block; margin-bottom: 0.03in; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.1in 0 0.16in;
+      font-size: 9.1pt;
+      break-inside: auto;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 0.075in 0.085in;
+      vertical-align: top;
+    }
+    th { background: #2a2521; color: white; text-align: left; }
+    tr { break-inside: avoid; }
+    .status {
+      white-space: nowrap;
+      font-weight: 700;
+      font-size: 8.4pt;
+      text-transform: uppercase;
+    }
+    .done { color: var(--green); }
+    .partial { color: var(--amber); }
+    .open { color: var(--red); }
+    .note { color: var(--muted); font-size: 9.4pt; }
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.08in;
+      margin: 0.1in 0 0.16in;
+    }
+    .metric {
+      text-align: center;
+      border: 1px solid var(--line);
+      padding: 0.12in 0.05in;
+    }
+    .metric b { display: block; color: var(--green); font-size: 19pt; line-height: 1; }
+    .metric span { font-size: 8.3pt; color: var(--muted); }
+    .page-break { page-break-before: always; }
+    .source-list { font-size: 8.8pt; color: var(--muted); }
+    .footer-note {
+      margin-top: 0.18in;
+      padding-top: 0.08in;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 8.6pt;
+    }
+    @media print {
+      a { color: inherit; text-decoration: none; }
+      .cover { margin: -0.62in; padding: 1.42in 1.17in; min-height: 10.25in; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="cover">
+    <div>
+      <div class="eyebrow">True Form Pilates</div>
+      <h1>Project Status &amp;<br>Recommended Path Forward</h1>
+      <p class="subtitle">A transparent account of the design process, repeated revision work, live-site reconciliation, technical and SEO delivery, and a structured approach to restoring confidence in the final site.</p>
+    </div>
+    <div class="meta">Prepared August 19, 2026<br>Review basis: live site, initial mockup, July 30 and August 17 revision documents, supplied Lighthouse results, and project research files.</div>
+  </div>
+
+  <section>
+    <h2>1. Executive summary</h2>
+    <div class="summary">
+      The current website is a customized evolution of the initial design direction, not an untouched off-the-shelf template. The original mockup is recorded in Git on June 12, 2026, and the live site incorporates substantial client-specific copy, photography, services, policies, testimonials, booking, and local business information. At the same time, the client’s concern about appearing too similar to Core Sport is reasonable at the level of overall fitness-site conventions and should be treated as a brand-perception problem, not argued away as a technicality.
+    </div>
+    <p>The fairest reading of the project is:</p>
+    <ul>
+      <li>The client approved and continued to refine the initial design framework; the August 17 document also says the About and Policies pages looked great apart from specific photo/marquee changes, and that two other pages looked and worked great.</li>
+      <li>The July 30 and August 17 documents were processed through multiple revision passes and the requested changes were expected to be complete.</li>
+      <li>The August 19 audit nevertheless found several items from those completed revision passes still appearing on the public site. This is best described as a live-site QA/deployment discrepancy that needs reconciliation—not as feedback that was never reviewed or work that was never attempted.</li>
+      <li>Technical SEO foundations, keyword/competitor research, a content plan, Arketta booking, and Google Tag Manager are present. Planned articles and location pages are not yet published, and reporting access/results still need to be made visible to the client.</li>
+      <li>A redesign is possible, but it should be handled as a structured new art-direction decision with written scope, rather than another round of isolated Word-document edits.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>2. Project record and chronology</h2>
+    <table>
+      <thead><tr><th>Date</th><th>Evidence</th><th>What it establishes</th></tr></thead>
+      <tbody>
+        <tr><td>June 12, 2026</td><td>Initial mockup Git commit</td><td>The core True Form design direction existed by this date. This predates the client’s recent discovery of the current Core Sport design, although Core Sport’s exact launch date was not independently established.</td></tr>
+        <tr><td>July 30, 2026</td><td>First revision document</td><td>Large custom copy replacement, service changes, offer/pricing changes, About rewrite, testimonial request, contact details, and creation of studio policies. This document was processed through the project’s revision passes.</td></tr>
+        <tr><td>August 5, 2026</td><td>Competitor and keyword research files</td><td>Local market, competitor, on-page keyword, and SERP research were documented.</td></tr>
+        <tr><td>August 14, 2026</td><td>Content plan</td><td>A 53-page plan was produced: 3 location pages, 1 “near me” page, and 49 blog topics, with an estimated aggregate keyword volume of 30,800.</td></tr>
+        <tr><td>August 17, 2026</td><td>Second revision document</td><td>Additional logo/photo direction, deletions, US spelling corrections, simplified offers, and page-specific refinements. This document was also processed and expected to be fully reflected on the site.</td></tr>
+        <tr><td>August 19, 2026</td><td>Live-site audit</td><td>Current live implementation and the remaining QA/deployment discrepancies are documented below.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>3. Website work completed</h2>
+    <div class="grid-2">
+      <div class="card"><strong>Brand and visual customization</strong>True Form’s charcoal/clay palette, bold editorial typography, custom imagery, logo treatment, photography overlays, responsive layouts, and studio-specific page composition are distinct from the Core Sport implementation.</div>
+      <div class="card"><strong>Client copy and positioning</strong>The live site uses the requested “Serious Pilates. Zero Pretense” headline, “Your Body Isn’t Generic” narrative, Carly’s full bio, client-approved offers, testimonials, and studio policies.</div>
+      <div class="card"><strong>Booking operations</strong>Arketta is embedded on the contact page, with a direct booking fallback and “My Account” links. The public Arketta endpoints respond successfully.</div>
+      <div class="card"><strong>Technical foundation</strong>The site is delivered as a fast static Astro site on Vercel with responsive behavior, security headers, optimized/self-hosted fonts, image loading controls, and a custom 404 page.</div>
+    </div>
+
+    <p class="note"><strong>How to read the status tables:</strong> these labels describe what was visible on the public website during the August 19 audit. They do not imply that the team failed to process the documents. Both documents went through repeated revision work and were supposed to be complete; a “live QA mismatch” means the deployed output still does not match the processed instruction and should be reconciled.</p>
+
+    <h3>July 30 revision status</h3>
+    <table>
+      <thead><tr><th>Requested area</th><th>Status</th><th>Live evidence / note</th></tr></thead>
+      <tbody>
+        <tr><td>Homepage hero headline and supporting copy</td><td class="status done">Implemented</td><td>Requested headline and quality-movement sentence are live.</td></tr>
+        <tr><td>“Your Body Isn’t Generic” homepage copy</td><td class="status done">Implemented</td><td>Full client-supplied narrative is live.</td></tr>
+        <tr><td>Stats</td><td class="status done">Implemented</td><td>13 years, 5+ apparatus, and 100+ sessions/month are live.</td></tr>
+        <tr><td>Remove six-principles section and replace quote</td><td class="status done">Implemented</td><td>Six-principles block removed; requested book-sourced quote is live.</td></tr>
+        <tr><td>Trio wording; remove Mat &amp; Foundations</td><td class="status open">QA mismatch</td><td>Trio wording is live. Mat &amp; Foundations remains on the homepage despite being included in the processed revisions.</td></tr>
+        <tr><td>Homepage instructor teaser</td><td class="status open">QA mismatch</td><td>The client tentatively questioned it in July and explicitly requested deletion on August 17; it remains visible on the deployed site.</td></tr>
+        <tr><td>Testimonials</td><td class="status done">Implemented</td><td>Six client testimonials are now displayed.</td></tr>
+        <tr><td>Address, hours, contact information; remove bottom “See Classes” CTA</td><td class="status done">Implemented</td><td>Studio details are live; the bottom intro CTA has only the booking action.</td></tr>
+        <tr><td>Class apparatus descriptions</td><td class="status done">Implemented</td><td>Requested Reformer, Cadillac/Tower, and Ladder Barrel language is live.</td></tr>
+        <tr><td>Formats: Trio only; remove Mat/Foundation and Teacher Training</td><td class="status done">Implemented</td><td>Classes-page formats are Private, Duet, and Trio.</td></tr>
+        <tr><td>Two intro offers and terms</td><td class="status done">Implemented</td><td>$195 three-session and $75 single-session offers plus expiry/no-refund terms are live.</td></tr>
+        <tr><td>Make intro offer more prominent</td><td class="status partial">Partial</td><td>Offer content is corrected, but the section remains near the lower part of the Classes page.</td></tr>
+        <tr><td>About copy, Carly bio, quote, and removal of values section</td><td class="status done">Implemented</td><td>Requested content and structure are live.</td></tr>
+        <tr><td>Studio Etiquette &amp; Policies</td><td class="status done">Implemented</td><td>A dedicated Policies page is live.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h3>August 17 revision status</h3>
+    <table>
+      <thead><tr><th>Requested area</th><th>Status</th><th>Live evidence / note</th></tr></thead>
+      <tbody>
+        <tr><td>Use True Form logo throughout</td><td class="status done">Implemented</td><td>The supplied True Form logo is used as a proportional lockup. Its overall display size can be adjusted; its internal proportions and individual elements should not be altered by the website team.</td></tr>
+        <tr><td>Use supplied photos, including homepage hero and About bio</td><td class="status done">Implemented</td><td>Client/studio photography is live in the homepage hero and beside Carly’s bio.</td></tr>
+        <tr><td>Delete scrolling banners on Home, Classes, and Policies</td><td class="status open">QA mismatch</td><td>Although included in the processed revision instructions, scrolling/marquee bands remain visible on all three deployed pages.</td></tr>
+        <tr><td>Update to 5+ apparatus; US spelling “practice”</td><td class="status done">Implemented</td><td>Both changes are live.</td></tr>
+        <tr><td>Delete Mat &amp; Foundations from homepage</td><td class="status open">QA mismatch</td><td>The card remains visible on the deployed homepage.</td></tr>
+        <tr><td>Delete homepage instructor section</td><td class="status open">QA mismatch</td><td>The section remains visible on the deployed homepage.</td></tr>
+        <tr><td>Update testimonials</td><td class="status done">Implemented</td><td>Multiple testimonials are live; final source/wording should be confirmed with the client.</td></tr>
+        <tr><td>Classes hero and apparatus-intro wording</td><td class="status done">Implemented</td><td>Both requested sentences are live.</td></tr>
+        <tr><td>Delete apparatus-card section</td><td class="status open">QA mismatch</td><td>The five apparatus cards and quote card remain visible on the deployed Classes page.</td></tr>
+        <tr><td>US spelling “program”; Trio quote/spacing corrections</td><td class="status done">Implemented</td><td>Corrections are live.</td></tr>
+        <tr><td>“Book your first session” wording</td><td class="status done">Implemented</td><td>Requested heading and description are live.</td></tr>
+        <tr><td>Simplify two-offer section</td><td class="status done">Implemented</td><td>The explanatory paragraphs were removed; the two offers are listed simply.</td></tr>
+        <tr><td>About photo beside bio and additional photo</td><td class="status done">Implemented</td><td>Photo placement is live.</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><strong>Immediate live-site reconciliation list:</strong> confirm that the correct revision build is deployed; remove all three marquee instances, the homepage Mat &amp; Foundations card, the homepage instructor section, and the Classes apparatus-card section; then complete a page-by-page QA pass against both source documents. Confirm the preferred overall display size of the supplied logo lockup and the final testimonial set.</p>
+  </section>
+
+  <section>
+    <h2>4. Logo clarification</h2>
+    <p>There is no technical limitation preventing the supplied logo from being made larger. The website team can scale the complete logo lockup proportionally to the size needed for a desktop or mobile placement.</p>
+    <p>The relevant constraint is standard brand practice: designers normally use the logo supplied by the client without stretching it, redrawing it, changing its aspect ratio, rearranging its elements, or enlarging one part independently from another. Those changes would modify the brand asset rather than simply size it for the website.</p>
+    <p>The correct implementation approach is to:</p>
+    <ol>
+      <li>Use the logo files supplied by the client as complete, unaltered brand assets.</li>
+      <li>Scale the chosen lockup proportionally and show the client the resulting desktop and mobile placements.</li>
+      <li>If the client wants a different relationship between the icon, wordmark, or tagline, use an alternate lockup formally supplied or approved by the logo designer.</li>
+      <li>Do not stretch, crop, re-typeset, or independently resize parts of the logo in the website implementation.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>5. Core Sport comparison</h2>
+    <p>There are similarities, but the evidence does not support describing the sites as the same template or a direct copy.</p>
+    <table>
+      <thead><tr><th>Area</th><th>True Form</th><th>Core Sport</th><th>Assessment</th></tr></thead>
+      <tbody>
+        <tr><td>Hero</td><td>Full-bleed dark photo, centered short brand headline, two rounded CTAs</td><td>Full-bleed photo, left-aligned local/search headline, three actions</td><td>Shared fitness-site convention; clearly different composition.</td></tr>
+        <tr><td>Navigation</td><td>Transparent overlay header, dark editorial treatment</td><td>White navigation bar plus orange contact strip</td><td>Distinct.</td></tr>
+        <tr><td>Palette and type</td><td>Charcoal, warm bone, clay; oversized editorial sans type</td><td>White, gray/navy, bright orange; conventional business sans type</td><td>Distinct brand systems, though both use orange accents.</td></tr>
+        <tr><td>Content model</td><td>Private/duet/trio studio; method, apparatus, Carly, policies, embedded Arketta</td><td>Private/semi-private/group/live streaming; trainers, schedules, pricing, memberships</td><td>Different business models and information architecture.</td></tr>
+        <tr><td>Shared structure</td><td colspan="2">Hero, service cards, personalized-attention copy, getting-started steps, offer/booking CTA, location/footer</td><td>Real perceptual overlap, but these are common local fitness/service-site patterns.</td></tr>
+        <tr><td>Wording</td><td>“Serious Pilates. Zero Pretense”; extensive first-person copy supplied by the client</td><td>Local/search-led headline and general “meet you where you are” language</td><td>No long distinctive passage was found duplicated; overlap is mainly category language.</td></tr>
+        <tr><td>Technical delivery</td><td>Astro static site served by Vercel</td><td>React-style bundled application served through a different platform/Cloudflare stack</td><td>No evidence of a shared codebase.</td></tr>
+      </tbody>
+    </table>
+    <div class="summary"><strong>Conclusion:</strong> The project record helps establish that True Form’s framework was developed independently, but the client’s concern is about how the brand may be perceived by people who know both studios. The strongest response is to preserve the record, acknowledge the perception, and create a more unmistakably True Form art direction.</div>
+  </section>
+
+  <section>
+    <h2>6. SEO, booking, tracking, and performance</h2>
+    <h3>Completed and publicly verifiable</h3>
+    <ul>
+      <li>Unique page titles, meta descriptions, canonical URLs, Open Graph metadata, and social share imagery.</li>
+      <li>LocalBusiness structured data with business name, phone, email, Saline address, geocoordinates, Instagram, and price range.</li>
+      <li>Robots file and XML sitemap covering the nine current public pages.</li>
+      <li>Descriptive image alternative text on primary content imagery.</li>
+      <li>Custom 404 page, privacy policy, terms, cookie policy, and consent controls.</li>
+      <li>Arketta booking iframe, booking fallback link, and account access.</li>
+      <li>Google Tag Manager container <code>GTM-PNNS4ZPS</code>, consent-gated on the live domain.</li>
+      <li>Competitor/SERP research, keyword analysis, and a separate content plan.</li>
+    </ul>
+
+    <h3>Supplied Lighthouse results</h3>
+    <p>The supplied screenshots show the following homepage lab scores. Lighthouse scores can vary by run and should be treated as a snapshot, not a permanent guarantee.</p>
+    <div class="metric-row">
+      <div class="metric"><b>100 / 99</b><span>Performance<br>desktop / mobile</span></div>
+      <div class="metric"><b>96 / 96</b><span>Accessibility<br>desktop / mobile</span></div>
+      <div class="metric"><b>100 / 100</b><span>Best Practices<br>desktop / mobile</span></div>
+      <div class="metric"><b>100 / 100</b><span>Technical SEO<br>desktop / mobile</span></div>
+    </div>
+
+    <h3>Completed planning is not yet published output</h3>
+    <p>The content plan proposes 53 future pages, but the live sitemap currently lists only the nine core/legal pages. The plan is a deliverable and strategic roadmap; it should not be represented as published content, rankings, traffic, or leads.</p>
+
+    <h3>Items that still need client-visible proof</h3>
+    <ul>
+      <li>GA4 property access and confirmation of which events are firing.</li>
+      <li>Google Search Console verification and access.</li>
+      <li>Defined conversion events for booking starts, completed bookings/purchases where technically available through Arketta, calls, email clicks, and directions.</li>
+      <li>A reporting dashboard or monthly scorecard with baseline and month-over-month comparison.</li>
+      <li>A written publication calendar identifying which planned pages are included in the three-month engagement and when they will be drafted, approved, and published.</li>
+    </ul>
+
+    <p class="note">SEO value should be reported in layers: technical readiness first; indexing and visibility next; then search traffic, qualified actions, and booked-client outcomes. A Lighthouse SEO score of 100 confirms technical checks, not rankings or commercial return.</p>
+  </section>
+
+  <section>
+    <h2>7. Recommended recovery plan</h2>
+    <h3>Step 1 — Reconcile the deployed site with both revision documents</h3>
+    <p>Because the changes were processed through multiple passes and were expected to be complete, first verify that the correct revision build is deployed. Then complete the five visible deletions listed in Section 3 and run a page-by-page QA comparison against both documents. Confirm the preferred overall logo size and testimonial set. Send the client a short reconciled checklist rather than asking her to restate the instructions.</p>
+
+    <h3>Step 2 — Hold a focused brand-reset call</h3>
+    <p>Use the call to define what “distinctive” means in observable terms. Ask for three sites or visual references she loves, three she dislikes, and a short list of brand traits. Discuss photography, typography, page rhythm, layout, and tone—not only individual sections.</p>
+
+    <h3>Step 3 — Present two homepage art directions</h3>
+    <p>Offer two genuinely different homepage concepts using the real logo, real photography, and approved copy. Present desktop and mobile hero/header treatments together. Approve one direction in writing before extending it across inner pages.</p>
+
+    <h3>Step 4 — Separate corrections from redesign scope</h3>
+    <p>The current site is based on the approved initial framework and repeated work against two detailed revision documents. Reconciling the deployed site with those instructions is completion QA. A wholesale visual reset is a new art-direction phase. Before redesign work begins, document what is included, the number of concept/revision rounds, schedule, responsibilities, and any fee or contract adjustment.</p>
+
+    <h3>Step 5 — Make SEO visible</h3>
+    <p>Provide a one-page baseline and recurring scorecard showing:</p>
+    <ul>
+      <li>Technical: indexed pages, crawl issues, Core Web Vitals, uptime.</li>
+      <li>Visibility: impressions, clicks, average position, priority local queries.</li>
+      <li>Engagement: users, source/medium, landing pages, phone/email/directions clicks.</li>
+      <li>Conversion: booking starts and completed bookings where Arketta tracking permits.</li>
+      <li>Delivery: content planned, drafted, approved, published, and indexed.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>8. Proposed phone-call agenda</h2>
+    <ol>
+      <li><strong>Listen first:</strong> what feels generic, what feels too close to Core Sport, and what she expected to feel but does not.</li>
+      <li><strong>Confirm live-site reconciliation:</strong> the processed-but-not-reflected deletions, proportional size of the supplied logo lockup, photos, and testimonials.</li>
+      <li><strong>Review the design record:</strong> acknowledge the approved initial framework without using approval as a reason to dismiss current concerns.</li>
+      <li><strong>Choose a path:</strong> focused refinement of the current direction or a structured visual redesign.</li>
+      <li><strong>Clarify SEO:</strong> show completed foundations and planning, what remains in setup, the publication schedule, and the client’s reporting access.</li>
+      <li><strong>End in writing:</strong> agreed scope, owners, dates, review points, and definition of final approval.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>9. Evidence reviewed</h2>
+    <ul class="source-list">
+      <li><a href="https://www.trueformpilates.com/">Current True Form Pilates website</a> and public subpages, audited August 19, 2026.</li>
+      <li><a href="https://trueform-pilates-mockup.vercel.app/">Initial True Form Pilates mockup</a>.</li>
+      <li><a href="https://coresportstudio.com/">Current Core Sport Studio website</a>.</li>
+      <li><a href="https://growtharchon.github.io/client-reports/true-form-pilates/content-plan.html">True Form Pilates content plan</a>.</li>
+      <li>Client revision documents dated July 30 and August 17, 2026.</li>
+      <li>Local project Git history, competitor analysis, keyword analysis, and supplied Lighthouse screenshots.</li>
+    </ul>
+    <p class="footer-note">Audit limitation: the AgencyOS repository URL supplied for the current website was not publicly accessible during this review. Current implementation findings are based on the live deployed website. No claim is made here about Core Sport’s exact internal design process or launch date.</p>
+  </section>
+</main>
+</body>
+</html>
