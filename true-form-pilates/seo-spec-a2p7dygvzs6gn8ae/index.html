@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>TrueForm Pilates - SEO Content Spec</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface-2: #232735;
+    --border: #2a2e3d;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent: #6366f1;
+    --accent-light: #818cf8;
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --red: #ef4444;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 56px 0 40px;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,158,11,0.1);
+    color: var(--amber);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .hero p {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section h2 .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .section h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--accent-light);
+    margin: 20px 0 10px;
+  }
+
+  .section p, .section li {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .section ul, .section ol {
+    padding-left: 20px;
+    margin-bottom: 12px;
+  }
+
+  .section li {
+    margin-bottom: 6px;
+  }
+
+  .callout {
+    background: var(--surface-2);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .callout strong {
+    color: var(--text);
+  }
+
+  .callout-warn {
+    border-left-color: var(--amber);
+  }
+  .callout-warn strong {
+    color: var(--amber);
+  }
+
+  .callout-green {
+    border-left-color: var(--green);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13px;
+  }
+  th {
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--surface-2);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  tr:last-child td { border-bottom: none; }
+  .kd-easy {
+    color: var(--green);
+    font-weight: 600;
+  }
+  .kd-possible {
+    color: var(--amber);
+    font-weight: 600;
+  }
+  .vol {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .tag-cluster {
+    background: rgba(99,102,241,0.15);
+    color: var(--accent-light);
+  }
+
+  a {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .ref-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .ref-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--surface-2);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text);
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .ref-link:hover {
+    background: var(--border);
+    text-decoration: none;
+  }
+  .ref-link span {
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+
+  .toc {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .toc li a {
+    display: block;
+    padding: 6px 14px;
+    background: var(--surface-2);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: all 0.15s;
+  }
+  .toc li a:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .overflow-x { overflow-x: auto; }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 28px; }
+    .section { padding: 20px 16px; }
+    .container { padding: 16px 12px 60px; }
+    table { font-size: 12px; }
+    th, td { padding: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <div class="badge">SEO Content Spec - August 19, 2026</div>
+  <h1>TrueForm Pilates<br>SEO Content Sprint</h1>
+  <p>Everything Lianna needs to draft, build, and deploy today. All content goes on a <strong>demo Vercel site</strong> (not the live site).</p>
+</div>
+
+<!-- TOC -->
+<div class="section">
+  <h2>Contents</h2>
+  <ul class="toc">
+    <li><a href="#existing">1. Existing Page SEO</a></li>
+    <li><a href="#locations">2. Location Pages</a></li>
+    <li><a href="#nearme">3. Near Me Page</a></li>
+    <li><a href="#blog">4. Blog Posts (10)</a></li>
+    <li><a href="#workflow">5. Workflow</a></li>
+    <li><a href="#deploy">6. Demo Site Deploy</a></li>
+    <li><a href="#refs">7. References</a></li>
+  </ul>
+</div>
+
+<!-- CONTEXT -->
+<div class="section">
+  <h2>Context</h2>
+  <p><strong>Client:</strong> True Form Pilates, Saline MI &mdash; <a href="https://www.trueformpilates.com/" target="_blank">trueformpilates.com</a></p>
+  <p><strong>What they do:</strong> Private, duet, and trio apparatus Pilates (reformer, Cadillac/tower, ladder barrel). Instructor/owner is Carly. Brand line: "Serious Pilates. Zero Pretense."</p>
+  <p><strong>Current state:</strong> Technical SEO is solid (Lighthouse 96-100 across the board). Static Astro site on Vercel. What's missing is SEO-optimized copy on existing pages and the content layer (location pages + blog).</p>
+  <p><strong>Goal today:</strong> Draft SEO copy for existing pages, build location pages, the "near me" page, and 10 blog posts. Deploy everything on a separate demo site for review.</p>
+</div>
+
+<!-- TASK 1: EXISTING PAGE SEO -->
+<div class="section" id="existing">
+  <h2><span class="num">1</span> Existing Page SEO Audit</h2>
+  <p>Review every page on the live site and draft improved SEO titles, meta descriptions, and H1 headlines. The home page is the priority &mdash; it currently has no real SEO title or keyword-targeted headline.</p>
+
+  <h3>What to deliver</h3>
+  <ul>
+    <li><strong>For each page on the site</strong> (home, about, services, contact, studio policies, etc.), draft:</li>
+    <ul>
+      <li>SEO title (under 580px in Arial 20px &mdash; roughly 55-60 characters)</li>
+      <li>Meta description (under 155 characters)</li>
+      <li>H1 headline recommendation (if the current one isn't keyword-targeted)</li>
+    </ul>
+    <li>Focus the home page on the primary keyword: <strong>pilates saline mi</strong> or <strong>pilates studio saline michigan</strong></li>
+    <li>The brand tagline "Serious Pilates. Zero Pretense" can stay on-page, but the H1 and title tag should carry the target keyword</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Format:</strong> Put this in a simple table or doc that I can review at a glance &mdash; page name, current title, proposed title, proposed meta, proposed H1.
+  </div>
+</div>
+
+<!-- TASK 2: LOCATION PAGES -->
+<div class="section" id="locations">
+  <h2><span class="num">2</span> Location Pages (5 total)</h2>
+
+  <h3>Three from the content plan</h3>
+  <div class="overflow-x">
+  <table>
+    <tr><th>Page</th><th>Target Keyword</th><th>Volume</th><th>KD</th></tr>
+    <tr><td>Pilates Ann Arbor</td><td>pilates ann arbor</td><td class="vol">720</td><td class="kd-easy">15</td></tr>
+    <tr><td>Pilates Ypsilanti</td><td>pilates ypsilanti</td><td class="vol">20</td><td class="kd-possible">37</td></tr>
+    <tr><td>Pilates Saline</td><td>pilates saline</td><td class="vol">0</td><td class="kd-easy">9</td></tr>
+  </table>
+  </div>
+
+  <div class="callout callout-warn">
+    <strong>Note on SEO titles:</strong> The content plan titles reference things like "Free Intro" &mdash; TrueForm's intro offers are <strong>$195 (3-session) and $75 (single session)</strong>, not free. And their classes aren't branded as "intro classes." Improve the titles so they're accurate to what TrueForm actually offers. Be specific and compelling.
+  </div>
+
+  <h3>Two additional locations (your pick)</h3>
+  <p>Find <strong>two more nearby cities/towns</strong> with low keyword difficulty that TrueForm could reasonably serve. Use the same keyword pattern ("pilates [city]"). Pick locations where:</p>
+  <ul>
+    <li>KD is under 30</li>
+    <li>There's at least some search volume</li>
+    <li>The city is within reasonable driving distance of Saline, MI</li>
+  </ul>
+  <p>Good candidates might include places like Dexter, Chelsea, Milan, Tecumseh, or similar. Do the keyword research and make the call.</p>
+
+  <h3>How to build them</h3>
+  <div class="callout callout-green">
+    <strong>Template-first rule:</strong> Build ONE location page fully (Ann Arbor is the best pick &mdash; highest volume). Send it to Jack for review. Once approved, replicate the template for the other four with changed copy. Don't build all five before getting sign-off on the first one.
+  </div>
+  <ul>
+    <li>Each page should follow the same structure/template, just different city-specific copy</li>
+    <li>Include: H1 with city name, intro paragraph about Pilates in that area, what TrueForm offers, distance/directions from that city to the Saline studio, CTA to book</li>
+    <li>Match the existing site design and voice ("Serious Pilates. Zero Pretense" energy &mdash; direct, confident, no fluff)</li>
+  </ul>
+</div>
+
+<!-- TASK 3: NEAR ME -->
+<div class="section" id="nearme">
+  <h2><span class="num">3</span> "Pilates Near Me" Page</h2>
+  <div class="overflow-x">
+  <table>
+    <tr><th>Page</th><th>Target Keyword</th><th>KD</th></tr>
+    <tr><td>Pilates Near Me</td><td>pilates near me</td><td class="kd-easy">0 (Easy)</td></tr>
+  </table>
+  </div>
+  <p>This is a "how to find the right studio" style page that positions TrueForm as the answer. Cover what to look for in a Pilates studio, what makes apparatus Pilates different, and why TrueForm fits the bill. Naturally weave in the Saline/Ann Arbor area geography.</p>
+</div>
+
+<!-- TASK 4: BLOG POSTS -->
+<div class="section" id="blog">
+  <h2><span class="num">4</span> Blog Posts (10 pages)</h2>
+  <p>These are the <strong>10 lowest-difficulty, most interrelated</strong> topics from the content plan. They form three tight clusters that link well to each other and to the location/service pages.</p>
+
+  <h3><span class="tag tag-cluster">Cluster A</span> Beginner Fundamentals (5 posts)</h3>
+  <p>These all answer "I'm new to Pilates" questions. They interlink heavily and funnel to the booking page.</p>
+  <div class="overflow-x">
+  <table>
+    <tr><th>Topic</th><th>Target Keyword</th><th>Vol</th><th>KD</th></tr>
+    <tr><td>6 Principles of Pilates</td><td>6 core principles of pilates list</td><td class="vol">2,400</td><td class="kd-easy">12</td></tr>
+    <tr><td>How to Prepare for Pilates</td><td>how to prepare for pilates</td><td class="vol">40</td><td class="kd-easy">4</td></tr>
+    <tr><td>Sore After Pilates</td><td>sore from pilates</td><td class="vol">90</td><td class="kd-easy">3</td></tr>
+    <tr><td>How Many Classes to See Results</td><td>how many pilates classes to see a difference</td><td class="vol">90</td><td class="kd-easy">9</td></tr>
+    <tr><td>Pilates Breathing</td><td>pilates breath</td><td class="vol">70</td><td class="kd-easy">14</td></tr>
+  </table>
+  </div>
+
+  <h3><span class="tag tag-cluster">Cluster B</span> Women's Health (3 posts)</h3>
+  <p>Core audience for TrueForm. These link to each other and to the "Pilates for Moms" search intent that drives local bookings.</p>
+  <div class="overflow-x">
+  <table>
+    <tr><th>Topic</th><th>Target Keyword</th><th>Vol</th><th>KD</th></tr>
+    <tr><td>Pilates for Diastasis Recti</td><td>pilates diastasis abdominal</td><td class="vol">390</td><td class="kd-easy">6</td></tr>
+    <tr><td>Pilates for Moms</td><td>pilates for moms</td><td class="vol">170</td><td class="kd-easy">10</td></tr>
+    <tr><td>Pilates for PCOS</td><td>pilates for pcos</td><td class="vol">170</td><td class="kd-easy">6</td></tr>
+  </table>
+  </div>
+
+  <h3><span class="tag tag-cluster">Cluster C</span> Comparisons (2 posts)</h3>
+  <p>Decision-stage traffic. Readers comparing options are close to booking.</p>
+  <div class="overflow-x">
+  <table>
+    <tr><th>Topic</th><th>Target Keyword</th><th>Vol</th><th>KD</th></tr>
+    <tr><td>Sculpt vs Pilates</td><td>sculpt vs pilates</td><td class="vol">110</td><td class="kd-easy">3</td></tr>
+    <tr><td>Pilates vs HIIT</td><td>pilates vs hiit</td><td class="vol">90</td><td class="kd-easy">11</td></tr>
+  </table>
+  </div>
+
+  <div class="callout">
+    <strong>Total estimated volume:</strong> ~3,620/mo across 10 posts. Average KD: 7.8 &mdash; all very winnable.
+  </div>
+
+  <h3>Blog post guidelines</h3>
+  <ul>
+    <li>Target 800-1,200 words per post (these aren't complex topics)</li>
+    <li>Each post needs: SEO title, meta description, H1, proper heading structure (H2s/H3s), and a CTA linking to booking or the relevant service page</li>
+    <li>Interlink between posts within the same cluster, and link back to relevant location/service pages</li>
+    <li>Use TrueForm's voice: direct, knowledgeable, no-nonsense. Carly is a real practitioner, not a content farm</li>
+  </ul>
+</div>
+
+<!-- TASK 5: WORKFLOW -->
+<div class="section" id="workflow">
+  <h2><span class="num">5</span> Workflow &amp; Order of Operations</h2>
+  <ol>
+    <li><strong>Existing page SEO audit</strong> &mdash; draft titles/metas/H1s for all current pages. Send to Jack for review.</li>
+    <li><strong>One location page template</strong> (Ann Arbor) &mdash; build the full page on the demo site. Send to Jack before doing the other four.</li>
+    <li><strong>Once approved:</strong> replicate for the other 4 location pages + the Near Me page.</li>
+    <li><strong>Blog posts</strong> &mdash; use our AI content workflows (the system Darko walked through) to draft all 10. These are straightforward topics. If you get stuck on the AI tooling, flag it and we'll find a workaround &mdash; none of these topics are complex enough to need manual research.</li>
+    <li><strong>Deploy everything</strong> on the demo Vercel site.</li>
+  </ol>
+
+  <div class="callout callout-warn">
+    <strong>Timeline:</strong> All of this should be completed today. The AI workflows handle the heavy lifting on content generation &mdash; you're mostly editing, not writing from scratch.
+  </div>
+</div>
+
+<!-- TASK 6: DEMO DEPLOY -->
+<div class="section" id="deploy">
+  <h2><span class="num">6</span> Demo Site Deployment</h2>
+  <p>All new pages go on a <strong>separate Vercel deployment</strong> that uses the TrueForm site design. This keeps the live site untouched while we review everything.</p>
+  <ul>
+    <li>Clone or branch the TrueForm Pilates site repo</li>
+    <li>Add the new pages (locations, near me, blog posts) using the existing Astro site structure and design</li>
+    <li>Deploy to a Vercel preview URL (not the production domain)</li>
+    <li>Share the preview URL with Jack once pages are up</li>
+  </ul>
+</div>
+
+<!-- REFERENCES -->
+<div class="section" id="refs">
+  <h2><span class="num">7</span> References</h2>
+  <div class="ref-links">
+    <a class="ref-link" href="https://growtharchon.github.io/client-reports/true-form-pilates/project-status-2026-08-19/" target="_blank">
+      Project Status Dashboard
+      <span>Current state, completed work, Lighthouse scores, revision history</span>
+    </a>
+    <a class="ref-link" href="https://growtharchon.github.io/client-reports/true-form-pilates/content-plan.html" target="_blank">
+      Full Content Plan (53 pages)
+      <span>All keywords, volumes, difficulty scores, and SEO title drafts</span>
+    </a>
+    <a class="ref-link" href="https://www.trueformpilates.com/" target="_blank">
+      Live Site
+      <span>Current TrueForm Pilates website (Astro on Vercel)</span>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center; padding:32px 0 0; color:var(--text-muted); font-size:12px;">
+  GrowthArchon &middot; Internal spec for Lianna &middot; August 19, 2026
+</div>
+
+</div>
+</body>
+</html>
