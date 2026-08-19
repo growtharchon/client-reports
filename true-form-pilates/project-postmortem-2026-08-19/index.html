@@ -31,7 +31,7 @@
       <nav class="sidebar" aria-label="Dashboard sections">
         <p class="eyebrow">Navigate</p>
         <a class="nav-link active" href="#overview">Overview</a>
-        <a class="nav-link" href="#finding">Key finding</a>
+        <a class="nav-link" href="#finding">What happened</a>
         <a class="nav-link" href="#timeline">Timeline</a>
         <a class="nav-link" href="#implementation">Implementation</a>
         <a class="nav-link" href="#process">Process map</a>
@@ -87,28 +87,38 @@
 
         <section class="section" id="finding">
           <div class="section-heading">
-            <div><p class="eyebrow">01 / Finding</p><h2>What the evidence supports</h2></div>
-            <span class="section-tag">High confidence</span>
+            <div><p class="eyebrow">01 / Core finding</p><h2>Fast delivery did not create client confidence</h2></div>
+            <span class="section-tag">Throughput ≠ acceptance</span>
           </div>
-          <div class="finding-grid">
-            <article class="finding-card positive">
-              <span class="finding-icon">✓</span>
-              <div>
-                <h3>The written revisions were implemented visually.</h3>
-                <p>R1 landed across August 5 and 13. R2 landed across August 17 and 18. Requested removals were hidden from visitors before dormant source was deleted later.</p>
-              </div>
-            </article>
-            <article class="finding-card negative">
-              <span class="finding-icon">!</span>
-              <div>
-                <h3>Implementation was not converted into trusted acceptance.</h3>
-                <p>Feedback was fragmented, Loom was missed, completion messages lacked a versioned checklist, and no formal independent content/design approval gate was recorded.</p>
-              </div>
-            </article>
+          <div class="diagnosis-summary">
+            <p class="diagnosis-kicker">What happened</p>
+            <p class="diagnosis-lede">The True Form Pilates build moved quickly. First-round corrections were reported complete August 11 and received a final completion pass August 13, the site went live August 14, and the 17-change batch submitted August 17 was implemented across August 17–18. The audited production baseline shows no unimplemented visitor-facing requests from the two written revision documents.</p>
+            <p>Yet the client experienced the opposite: repeated review, uncertainty and stress. The gap between actual throughput and perceived throughput is the core finding. Work shipped quickly, but it was not accompanied by the proof needed for trusted acceptance. The client therefore became the verification layer, and each completion update became another claim she had to test herself.</p>
+            <div class="throughput-strip" aria-label="Delivery milestones">
+              <div><span>Aug 11–13</span><strong>Round-one corrections reported and closed</strong></div>
+              <div><span>Aug 14</span><strong>Production launch</strong></div>
+              <div><span>Aug 17–18</span><strong>17-change batch delivered</strong></div>
+            </div>
           </div>
           <blockquote class="thesis">
-            “We implemented the written revisions in the visitor-facing site, but our process for consolidating, checking, confirming and approving that work was not strong enough.”
+            “The work was fast. The evidence that the work had been done was missing.”
           </blockquote>
+          <div class="analysis-heading">
+            <p class="eyebrow">Analysis</p>
+            <h3>Why delivery still felt incomplete</h3>
+          </div>
+          <div class="analysis-grid">
+            <article><span>01</span><h3>Completion was communicated as prose, not proof.</h3><p>Updates said work was implemented without a per-item acceptance list, production version or annotated screenshots. The client had to audit the site herself.</p></article>
+            <article><span>02</span><h3>Production outcomes were not made distinguishable.</h3><p>No client-facing proof package accompanied completion. A deployment miss, browser cache and a difference in interpretation therefore looked identical in the communication record.</p></article>
+            <article><span>03</span><h3>Readiness preceded end-to-end booking alignment.</h3><p>The August 11 readiness message came before the client had validated the booking journey against how she actually sells sessions, turning a scoping gap into a rework cycle.</p></article>
+            <article><span>04</span><h3>Supplied brand assets entered after launch.</h3><p>The logo and owner photography supplied July 30 were integrated in the August 17–18 releases, after the August 14 launch. That sequencing created the project’s most visible client impact.</p></article>
+            <article><span>05</span><h3>The feedback medium did not fit visual iteration.</h3><p>The client sought calls on August 11, 17 and 19 and said she could not describe the desired design through a Word document. Continued text-only iteration multiplied review rounds.</p></article>
+            <article><span>06</span><h3>Attachments were not visibly reconciled into closure.</h3><p>Receipt was acknowledged, but the process record does not show a systematic attachment/configuration review tied to owners and resolution. Management reports at least one documented configuration issue persisted.</p></article>
+            <article><span>07</span><h3>No one owned the final visual outcome.</h3><p>Visual feedback was processed as discrete tickets. Without an accountable art-direction owner, the discussion narrowed to individual assets and dimensions instead of the underlying brand direction.</p></article>
+            <article><span>08</span><h3>SEO value remained invisible to the client.</h3><p>Technical SEO, research, content planning and measurement work existed, but no client-readable baseline, scope summary or progress cadence had been delivered one month into the engagement.</p></article>
+            <article><span>09</span><h3>Sender authentication weakened trust.</h3><p>Management reports that impersonation warnings appeared on agency messages during the engagement. This is a separate deliverability and credibility risk requiring operational remediation.</p></article>
+          </div>
+          <p class="management-note"><strong>Evidence note:</strong> findings 01–05 and 08 are supported by the reviewed email/repository record. Findings 06, 07 and 09 incorporate management analysis and should receive an assigned owner and supporting operational evidence before wider circulation.</p>
         </section>
 
         <section class="section" id="timeline">

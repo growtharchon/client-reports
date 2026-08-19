@@ -103,7 +103,27 @@ main { min-width: 0; }
 .negative .finding-icon { color: var(--red); background: var(--red-soft); }
 .finding-card h3 { margin: 1px 0 9px; font-size: 16px; }
 .finding-card p { margin: 0; color: var(--ink-soft); font-size: 13px; }
+.diagnosis-summary { padding: 34px; border: 1px solid var(--line); border-top: 4px solid var(--copper); border-radius: var(--radius); background: white; box-shadow: var(--shadow); }
+.diagnosis-kicker { margin: 0 0 8px; color: var(--copper-dark); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.diagnosis-lede { margin: 0 0 15px; max-width: 1020px; font: 22px/1.45 Georgia, serif; }
+.diagnosis-summary > p:last-of-type { max-width: 1000px; margin: 0; color: var(--ink-soft); font-size: 14px; }
+.throughput-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 28px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--line); }
+.throughput-strip div { padding: 17px 19px; background: var(--bone); }
+.throughput-strip span, .throughput-strip strong { display: block; }
+.throughput-strip span { margin-bottom: 4px; color: var(--copper-dark); font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.throughput-strip strong { font-size: 12px; }
 .thesis { margin: 24px 0 0; padding: 30px 34px; border: 0; border-left: 4px solid var(--copper); background: var(--bone); font-family: Georgia, serif; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.35; }
+.analysis-heading { margin: 52px 0 20px; }
+.analysis-heading .eyebrow { margin-bottom: 6px; color: var(--copper-dark); }
+.analysis-heading h3 { margin: 0; font: 32px/1.15 Georgia, serif; }
+.analysis-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: white; }
+.analysis-grid article { min-height: 215px; padding: 25px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.analysis-grid article:nth-child(3n) { border-right: 0; }
+.analysis-grid article:nth-last-child(-n+3) { border-bottom: 0; }
+.analysis-grid span { color: var(--copper); font: italic 13px Georgia, serif; }
+.analysis-grid h3 { margin: 24px 0 8px; font-size: 15px; line-height: 1.35; }
+.analysis-grid p { margin: 0; color: var(--ink-soft); font-size: 12px; }
+.management-note { margin: 18px 0 0; padding: 16px 18px; border-left: 3px solid var(--amber); background: var(--amber-soft); color: #695226; font-size: 11px; }
 
 .filters { display: flex; gap: 5px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; }
 .filter { border: 0; border-radius: 999px; background: transparent; padding: 7px 11px; color: #766f66; font-size: 10px; cursor: pointer; }
@@ -240,7 +260,9 @@ footer { display: flex; justify-content: space-between; gap: 20px; max-width: 15
   .metrics article:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .section-heading { display: block; }
   .section-heading .section-tag, .filters { margin-top: 18px; }
-  .finding-grid, .release-grid, .qa-result-grid, .cause-grid, .evidence-grid { grid-template-columns: 1fr; }
+  .finding-grid, .release-grid, .qa-result-grid, .cause-grid, .evidence-grid, .analysis-grid, .throughput-strip { grid-template-columns: 1fr; }
+  .analysis-grid article, .analysis-grid article:nth-child(3n), .analysis-grid article:nth-last-child(-n+3) { border-right: 0; border-bottom: 1px solid var(--line); }
+  .analysis-grid article:last-child { border-bottom: 0; }
   .cause-grid article, .cause-grid article:nth-child(3n), .cause-grid article:nth-last-child(-n+3) { border-right: 0; border-bottom: 1px solid var(--line); }
   .cause-grid article:last-child { border-bottom: 0; }
   .qa-intro { grid-template-columns: 1fr; }
