@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta name="theme-color" content="#151311" />
+    <title>True Form Pilates — Project Post-Mortem</title>
+    <meta name="description" content="Internal evidence dashboard for the True Form Pilates project post-mortem." />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="topbar">
+      <a class="brand" href="#overview" aria-label="True Form project post-mortem overview">
+        <span class="brand-mark">TF</span>
+        <span>
+          <strong>Project Post-Mortem</strong>
+          <small>Internal evidence dashboard</small>
+        </span>
+      </a>
+      <div class="topbar-actions">
+        <span class="confidential"><span></span> Client confidential</span>
+        <button class="print-button" type="button" data-print>Print report</button>
+      </div>
+    </header>
+
+    <div class="shell">
+      <nav class="sidebar" aria-label="Dashboard sections">
+        <p class="eyebrow">Navigate</p>
+        <a class="nav-link active" href="#overview">Overview</a>
+        <a class="nav-link" href="#finding">Key finding</a>
+        <a class="nav-link" href="#timeline">Timeline</a>
+        <a class="nav-link" href="#implementation">Implementation</a>
+        <a class="nav-link" href="#process">Process map</a>
+        <a class="nav-link" href="#qa">QA followed</a>
+        <a class="nav-link" href="#causes">Root causes</a>
+        <a class="nav-link" href="#actions">Actions</a>
+        <a class="nav-link" href="#evidence">Evidence</a>
+
+        <div class="sidebar-note">
+          <span>Prepared</span>
+          <strong>August 19, 2026</strong>
+          <span>For team discussion</span>
+          <strong>August 20, 2026</strong>
+        </div>
+      </nav>
+
+      <main id="main">
+        <section class="hero section" id="overview">
+          <div class="hero-copy">
+            <p class="eyebrow copper">True Form Pilates</p>
+            <h1>The work shipped.<br /><em>The process broke.</em></h1>
+            <p class="lede">An evidence-based reconstruction of the project, the client-confidence breakdown, and the controls needed to prevent a repeat.</p>
+            <div class="hero-meta">
+              <span>Incident window <strong>Jul 14–Aug 19</strong></span>
+              <span>Production operational <strong>Yes</strong></span>
+              <span>Raw client files included <strong>No</strong></span>
+            </div>
+          </div>
+          <div class="signal-card">
+            <div class="signal-topline">
+              <span>Assessment</span>
+              <span class="status-pill amber">Process incident</span>
+            </div>
+            <div class="signal-score">3</div>
+            <p>turning points identified</p>
+            <div class="mini-timeline" aria-label="Three turning points">
+              <span style="--position: 8%"></span>
+              <span style="--position: 55%"></span>
+              <span style="--position: 86%"></span>
+            </div>
+            <div class="signal-labels">
+              <small>Jul 30</small><small>Aug 11</small><small>Aug 17</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="metrics" aria-label="Project evidence summary">
+          <article><strong>2</strong><span>written revision rounds mapped</span></article>
+          <article><strong>7</strong><span>key pull requests with no recorded review</span></article>
+          <article><strong>136</strong><span>controls in QA framework followed</span></article>
+          <article><strong>99–100</strong><span>recorded Lighthouse performance</span></article>
+        </section>
+
+        <section class="section" id="finding">
+          <div class="section-heading">
+            <div><p class="eyebrow">01 / Finding</p><h2>What the evidence supports</h2></div>
+            <span class="section-tag">High confidence</span>
+          </div>
+          <div class="finding-grid">
+            <article class="finding-card positive">
+              <span class="finding-icon">✓</span>
+              <div>
+                <h3>The written revisions were implemented visually.</h3>
+                <p>R1 landed across August 5 and 13. R2 landed across August 17 and 18. Requested removals were hidden from visitors before dormant source was deleted later.</p>
+              </div>
+            </article>
+            <article class="finding-card negative">
+              <span class="finding-icon">!</span>
+              <div>
+                <h3>Implementation was not converted into trusted acceptance.</h3>
+                <p>Feedback was fragmented, Loom was missed, completion messages lacked a versioned checklist, and no formal independent content/design approval gate was recorded.</p>
+              </div>
+            </article>
+          </div>
+          <blockquote class="thesis">
+            “We implemented the written revisions in the visitor-facing site, but our process for consolidating, checking, confirming and approving that work was not strong enough.”
+          </blockquote>
+        </section>
+
+        <section class="section" id="timeline">
+          <div class="section-heading">
+            <div><p class="eyebrow">02 / Timeline</p><h2>Where the project moved off track</h2></div>
+            <div class="filters" role="group" aria-label="Filter timeline">
+              <button class="filter active" type="button" data-filter="all">All</button>
+              <button class="filter" type="button" data-filter="risk">Risk</button>
+              <button class="filter" type="button" data-filter="delivery">Delivery</button>
+              <button class="filter" type="button" data-filter="escalation">Escalation</button>
+            </div>
+          </div>
+          <div class="timeline-list">
+            <article class="timeline-item" data-kind="risk">
+              <time datetime="2026-07-15">Jul 14–15</time>
+              <div class="timeline-dot risk"></div>
+              <div><span class="status-pill muted">Onboarding</span><h3>Initial onboarding link required correction</h3><p>The first message did not provide the usable form link; the correct link was sent with an apology the next day.</p></div>
+            </article>
+            <article class="timeline-item" data-kind="delivery">
+              <time datetime="2026-07-29">Jul 23–29</time>
+              <div class="timeline-dot delivery"></div>
+              <div><span class="status-pill green">Foundation</span><h3>Domain, Arketa and materials access coordinated</h3><p>Delegate access was exchanged and the team requested photos, videos and content while preparing the site for launch.</p></div>
+            </article>
+            <article class="timeline-item" data-kind="risk">
+              <time datetime="2026-07-30">Jul 30</time>
+              <div class="timeline-dot risk"></div>
+              <div><span class="status-pill muted">Earliest warning</span><h3>Launch preparation overlapped with open inputs</h3><p>Logo, photography, testimonials and the first broad revision document arrived while the team was already describing the site as being wrapped up for launch.</p></div>
+            </article>
+            <article class="timeline-item" data-kind="delivery">
+              <time datetime="2026-08-05">Aug 05</time>
+              <div class="timeline-dot delivery"></div>
+              <div><span class="status-pill green">Delivery</span><h3>First written revision round implemented</h3><p>A large content and Policies release landed, followed by an August 13 completion pass.</p></div>
+            </article>
+            <article class="timeline-item" data-kind="risk">
+              <time datetime="2026-08-11">Aug 11</time>
+              <div class="timeline-dot risk"></div>
+              <div><span class="status-pill amber">First expectation break</span><h3>“Ready to go live” preceded booking-model alignment</h3><p>The client immediately clarified that she did not offer classes and did not know how to configure the requested Arketa behavior.</p></div>
+            </article>
+            <article class="timeline-item" data-kind="delivery">
+              <time datetime="2026-08-12">Aug 12–13</time>
+              <div class="timeline-dot delivery"></div>
+              <div><span class="status-pill green">Feature acceptance</span><h3>Booking preview was tested and corrected</h3><p>The client completed a test purchase, requested availability-first booking and My Account changes, then confirmed the corrected flow looked great.</p></div>
+            </article>
+            <article class="timeline-item" data-kind="delivery">
+              <time datetime="2026-08-14">Aug 14</time>
+              <div class="timeline-dot delivery"></div>
+              <div><span class="status-pill green">QA + launch</span><h3>Technical audit fixed critical launch defects</h3><p>Indexing, canonical, sitemap, image weight, metadata, overflow and related defects were addressed. Human sign-off and real-device/browser checks remained open.</p></div>
+            </article>
+            <article class="timeline-item" data-kind="escalation">
+              <time datetime="2026-08-17">Aug 17</time>
+              <div class="timeline-dot escalation"></div>
+              <div><span class="status-pill red">Decisive escalation</span><h3>Missed Loom feedback and urgent live identity concern</h3><p>The client reported the logo/photo problem and repeated feedback. The agency acknowledged that the Loom videos had been missed.</p></div>
+            </article>
+            <article class="timeline-item" data-kind="delivery">
+              <time datetime="2026-08-18">Aug 18</time>
+              <div class="timeline-dot delivery"></div>
+              <div><span class="status-pill green">Delivery</span><h3>Logo, banners and testimonials release completed</h3><p>The supplied logo, global marquee removal and full testimonials component deployed successfully.</p></div>
+            </article>
+            <article class="timeline-item" data-kind="escalation">
+              <time datetime="2026-08-19">Aug 19</time>
+              <div class="timeline-dot escalation"></div>
+              <div><span class="status-pill red">Concern broadened</span><h3>Trust became a design and SEO dispute</h3><p>The client raised distinctiveness, Core Sport similarity, AI-template perception and unclear SEO value.</p></div>
+            </article>
+          </div>
+          <div class="loom-finding">
+            <div class="loom-icon" aria-hidden="true">L</div>
+            <div><p class="eyebrow">Loom evidence check</p><h3>The videos are mentioned; the links are not in either export.</h3><p>The expanded 44-message thread confirms the August 17 sequence: two earlier Loom videos were mentioned, we asked for the links again, and the client said her new notes likely covered them. No <code>loom.com</code> URL or later viewing confirmation appears. The only actual video link is an unrelated YouTube domain-access tutorial.</p></div>
+            <span class="section-tag">2 PDFs checked</span>
+          </div>
+        </section>
+
+        <section class="section" id="implementation">
+          <div class="section-heading">
+            <div><p class="eyebrow">03 / Implementation</p><h2>What was delivered</h2></div>
+            <span class="section-tag">Production through Aug 18</span>
+          </div>
+          <div class="release-grid">
+            <article class="release-card">
+              <div class="release-number">R1</div>
+              <div><p class="release-date">July 30 document</p><h3>Content, services, offers, biography and policies</h3><p>Implemented in the August 5 release with an August 13 completion pass.</p><div class="commit-row"><code>8409ce6</code><code>dad0623</code></div></div>
+            </article>
+            <article class="release-card">
+              <div class="release-number">R2</div>
+              <div><p class="release-date">August 17 document</p><h3>Photography, copy, removals, offers and presentation</h3><p>Visitor-facing changes deployed August 17; shared logo, marquees and testimonials completed August 18.</p><div class="commit-row"><code>4f21891</code><code>2d2e378</code></div></div>
+            </article>
+          </div>
+          <div class="interpretation">
+            <span class="interpretation-mark">i</span>
+            <p><strong>Important distinction:</strong> some removed sections remained in source with <code>hidden</code> styling. The August 19 deletion was source cleanup, not the first time those sections disappeared for visitors.</p>
+          </div>
+        </section>
+
+        <section class="section process-section" id="process">
+          <div class="section-heading">
+            <div><p class="eyebrow">04 / Process map</p><h2>Where the work was completed</h2></div>
+            <a class="report-link" href="https://growtharchon.github.io/client-reports/true-form-pilates/project-status-2026-08-19/" target="_blank" rel="noopener">Open full project-status report <span aria-hidden="true">↗</span></a>
+          </div>
+          <p class="process-lede">The project produced work across seven connected phases. This view shows when each deliverable happened and separates completed foundations from future publishing and measurement work.</p>
+          <div class="phase-list">
+            <article class="phase-item">
+              <div class="phase-id"><span>01</span><small>Jul 14–29</small></div>
+              <div><p class="phase-type">Foundation</p><h3>Onboarding and access</h3><p>Domain and GoDaddy coordination, Arketa access, material collection and deployment preparation.</p></div>
+              <span class="phase-status done">Completed</span>
+            </article>
+            <article class="phase-item">
+              <div class="phase-id"><span>02</span><small>Jul 24–Aug 13</small></div>
+              <div><p class="phase-type">Website</p><h3>Design and content customization</h3><p>Astro build, client copy, services, offers, Carly’s biography, testimonials, contact information and Policies page.</p></div>
+              <span class="phase-status done">Completed</span>
+            </article>
+            <article class="phase-item">
+              <div class="phase-id"><span>03</span><small>Aug 6–14</small></div>
+              <div><p class="phase-type">Operations</p><h3>Booking and measurement setup</h3><p>Arketa embed and fallback, availability-first flow, My Account access, purchase testing and GTM/GA4 integration work.</p></div>
+              <span class="phase-status done">Completed</span>
+            </article>
+            <article class="phase-item">
+              <div class="phase-id"><span>04</span><small>Aug 5–14</small></div>
+              <div><p class="phase-type">SEO strategy</p><h3>Research and content planning</h3><p>Competitor/SERP and keyword research plus a 53-page roadmap: location pages, a “near me” page and 49 article topics.</p></div>
+              <span class="phase-status planned">Plan delivered</span>
+            </article>
+            <article class="phase-item">
+              <div class="phase-id"><span>05</span><small>Aug 14</small></div>
+              <div><p class="phase-type">Release control</p><h3>Prelaunch QA and technical SEO</h3><p>The 136-control framework guided the audit. Critical indexing, sitemap, canonical, image, metadata, security and responsive issues were addressed.</p></div>
+              <span class="phase-status done">Completed</span>
+            </article>
+            <article class="phase-item">
+              <div class="phase-id"><span>06</span><small>Aug 14–18</small></div>
+              <div><p class="phase-type">Production</p><h3>Launch and second revision round</h3><p>Launch, supplied photography, R2 copy/removals, 5+ apparatus, US spelling, logo placement, testimonials and WebP optimization.</p></div>
+              <span class="phase-status done">Deployed</span>
+            </article>
+            <article class="phase-item">
+              <div class="phase-id"><span>07</span><small>Aug 19 onward</small></div>
+              <div><p class="phase-type">Recovery</p><h3>Transparency and next-step planning</h3><p>Implementation audit, public project-status report, post-mortem, design-reset options and proposed SEO reporting framework.</p></div>
+              <span class="phase-status active">In progress</span>
+            </article>
+          </div>
+          <div class="scope-clarifier">
+            <div><span>Delivered foundation</span><strong>Technical SEO, research, content plan, booking, tracking setup and optimized website.</strong></div>
+            <div><span>Not yet an outcome</span><strong>Planned pages, rankings, organic traffic and booked-client growth require publication, indexing and reporting time.</strong></div>
+          </div>
+        </section>
+
+        <section class="section qa-section" id="qa">
+          <div class="section-heading light">
+            <div><p class="eyebrow">05 / Quality assurance</p><h2>The QA checklist that was followed</h2></div>
+            <span class="section-tag light">Confirmed by team</span>
+          </div>
+          <div class="qa-intro">
+            <div class="qa-ring" aria-label="136 checklist controls">
+              <strong>136</strong><span>controls</span>
+            </div>
+            <div>
+              <p class="qa-lede">The August 14 audit followed the supplied <strong>Website Go-Live QA Checklist</strong>, a ten-section framework requiring evidence for every pass and manual status for human-only checks.</p>
+              <p>This is an important correction: the project did have a rigorous QA framework. The gap was that open manual items and client acceptance did not become a hard release gate, and R2 arrived three days after this main audit.</p>
+            </div>
+          </div>
+          <div class="qa-categories" aria-label="QA checklist categories">
+            <div><span>16</span>Design & Layout</div><div><span>16</span>Forms</div><div><span>16</span>SEO & Meta</div><div><span>15</span>Technical & Performance</div><div><span>13</span>Content & Copy</div><div><span>13</span>Launch & Handover</div><div><span>12</span>Navigation & Links</div><div><span>12</span>Accessibility</div><div><span>12</span>Tracking & Analytics</div><div><span>11</span>Security & Legal</div>
+          </div>
+          <div class="qa-result-grid">
+            <article><span class="qa-status passed">Verified</span><h3>Technical launch readiness</h3><p>Links, rendering, mobile navigation, indexing, sitemap, canonicals, metadata, structured data, booking and analytics requests.</p></article>
+            <article><span class="qa-status fixed">Fixed</span><h3>Critical defects</h3><p>Robots blocking, site-wide noindex, missing sitemap/canonicals, old mockup URL and excessive image weight.</p></article>
+            <article><span class="qa-status manual">Manual remained</span><h3>Human acceptance items</h3><p>Client sign-off, cross-browser and real-device review, licences, GTM publication and post-launch account work.</p></article>
+          </div>
+          <p class="qa-source">Checklist fingerprint: <code>070f9b1d…ebe27a3</code> · Results: August 14, 2026 · PR #14 / <code>56533e2</code></p>
+        </section>
+
+        <section class="section" id="causes">
+          <div class="section-heading">
+            <div><p class="eyebrow">06 / Root causes</p><h2>Six controls that were missing</h2></div>
+          </div>
+          <div class="cause-grid">
+            <article><span>01</span><h3>No authoritative ledger</h3><p>Dropbox, documents, Loom and email were never reconciled into one acceptance record.</p></article>
+            <article><span>02</span><h3>Unqualified completion language</h3><p>“Ready” and “implemented” were not tied to a version, evidence or exceptions.</p></article>
+            <article><span>03</span><h3>QA versus acceptance</h3><p>Strong technical QA was not paired with a final independent design/content gate.</p></article>
+            <article><span>04</span><h3>No explicit sign-off</h3><p>Positive feedback on features and pages was treated too close to final release approval.</p></article>
+            <article><span>05</span><h3>Distributed ownership</h3><p>No single owner reconciled assets, code, tracking, client feedback and release status.</p></article>
+            <article><span>06</span><h3>Invisible SEO value</h3><p>Completed SEO and measurement work was not packaged into a client-readable status report.</p></article>
+          </div>
+        </section>
+
+        <section class="section" id="actions">
+          <div class="section-heading">
+            <div><p class="eyebrow">07 / Actions</p><h2>Recovery plan</h2></div>
+            <span class="section-tag">Owners to assign</span>
+          </div>
+          <div class="action-list">
+            <article><span class="action-index">01</span><div><h3>Name one accountable delivery owner</h3><p>One person owns the ledger, client communication and release acceptance through completion.</p></div><span class="priority critical">Immediate</span></article>
+            <article><span class="action-index">02</span><div><h3>Reconcile every feedback source</h3><p>R1, R2, Loom, email and call outcomes become one versioned acceptance matrix.</p></div><span class="priority critical">Immediate</span></article>
+            <article><span class="action-index">03</span><div><h3>Run independent live visual/content QA</h3><p>Desktop and mobile screenshots checked against the ledger, separately from technical QA.</p></div><span class="priority critical">Immediate</span></article>
+            <article><span class="action-index">04</span><div><h3>Deliver the SEO measurement report</h3><p>Show completed setup, baseline, planned work, KPIs and reporting cadence.</p></div><span class="priority high">Next 48h</span></article>
+            <article><span class="action-index">05</span><div><h3>Separate fixes from redesign</h3><p>Classify defects, agreed revisions and new art direction—including Core Sport differentiation.</p></div><span class="priority high">Team decision</span></article>
+          </div>
+        </section>
+
+        <section class="section evidence-section" id="evidence">
+          <div class="section-heading">
+            <div><p class="eyebrow">08 / Evidence</p><h2>Audit trail</h2></div>
+          </div>
+          <div class="evidence-grid">
+            <article><span>Email</span><strong>2 PDF exports</strong><p>12-page update thread plus 175-page/44-message onboarding export reviewed.</p></article>
+            <article><span>Client docs</span><strong>R1 + R2</strong><p>Every visitor-facing request group mapped to repository evidence.</p></article>
+            <article><span>Repository</span><strong>Through 2564b9a</strong><p>Commits, PRs and production deployment runs reviewed.</p></article>
+            <article><span>QA</span><strong>136-control framework</strong><p>Supplied checklist and August 14 result artifact cross-referenced.</p></article>
+            <article><span>Delivery record</span><strong>Project-status report</strong><p>Client-facing summary of website, SEO, booking, tracking and performance work.</p></article>
+            <article><span>Loom audit</span><strong>No links found</strong><p>Mentions confirmed; no Loom URL or evidence of viewing in either export.</p></article>
+          </div>
+          <p class="evidence-note">This dashboard contains summaries only. Raw email, Word files, phone numbers, credentials and client attachments are not published here.</p>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <p>True Form Pilates project post-mortem · Internal working document</p>
+      <p>Evidence current through August 19, 2026</p>
+    </footer>
+  </body>
+</html>
