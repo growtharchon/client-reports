@@ -1,25 +1,806 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>TPP Soft Wash — Reports</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local SEO Audit Report — TPP Soft Wash LLC | tppsoftwash.com</title>
 <style>
-:root{--bg:#eef3f6;--surface:#fff;--ink:#14232e;--muted:#5f7079;--hair:#e0e8ed;--accent:#0f6f8c}
-@media(prefers-color-scheme:dark){:root{--bg:#0c141c;--surface:#152230;--ink:#e9eff3;--muted:#8ea0ac;--hair:#243541;--accent:#3aa7cb}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-.wrap{max-width:720px;margin:0 auto;padding:clamp(20px,4vw,52px) clamp(16px,4vw,32px) 72px}
-.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:650}
-h1{font-size:clamp(26px,5vw,36px);margin:.3em 0 .5em;letter-spacing:-.02em}
-h2{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:32px 0 10px}
-ul{list-style:none;margin:0;padding:0}
-li{background:var(--surface);border:1px solid var(--hair);border-radius:12px;margin-bottom:8px}
-a{display:block;padding:14px 18px;color:var(--ink);text-decoration:none;font-weight:600}
-a:hover{color:var(--accent)}
-footer{margin-top:48px;color:var(--muted);font-size:12.5px}
-</style></head><body><div class="wrap">
-<div class="eyebrow">Outrider Digital</div>
-<h1>TPP Soft Wash — Reports</h1>
-<h2>Monthly</h2><ul><li><a href="monthly/2026-07/">2026-07</a></li></ul>
-<footer>Reports are published here as they are sent. Links are permanent.</footer>
-</div></body></html>
+  :root {
+    --pass: #10b981;
+    --pass-bg: #ecfdf5;
+    --pass-border: #a7f3d0;
+    --needs-work: #f59e0b;
+    --needs-work-bg: #fffbeb;
+    --needs-work-border: #fde68a;
+    --fail: #ef4444;
+    --fail-bg: #fef2f2;
+    --fail-border: #fecaca;
+    --navy: #1e293b;
+    --navy-light: #334155;
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+    --white: #ffffff;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--slate-100);
+    color: var(--slate-800);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--slate-900) 100%);
+    color: var(--white);
+    padding: 48px 0 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(99,102,241,0.12) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  .header-text h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+  .header-text .subtitle {
+    font-size: 15px;
+    color: var(--slate-300);
+    margin-bottom: 16px;
+  }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    font-size: 13px;
+    color: var(--slate-300);
+  }
+  .header-meta span { display: flex; align-items: center; gap: 6px; }
+  .header-meta strong { color: var(--white); font-weight: 600; }
+
+  /* ── Score Gauge ── */
+  .score-gauge {
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .gauge-ring {
+    position: relative;
+    width: 140px;
+    height: 140px;
+  }
+  .gauge-ring svg { transform: rotate(-90deg); }
+  .gauge-ring circle {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+  }
+  .gauge-bg { stroke: rgba(255,255,255,0.12); }
+  .gauge-fill {
+    stroke: var(--needs-work);
+    stroke-dasharray: 408;
+    stroke-dashoffset: calc(408 - 408 * 0.375);
+    transition: stroke-dashoffset 1s ease;
+  }
+  .gauge-label {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .gauge-label .big { font-size: 32px; font-weight: 800; display: block; line-height: 1; }
+  .gauge-label .small { font-size: 12px; color: var(--slate-300); }
+  .score-caption {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--slate-400);
+  }
+
+  /* ── Container ── */
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Score Summary Bar ── */
+  .score-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: -28px 0 40px;
+    position: relative;
+    z-index: 2;
+  }
+  .score-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+  }
+  .score-card .label { font-size: 13px; color: var(--slate-500); margin-bottom: 4px; }
+  .score-card .value { font-size: 28px; font-weight: 800; }
+  .score-card .value.amber { color: var(--needs-work); }
+  .score-card .value.red { color: var(--fail); }
+  .score-card .value.green { color: var(--pass); }
+  .score-card .sub { font-size: 12px; color: var(--slate-400); margin-top: 2px; }
+
+  /* ── Section ── */
+  .section { margin-bottom: 48px; }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--slate-900);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--slate-200);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .count {
+    font-size: 13px;
+    font-weight: 600;
+    background: var(--slate-200);
+    color: var(--slate-600);
+    padding: 2px 10px;
+    border-radius: 99px;
+  }
+
+  /* ── Executive Summary ── */
+  .exec-summary {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    box-shadow: var(--shadow);
+    margin-bottom: 48px;
+    border-left: 4px solid var(--navy);
+  }
+  .exec-summary h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--slate-900);
+    margin-bottom: 16px;
+  }
+  .exec-summary ol {
+    padding-left: 20px;
+  }
+  .exec-summary li {
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: var(--slate-700);
+    line-height: 1.7;
+  }
+  .exec-summary li strong { color: var(--slate-900); }
+
+  /* ── Audit Card ── */
+  .audit-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .audit-card:hover { box-shadow: var(--shadow-md); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 24px;
+    cursor: default;
+  }
+  .card-number {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--slate-400);
+    min-width: 32px;
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--slate-800);
+    flex: 1;
+  }
+
+  .badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 99px;
+    white-space: nowrap;
+  }
+  .badge-pass { background: var(--pass-bg); color: #065f46; border: 1px solid var(--pass-border); }
+  .badge-needs-work { background: var(--needs-work-bg); color: #92400e; border: 1px solid var(--needs-work-border); }
+  .badge-fail { background: var(--fail-bg); color: #991b1b; border: 1px solid var(--fail-border); }
+
+  .card-body {
+    padding: 0 24px 20px 68px;
+  }
+  .evidence, .recommendation {
+    font-size: 14px;
+    color: var(--slate-600);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .evidence-label, .rec-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .evidence-label { color: var(--slate-400); }
+  .rec-label { color: var(--needs-work); }
+  .recommendation {
+    background: var(--needs-work-bg);
+    border-left: 3px solid var(--needs-work);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 0;
+  }
+  .recommendation.fail-rec {
+    background: var(--fail-bg);
+    border-left-color: var(--fail);
+  }
+  .evidence ul {
+    padding-left: 18px;
+    margin-top: 4px;
+  }
+  .evidence li { margin-bottom: 2px; }
+
+  /* ── Priority Action Plan ── */
+  .priority-group {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .priority-header {
+    padding: 16px 24px;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .priority-header.fix-now { background: var(--fail-bg); color: #991b1b; border-left: 4px solid var(--fail); }
+  .priority-header.improve { background: var(--needs-work-bg); color: #92400e; border-left: 4px solid var(--needs-work); }
+  .priority-header.maintain { background: var(--pass-bg); color: #065f46; border-left: 4px solid var(--pass); }
+  .priority-header .p-count {
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(0,0,0,0.08);
+    padding: 2px 8px;
+    border-radius: 99px;
+  }
+  .priority-list {
+    padding: 8px 24px 20px;
+    list-style: none;
+  }
+  .priority-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--slate-100);
+    font-size: 14px;
+    color: var(--slate-700);
+    line-height: 1.6;
+  }
+  .priority-list li:last-child { border-bottom: none; }
+  .priority-list li strong { color: var(--slate-900); }
+
+  /* ── Status Dot ── */
+  .status-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-pass { background: var(--pass); }
+  .dot-needs-work { background: var(--needs-work); }
+  .dot-fail { background: var(--fail); }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 40px 24px 48px;
+    font-size: 13px;
+    color: var(--slate-400);
+    border-top: 1px solid var(--slate-200);
+    margin-top: 24px;
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: white; }
+    .header { padding: 24px 0 32px; }
+    .audit-card, .priority-group, .exec-summary, .score-card { break-inside: avoid; box-shadow: none; border: 1px solid var(--slate-200); }
+    .score-bar { margin-top: 16px; }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .header-inner { flex-direction: column; align-items: center; text-align: center; }
+    .header-meta { justify-content: center; }
+    .card-body { padding-left: 24px; }
+    .score-bar { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════ HEADER ════════════════════════════ -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-text">
+      <h1>Local SEO Checklist Audit</h1>
+      <div class="subtitle">TPP Soft Wash LLC &mdash; tppsoftwash.com</div>
+      <div class="header-meta">
+        <span><strong>Location:</strong> Saline, MI</span>
+        <span><strong>Phone:</strong> 734-469-0192</span>
+        <span><strong>Audit Date:</strong> August 28, 2026</span>
+      </div>
+    </div>
+    <div class="score-gauge">
+      <div class="gauge-ring">
+        <svg width="140" height="140" viewBox="0 0 140 140">
+          <circle class="gauge-bg" cx="70" cy="70" r="65"/>
+          <circle class="gauge-fill" cx="70" cy="70" r="65"/>
+        </svg>
+        <div class="gauge-label">
+          <span class="big">6/16</span>
+          <span class="small">37.5%</span>
+        </div>
+      </div>
+      <div class="score-caption">Overall Score</div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════ SCORE BAR ════════════════════════════ -->
+<div class="container">
+  <div class="score-bar">
+    <div class="score-card">
+      <div class="label">Overall</div>
+      <div class="value amber">6 / 16</div>
+      <div class="sub">37.5% passing</div>
+    </div>
+    <div class="score-card">
+      <div class="label">Game Changers</div>
+      <div class="value red">2 / 9</div>
+      <div class="sub">22% passing</div>
+    </div>
+    <div class="score-card">
+      <div class="label">Technical &amp; Content</div>
+      <div class="value green">4 / 7</div>
+      <div class="sub">57% passing</div>
+    </div>
+    <div class="score-card">
+      <div class="label">Action Items</div>
+      <div class="value amber">10</div>
+      <div class="sub">2 FAIL &middot; 8 NEEDS WORK</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════ EXECUTIVE SUMMARY ════════════════════════════ -->
+  <div class="exec-summary">
+    <h2>Executive Summary</h2>
+    <ol>
+      <li><strong>Strong technical foundation, weak growth levers.</strong> The website scores well on technical SEO (structured data, title tags, mobile UX, dedicated service pages) but is missing the high-impact growth drivers that move the needle in the Local Pack: paid ads, review velocity, and GBP optimization.</li>
+      <li><strong>No paid visibility at all.</strong> TPP Soft Wash runs zero Google Ads or Local Services Ads. Competitors who launch LSAs will capture high-intent leads above all organic results. This is the single biggest missed opportunity.</li>
+      <li><strong>Review profile is fragile.</strong> Seven reviews &mdash; all posted in a single burst in June 2026 &mdash; signal a batch pattern rather than genuine ongoing customer feedback. Sustained review velocity (2&ndash;4 per month) is critical for Local Pack competitiveness and consumer trust.</li>
+    </ol>
+  </div>
+
+  <!-- ════════════════════════════ GAME CHANGERS ════════════════════════════ -->
+  <div class="section">
+    <h2 class="section-title">Game Changers <span class="count">2 of 9 passing</span></h2>
+
+    <!-- #01 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#01</span>
+        <span class="card-title">Visible Address vs SAB</span>
+        <span class="badge badge-needs-work">Needs Work</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">No visible street address on GBP listing. Service Area Business (SAB) &mdash; serves "Saline and nearby areas." SAB listings are valid but generally weaker for Local Pack rankings compared to verified storefronts.</div>
+        <div class="rec-label">Recommendation</div>
+        <div class="recommendation">If a home office or physical location exists in Saline, consider verifying the address on GBP. Even a hidden address (SAB with verified location) strengthens ranking signals.</div>
+      </div>
+    </div>
+
+    <!-- #02 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#02</span>
+        <span class="card-title">Location Within City Boundaries</span>
+        <span class="badge badge-pass">Pass</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">Business address listed as Saline, MI 48176. Target city is Saline, MI. The business is physically located within the target city.</div>
+      </div>
+    </div>
+
+    <!-- #03 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#03</span>
+        <span class="card-title">Google Ads / LSAs</span>
+        <span class="badge badge-fail">Fail</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">Searched "pressure washing saline mi" &mdash; no Local Services Ads (LSAs) and no Google Search Ads showing for this keyword. TPP Soft Wash is not running any paid ads. The SERP shows organic results with Perfect Power Wash and Saline Painting as competitors. However, TPP Soft Wash IS mentioned in Google's AI Overview, which is a strong organic signal.</div>
+        <div class="rec-label">Recommendation</div>
+        <div class="recommendation fail-rec">Launch Google Local Services Ads (LSAs) immediately &mdash; they appear at the very top of SERPs with a "Google Guaranteed" badge and generate high-intent leads. Also consider Google Search Ads for top service keywords.</div>
+      </div>
+    </div>
+
+    <!-- #04 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#04</span>
+        <span class="card-title">Keywords in Business Name</span>
+        <span class="badge badge-needs-work">Needs Work</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">Business name is "TPP SOFT WASH LLC." Contains "Soft Wash" (service keyword) but no city keyword. "TPP" is a brand abbreviation with no keyword value.</div>
+        <div class="rec-label">Recommendation</div>
+        <div class="recommendation">Consider filing a DBA that includes the city name, e.g., "TPP Soft Wash Saline" or "TPP Pressure Washing &amp; Soft Wash Saline." This can significantly boost Local Pack rankings.</div>
+      </div>
+    </div>
+
+    <!-- #05 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#05</span>
+        <span class="card-title">GBP Categories</span>
+        <span class="badge badge-needs-work">Needs Work</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">Primary category is "Pressure washing service" which is appropriate. However, no secondary categories were visible. Missing potential categories like: "Roof cleaning service," "Gutter cleaning service," "Exterior cleaning service," or "Power washing service."</div>
+        <div class="rec-label">Recommendation</div>
+        <div class="recommendation">Add all applicable secondary GBP categories. Fill every available slot with genuinely relevant categories. The primary "Pressure washing service" is good &mdash; keep it.</div>
+      </div>
+    </div>
+
+    <!-- #06 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#06</span>
+        <span class="card-title">Strategic Press Releases</span>
+        <span class="badge badge-fail">Fail</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">No press releases found on PRNewswire, BusinessWire, GlobeNewswire, PRWeb, or EIN Presswire. No news coverage found.</div>
+        <div class="rec-label">Recommendation</div>
+        <div class="recommendation fail-rec">Publish 1&ndash;2 press releases per quarter through services like PRWeb or EIN Presswire. Focus on business milestones, community involvement, seasonal service launches. Use brand anchors linking to specific service pages (not just homepage).</div>
+      </div>
+    </div>
+
+    <!-- #07 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#07</span>
+        <span class="card-title">Dedicated Service Pages</span>
+        <span class="badge badge-pass">Pass</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">
+          Every core service has its own dedicated page with service+city in the URL and title tag:
+          <ul>
+            <li>House Washing &rarr; /house-washing-saline-mi/ &mdash; "House Washing Saline MI | Soft Wash Exterior Cleaning | TPP Soft Wash"</li>
+            <li>Driveway Cleaning &rarr; /driveway-cleaning-saline-mi/ &mdash; "Driveway Cleaning Saline MI | Pressure Washing Services | TPP Soft Wash"</li>
+            <li>Roof Washing &rarr; /roof-washing-saline-mi/ &mdash; "Roof Washing Saline MI | Safe Soft Wash Roof Cleaning | TPP Soft Wash"</li>
+            <li>Plus: Sidewalk Cleaning, Deck Cleaning, Patio Cleaning, Fence Cleaning, Pressure Washing, Soft Washing</li>
+            <li>Each page has CTAs, phone number (tel: link), contact form, testimonials, and FAQs</li>
+            <li>Total: 8 service types &times; 3 cities = 24 service pages</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- #08 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#08</span>
+        <span class="card-title">Review Velocity</span>
+        <span class="badge badge-needs-work">Needs Work</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">5.0 stars with 7 reviews. All 7 reviews were posted approximately 2 months ago (June 2026) in what appears to be a single burst. Reviewers: Brandon West, Carlee Gulliver, Joseph Galura, kathaza akter, Chelsea Respondek, Lauren Jakubowski, Ken Jakubowski. No new reviews since the initial burst. This is a batch pattern, not sustained velocity.</div>
+        <div class="rec-label">Recommendation</div>
+        <div class="recommendation">Implement a systematic review generation process &mdash; ask every customer for a review via text/email follow-up within 24 hours of job completion. Target 2&ndash;4 new reviews per month for sustained velocity. Consider a review management tool like BirdEye or Podium.</div>
+      </div>
+    </div>
+
+    <!-- #09 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#09</span>
+        <span class="card-title">Extended GBP Hours</span>
+        <span class="badge badge-needs-work">Needs Work</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">Hours listed as 7 AM&ndash;7 PM, 7 days/week. This is decent (covers weekends) but not extended. Competitors offering 24/7 availability (via answering service) will appear in more searches.</div>
+        <div class="rec-label">Recommendation</div>
+        <div class="recommendation">If phone calls are answered outside 7 AM&ndash;7 PM (via cell phone or answering service), extend GBP hours to reflect actual reachability. Consider setting hours to 6 AM&ndash;9 PM or using an answering service for 24/7 coverage.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════ TECHNICAL & CONTENT ════════════════════════════ -->
+  <div class="section">
+    <h2 class="section-title">Technical &amp; Content <span class="count">4 of 7 passing</span></h2>
+
+    <!-- #23 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#23</span>
+        <span class="card-title">Title Tags</span>
+        <span class="badge badge-pass">Pass</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">
+          All service pages lead with service+city in the title:
+          <ul>
+            <li>Homepage: "Professional Pressure Washing &amp; Soft Washing in Saline, MI | TPP Soft Wash"</li>
+            <li>House Washing: "House Washing Saline MI | Soft Wash Exterior Cleaning | TPP Soft Wash"</li>
+            <li>Driveway Cleaning: "Driveway Cleaning Saline MI | Pressure Washing Services | TPP Soft Wash"</li>
+            <li>Roof Washing: "Roof Washing Saline MI | Safe Soft Wash Roof Cleaning | TPP Soft Wash"</li>
+            <li>Soft Washing: "Soft Washing Saline MI | Low-Pressure Exterior Cleaning | TPP Soft Wash"</li>
+            <li>Ann Arbor page: "House Washing Ann Arbor MI | Soft Wash Exterior Cleaning | TPP Soft Wash"</li>
+            <li>All titles follow best practices with service+city first, then brand.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- #24 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#24</span>
+        <span class="card-title">Structured Data</span>
+        <span class="badge badge-pass">Pass</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">
+          Comprehensive schema markup found:
+          <ul>
+            <li>LocalBusiness schema with correct NAP, service areas (10 cities), priceRange, aggregateRating (5.0, 7 reviews), and individual review objects</li>
+            <li>FAQPage schema with 6 Q&amp;A pairs per page</li>
+            <li>Service schema on service pages</li>
+            <li>BreadcrumbList schema for navigation</li>
+            <li>All data matches GBP listing information</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- #25 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#25</span>
+        <span class="card-title">Mobile-First, Fast, Frictionless UX</span>
+        <span class="badge badge-pass">Pass</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">
+          <ul>
+            <li>Lighthouse Performance: 90 (green)</li>
+            <li>FCP: 2.9s, LCP: 2.9s (amber but acceptable)</li>
+            <li>TBT: 60ms (green &mdash; excellent)</li>
+            <li>CLS: 0 (green &mdash; perfect)</li>
+            <li>Speed Index: 2.9s (green)</li>
+            <li>Accessibility: 87, Best Practices: 100, SEO: 100</li>
+            <li>Phone number uses tel: links throughout (click-to-call)</li>
+            <li>Contact forms embedded on every page</li>
+            <li>No intrusive popups or interstitials</li>
+            <li>Strong mobile-first design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- #26 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#26</span>
+        <span class="card-title">Internal Linking Strategy</span>
+        <span class="badge badge-needs-work">Needs Work</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">
+          Service pages cross-link to other services well through the "Our Top Services" section. Navigation exposes all key pages. However:
+          <ul>
+            <li>No blog content exists to create supporting internal links to service pages</li>
+            <li>Homepage only links to Saline service pages, not Ann Arbor or Ypsilanti location pages directly</li>
+            <li>Ann Arbor and Ypsilanti pages are only accessible from within individual service pages</li>
+            <li>No sitemap/HTML sitemap page linking structure</li>
+          </ul>
+        </div>
+        <div class="rec-label">Recommendation</div>
+        <div class="recommendation">Add a blog with informational content that links to service pages (e.g., "How Often Should You Pressure Wash Your Driveway in Michigan?" linking to the driveway cleaning page). Add location pages to the main navigation or footer. Create an HTML sitemap.</div>
+      </div>
+    </div>
+
+    <!-- #27 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#27</span>
+        <span class="card-title">City / Service-Area Pages</span>
+        <span class="badge badge-pass">Pass</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">
+          Location-specific pages exist for Ann Arbor and Ypsilanti (each service &times; each city). The Ann Arbor page shows genuinely unique local content:
+          <ul>
+            <li>References Ann Arbor's "Tree City USA" designation</li>
+            <li>Mentions specific neighborhoods (Burns Park, Old West Side, Ann Arbor Hills)</li>
+            <li>Discusses Huron River corridor humidity impact</li>
+            <li>References University of Michigan rental properties</li>
+            <li>Area-specific FAQs about local conditions</li>
+            <li>Each page ~2,200&ndash;2,400 words</li>
+            <li>Not thin/templated &mdash; real local knowledge</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- #28 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#28</span>
+        <span class="card-title">Unique, Experience-Based Content</span>
+        <span class="badge badge-needs-work">Needs Work</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">
+          Content quality is decent but lacks key experience signals:
+          <ul>
+            <li>No pricing or pricing ranges mentioned anywhere</li>
+            <li>No project breakdowns or case studies with before/after details and costs</li>
+            <li>Testimonials present but are brief Google review excerpts</li>
+            <li>Content discusses Michigan climate conditions (good) but lacks opinionated/expert comparisons</li>
+            <li>Before/after photos exist in gallery but not integrated with project stories</li>
+            <li>The page structure is somewhat similar across services (same H2 pattern)</li>
+          </ul>
+        </div>
+        <div class="rec-label">Recommendation</div>
+        <div class="recommendation">Add pricing ranges (e.g., "Driveway cleaning typically starts at $150&ndash;$300"). Include 2&ndash;3 detailed project breakdowns per service page with real costs, challenges, and solutions. Write comparison content (e.g., "Soft Wash vs. Pressure Wash: Which Is Right for Your Saline Home?").</div>
+      </div>
+    </div>
+
+    <!-- #29 -->
+    <div class="audit-card">
+      <div class="card-header">
+        <span class="card-number">#29</span>
+        <span class="card-title">GBP Photos</span>
+        <span class="badge badge-needs-work">Needs Work</span>
+      </div>
+      <div class="card-body">
+        <div class="evidence-label">Evidence</div>
+        <div class="evidence">Approximately 10&ndash;15 photos on GBP, all uploaded in June 2026. Photos are real work photos (driveway cleaning, house washing, sidewalk cleaning, equipment, landscape work) &mdash; not stock photos. However, all were uploaded in a single batch with no monthly refresh pattern. No new photos added since June 2026.</div>
+        <div class="rec-label">Recommendation</div>
+        <div class="recommendation">Upload 3&ndash;5 new photos monthly showing recent work. Include variety: before/after pairs, team photos, equipment, close-ups of results. Geo-tag photos with job location metadata. Set a monthly reminder to upload fresh photos.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════ PRIORITY ACTION PLAN ════════════════════════════ -->
+  <div class="section">
+    <h2 class="section-title">Priority Action Plan</h2>
+
+    <!-- Fix Now -->
+    <div class="priority-group">
+      <div class="priority-header fix-now">
+        <span class="status-dot dot-fail"></span>
+        Fix Now &mdash; FAIL Items
+        <span class="p-count">2 items</span>
+      </div>
+      <ol class="priority-list">
+        <li><strong>#03 Google Ads / LSAs</strong> &mdash; Launch LSAs immediately for "pressure washing," "soft washing," "house washing" in Saline/Ann Arbor. These appear above organic results and generate highest-intent leads.</li>
+        <li><strong>#06 Press Releases</strong> &mdash; Publish first press release within 30 days. Use PRWeb or EIN Presswire. Topic: "TPP Soft Wash Expands Soft Washing Services Across Washtenaw County." Link to 2&ndash;3 service pages with brand anchors.</li>
+      </ol>
+    </div>
+
+    <!-- Improve Soon -->
+    <div class="priority-group">
+      <div class="priority-header improve">
+        <span class="status-dot dot-needs-work"></span>
+        Improve Soon &mdash; NEEDS WORK Items
+        <span class="p-count">8 items</span>
+      </div>
+      <ol class="priority-list">
+        <li><strong>#08 Review Velocity</strong> &mdash; Implement systematic review requests after every job. Target 2&ndash;4 new reviews/month.</li>
+        <li><strong>#05 GBP Categories</strong> &mdash; Add secondary categories immediately (Roof cleaning, Gutter cleaning, Exterior cleaning, Power washing).</li>
+        <li><strong>#29 GBP Photos</strong> &mdash; Start monthly photo uploads (3&ndash;5 per month of recent jobs).</li>
+        <li><strong>#04 Keywords in Business Name</strong> &mdash; Consider DBA filing with city keyword.</li>
+        <li><strong>#26 Internal Linking</strong> &mdash; Start a blog, add location pages to navigation, create supporting content.</li>
+        <li><strong>#28 Content Quality</strong> &mdash; Add pricing ranges, project case studies, expert comparison content.</li>
+        <li><strong>#09 Extended Hours</strong> &mdash; Extend GBP hours to reflect actual reachability.</li>
+        <li><strong>#01 Visible Address</strong> &mdash; If possible, verify a physical location for stronger SAB signals.</li>
+      </ol>
+    </div>
+
+    <!-- Maintain -->
+    <div class="priority-group">
+      <div class="priority-header maintain">
+        <span class="status-dot dot-pass"></span>
+        Maintain &mdash; PASS Items
+        <span class="p-count">6 items</span>
+      </div>
+      <ul class="priority-list">
+        <li><strong>#02 Location in City</strong> &mdash; Business is within Saline city boundaries. No action needed.</li>
+        <li><strong>#07 Dedicated Service Pages</strong> &mdash; 24 service pages with proper URL structure and on-page SEO. Keep building.</li>
+        <li><strong>#23 Title Tags</strong> &mdash; All titles follow service+city first, then brand. Well optimized.</li>
+        <li><strong>#24 Structured Data</strong> &mdash; Comprehensive schema markup (LocalBusiness, FAQ, Service, Breadcrumb). Keep updated.</li>
+        <li><strong>#25 Mobile UX</strong> &mdash; Lighthouse 90 performance, CLS 0, click-to-call throughout. Strong foundation.</li>
+        <li><strong>#27 City/Service-Area Pages</strong> &mdash; Unique, locally-relevant content for each city. Not templated. Excellent.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════ FOOTER ════════════════════════════ -->
+<div class="footer">
+  Local SEO Checklist Audit &mdash; TPP Soft Wash LLC &mdash; tppsoftwash.com &mdash; August 28, 2026<br>
+  Confidential &mdash; Prepared for internal use only
+</div>
+
+</body>
+</html>
